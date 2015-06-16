@@ -16,8 +16,7 @@ public class Scrambler {
 	public String intToTurn(int face, int symbol) {
 		String faces = "ULFRBD";
 		String symbols = " '2";
-		String turn = "" + faces.charAt(face) + symbols.charAt(symbol);
-		return turn;
+		return faces.charAt(face) + " " + symbols.charAt(symbol);
 	}
 
 	public String GenerateRandomScramble() {
