@@ -16,7 +16,7 @@ public class Scrambler {
 	public String intToTurn(int face, int symbol) {
 		String faces = "ULFRBD";
 		String symbols = " '2";
-		System.out.println("" + faces.charAt(face) + symbols.charAt(symbol));
+	//	System.out.println("" + faces.charAt(face) + symbols.charAt(symbol));
 		return "" + faces.charAt(face) + symbols.charAt(symbol);
 		
 	}
