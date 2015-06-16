@@ -13,6 +13,13 @@ public class Scrambler {
 		random = new Random();
 	}
 
+	public String intToTurn(int face, int symbol) {
+		String faces = "ULFRBD";
+		String symbols = " '2";
+		String turn = "" + faces.charAt(face) + symbols.charAt(symbol);
+		return turn;
+	}
+
 	public String GenerateRandomScramble() {
 		int randomNumber;
 		for (int i = 0; i < 20; i++) {
@@ -25,7 +32,7 @@ public class Scrambler {
 					randomMove = "R";
 					lastFaceMoved = "RL";
 					faceMoving = true;
-					
+
 				}
 
 			} else if (randomNumber == 1) {
