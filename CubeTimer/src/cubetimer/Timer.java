@@ -25,7 +25,7 @@ public class Timer extends JPanel{
         images = new Images();
         actions = new Actions();
         scrambler = new Scrambler();
-        randomScramble = scrambler.GenerateRandomScramble();
+        randomScramble = scrambler.random3x3Scramble(20);
         countdownRunning = false;
     }
     public void spacePressed(){
@@ -58,7 +58,7 @@ public class Timer extends JPanel{
         if (spacePressed){
         	spacePressed = false;
         	System.out.println("SpacePressed");
-        	randomScramble = scrambler.GenerateRandomScramble();
+        	randomScramble = scrambler.random3x3Scramble(20);
         	if(!running){
         		if (countdownRunning){
         			countdownRunning = false;
