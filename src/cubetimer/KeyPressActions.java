@@ -39,6 +39,7 @@ public class KeyPressActions {
 
 		scrambler.randomCorrectScrambleInFieldsUsingFields();
 
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 
 	}
@@ -49,6 +50,7 @@ public class KeyPressActions {
 		fields.setUserAction(UserAction.add);
 		fields.setPaintComponentDone(false);
 
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 
 		Timer timer = new Timer(0, new AddUser(fields, paint));
@@ -62,6 +64,7 @@ public class KeyPressActions {
 		fields.setUserAction(UserAction.rename);
 		fields.setPaintComponentDone(false);
 
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 
 		Timer timer = new Timer(0, new RenameUser(fields, paint));

@@ -8,7 +8,8 @@ import fields.Fields;
 
 public class Main{
 	
-	private static ArrayList <Integer> screenSize = Actions.getDefaultWindowSize();
+	private static ArrayList <Integer> screenSize = 
+		Actions.getDefaultWindowSize();
 	private static int width = screenSize.get(0);
 	private static int height = screenSize.get(0);
 	

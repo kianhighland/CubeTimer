@@ -34,9 +34,9 @@ public class KeepCountDown implements ActionListener {
 			if (plus2) {
 				fields.getDisplayedData().setTime("+2");
 			}
-
-			else {
-				fields.getDisplayedData().setTime("+2");
+			
+			else{
+				fields.getDisplayedData().setTime(Integer.toString(timeLeft));
 			}
 
 		}
@@ -56,7 +56,8 @@ public class KeepCountDown implements ActionListener {
 				plus2 = true;
 			}
 		}
-
+		
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 	}
 

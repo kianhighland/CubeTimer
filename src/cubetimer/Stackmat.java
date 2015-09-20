@@ -43,15 +43,17 @@ public class Stackmat {
 								.getPenalty(), keepCountDown.getDNF()));
 		fields.getAllUsers().getUser().getTwistyPuzzle().setLastAvarageOf5();
 
+		fields.changeSinceLastRepaint();
 	}
 
 	public void startTimer() {
 
 		fields.getTimerStatus().setRunning(true);
 		keepTime = new KeepTime(fields, paint, keepCountDown);
-		stackmatTimer = new Timer(10, keepTime);
+		stackmatTimer = new Timer(1000, keepTime);
 		stackmatTimer.start();
 
+		fields.changeSinceLastRepaint();
 	}
 
 	public void StartCountDown() {
@@ -62,12 +64,16 @@ public class Stackmat {
 		countDownTimer = new Timer(1000, keepCountDown);
 		countDownTimer.setInitialDelay(1000);
 		countDownTimer.start();
+		
+		fields.changeSinceLastRepaint();
 	}
 
 	public void stopCountDown() {
 
 		fields.getTimerStatus().setCountDownRunning(false);
 		countDownTimer.stop();
+		
+		fields.changeSinceLastRepaint();
 	}
 
 }

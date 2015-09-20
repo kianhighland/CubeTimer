@@ -49,6 +49,7 @@ public class UpArrowPressedAction extends AbstractAction {
 					.getSize());
 		}
 
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 	}
 }

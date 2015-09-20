@@ -51,6 +51,8 @@ public class DownArrowPressedAction extends AbstractAction{
 			
 			fields.getMenu().getUserActionsMenu().userMenuDownOne(fields.getAllUsers().getSize());
 		}
+		
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 	}
 }

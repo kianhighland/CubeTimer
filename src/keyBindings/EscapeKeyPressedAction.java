@@ -26,6 +26,7 @@ public class EscapeKeyPressedAction extends AbstractAction{
 			fields.setDisplayState(DisplayState.menu);
 		}
 		
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 		
 	}

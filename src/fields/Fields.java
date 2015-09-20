@@ -9,6 +9,8 @@ public class Fields {
 	private TimerStatus timerStatus;
 	private WindowSize windowSize;
 
+	private boolean changeSinceLastRepaint;
+	
 	private boolean close;
 
 	private Menu menu;
@@ -31,6 +33,8 @@ public class Fields {
 		setWindowSize(new WindowSize());
 		allUsers = new AllUsers();
 
+		changeSinceLastRepaint = true;
+		
 		setMenu(new Menu());
 
 		setPaintComponentDone(false);
@@ -131,5 +135,20 @@ public class Fields {
 
 	public void setWindowSize(WindowSize windowSizeIn) {
 		windowSize = windowSizeIn;
+	}
+	
+	public void changeSinceLastRepaint(){
+
+		changeSinceLastRepaint = true;
+	}
+	
+	public void repainted(){
+		
+		changeSinceLastRepaint = false;
+	}
+	
+	public boolean getChangeSinceLastRepaint(){
+		
+		return changeSinceLastRepaint;
 	}
 }

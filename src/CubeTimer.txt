@@ -1,0 +1,9 @@
+This is The Cube Timer program
+To compile got to the submost CubeTimer directory and do Compile_CubeTimer
+To run go to the bin directory and do java cubetimer.Main
+The console will ask you what you name is this is so you can have multiple users
+After you put something there and hit enter a window should pop up
+Hit space to start a countdown, space to start the timer, and space to stop the timer
+For other options like changing the type of twisty puzzle, changing the user, ect press esc
+A menu should pop up and then you user the arrow keys to move what you are selecting and enter to actualy select it
+

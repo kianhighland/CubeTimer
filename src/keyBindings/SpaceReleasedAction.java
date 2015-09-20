@@ -42,6 +42,7 @@ public class SpaceReleasedAction extends AbstractAction{
 				}
 			}
 		}
+		fields.changeSinceLastRepaint();
 		
 	}
 	

@@ -30,6 +30,8 @@ public class KeepTime implements ActionListener {
 		fields.getDisplayedData().setTime("0.00");
 
 		keepCountDown = keepCountDownIn;
+		
+		fields.changeSinceLastRepaint();
 
 		paint.repaint();
 	}
@@ -61,6 +63,8 @@ public class KeepTime implements ActionListener {
 
 			fields.getDisplayedData().setTime(String.format("%.2f", timeSeconds));
 		}
+		
+		fields.changeSinceLastRepaint();
 
 		paint.repaint();
 
@@ -89,6 +93,8 @@ public class KeepTime implements ActionListener {
 		else {
 			fields.getDisplayedData().setTime(String.format("%.2f", timeSeconds));
 		}
+		
+		fields.changeSinceLastRepaint();
 
 		paint.repaint();
 	}

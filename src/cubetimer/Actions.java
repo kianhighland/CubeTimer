@@ -27,6 +27,7 @@ public class Actions {
 		String userName = userInput.nextLine();
 		fields.getAllUsers().getUser(0).setUserName(userName);
 		fields.getAllUsers().setCurrentUserIndex(0);
+		fields.changeSinceLastRepaint();
 	}
 
 	public static void addUser(Fields fields, Paint paint) {
@@ -41,6 +42,7 @@ public class Actions {
 		fields.getAllUsers().getUser().setUserName(userName);
 		fields.setDisplayState(DisplayState.timer);
 		fields.getAllUsers().getUser().getTwistyPuzzle().setLastAvarageOf5();
+		fields.changeSinceLastRepaint();
 
 		paint.repaint();
 	}
@@ -62,6 +64,7 @@ public class Actions {
 		}
 
 		fields.getAllUsers().getUser().getTwistyPuzzle().setLastAvarageOf5();
+		fields.changeSinceLastRepaint();
 
 		paint.repaint();
 	}
@@ -71,6 +74,7 @@ public class Actions {
 		if (fields.getAllUsers().getSize() > 1) {
 
 			fields.getAllUsers().remove();
+			fields.changeSinceLastRepaint();
 
 			paint.repaint();
 
@@ -83,6 +87,8 @@ public class Actions {
 		else {
 
 			fields.setDisplayState(DisplayState.timer);
+			fields.changeSinceLastRepaint();
+			
 			paint.repaint();
 		}
 
@@ -97,6 +103,7 @@ public class Actions {
 		String userName = userInput.nextLine();
 		fields.getAllUsers().getUser().setUserName(userName);
 		fields.setDisplayState(DisplayState.timer);
+		fields.changeSinceLastRepaint();
 
 		paint.repaint();
 	}
@@ -114,6 +121,8 @@ public class Actions {
 		} else {
 			fields.getDisplayedData().getScrambleData().setScrambleLenght(20);
 		}
+		
+		fields.changeSinceLastRepaint();
 
 	}
 
@@ -138,6 +147,8 @@ public class Actions {
 		if (fields.getDisplayedData().getScrambleData().getScrambleSize() < 4.0) {
 			fields.getDisplayedData().getScrambleData().setScrambleSize(4.0);
 		}
+		
+		fields.changeSinceLastRepaint();
 	}
 
 	public static ArrayList<Integer> getDefaultWindowSize() {

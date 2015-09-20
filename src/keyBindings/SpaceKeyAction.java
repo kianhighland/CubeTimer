@@ -37,6 +37,7 @@ public class SpaceKeyAction extends AbstractAction{
 			}
 		}
 		
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 	}
 	

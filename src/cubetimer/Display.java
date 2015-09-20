@@ -50,6 +50,8 @@ public class Display extends JFrame implements WindowListener {
 
 				Dimension size = getSize();
 				f.setScreenSize(size.width, size.height);
+				
+				f.changeSinceLastRepaint();
 			}
 
 			public void componentShown(ComponentEvent e) {

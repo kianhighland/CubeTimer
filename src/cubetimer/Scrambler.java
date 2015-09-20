@@ -289,6 +289,7 @@ public class Scrambler {
 						.getTwistyPuzzleType(),
 						fields.getDisplayedData().getScrambleData().getScrambleLenght()));
 
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 	}
 }

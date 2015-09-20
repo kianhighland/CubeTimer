@@ -13,7 +13,7 @@ public class ChangeUser implements ActionListener{
 	
 	public ChangeUser(Fields f){
 		
-		setFields(f);
+		fields = f;
 	}
 	
 	public void actionPerformed(ActionEvent e){

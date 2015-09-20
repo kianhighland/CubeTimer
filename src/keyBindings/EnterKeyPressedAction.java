@@ -167,6 +167,7 @@ public class EnterKeyPressedAction extends AbstractAction {
 			fields.setDisplayState(DisplayState.timer);
 		}
 
+		fields.changeSinceLastRepaint();
 		paint.repaint();
 
 	}
