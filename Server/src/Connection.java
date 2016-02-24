@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-public class Server{
+public class Connection{
     
     private final String sRunner = "Runner";
     private final String sCorp = "Corp";
@@ -13,7 +13,7 @@ public class Server{
     private Runner runner;
     private Corp corp;
 
-    public Server() throws Exception{
+    public Connection() throws Exception{
 
         System.out.println("starting server...");
         serverSocket = new ServerSocket(7665);
