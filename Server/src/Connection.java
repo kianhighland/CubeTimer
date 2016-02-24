@@ -34,6 +34,8 @@ public class Connection{
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("You have succesfully connected as Runner");
             runner = new Runner(out, in, corp);
+            Thread tRunner = new Thread(runner);
+            tRunner.start();
         }
         else{
             
@@ -53,6 +55,8 @@ public class Connection{
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("You have succesfully connected as Corp");
             corp = new Corp(out, in, runner);
+            Thread tCorp = new Thread(corp);
+            tCorp.start();
         }
         else{
             
@@ -72,6 +76,8 @@ public class Connection{
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("You have succesfully connected as Runner");
             runner = new Runner(out, in, corp);
+            Thread tRunner = new Thread(runner);
+            tRunner.start();
             connectCorp();
         }
         else if(playertype.matches(sCorp)){
@@ -81,6 +87,8 @@ public class Connection{
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("you have succesfully connected as Corp");
             corp = new Corp(out, in, runner);
+            Thread tCorp = new Thread(corp);
+            tCorp.start();
             connectRunner();
         }
         else{

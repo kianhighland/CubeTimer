@@ -14,8 +14,10 @@ public class Input implements Runnable{
 
         while(true){
             try{
-            System.out.println(in.readUTF());
+            String message = in.readUTF();
+            System.out.println(message);
             } catch(Exception e){
             }
+        }
     }
 }

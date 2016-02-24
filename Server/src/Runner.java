@@ -16,13 +16,14 @@ public class Runner implements Runnable{
 
     public void run(){
 
-        try{
-        String message = in.readUTF();
-        sendMessage(message);
-        corp.sendMessage(message);
-        } catch (Exception e){
+        while(true){
+            try{
+                String message = in.readUTF();
+                sendMessage(message);
+                corp.sendMessage(message);
+            } catch (Exception e){
+            }
         }
-        run();
     }
 
     public void sendMessage(String message) throws Exception{

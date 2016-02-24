@@ -12,10 +12,13 @@ public class Input implements Runnable{
 
     public void run(){
 
-        try{
-            System.out.println(in.readUTF());
-        } catch(Exception e){
+        while(true){
+                                                                               
+            try{
+                String message = in.readUTF();
+                System.out.println(message);
+            } catch(Exception e){
+            }
         }
-        run();
     }
 }
