@@ -17,6 +17,7 @@ public class Runner{
     	System.out.println("What't the ip?");
     	System.out.println("Possible options are:");
     	System.out.println("10.0.1.24");
+	System.out.println("10.0.1.22");
     	String ip = userInput.nextLine();
         socket = new Socket(ip, 7665);
         out = new DataOutputStream(socket.getOutputStream());
