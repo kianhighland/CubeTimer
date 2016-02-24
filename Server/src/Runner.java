@@ -5,13 +5,13 @@ public class Runner implements Runnable{
 
     private DataOutputStream out;
     private DataInputStream in;
-    private Corp corp;
+    private Output output;
 
-    public Runner(DataOutputStream out, DataInputStream in, Corp corpIn){
+    public Runner(DataOutputStream out, DataInputStream in, Output outputIn){
 
-    this.out = out;
-    this.in = in;
-    corp = corpIn;
+        this.out = out;
+        this.in = in;
+        output = outputIn;
     }
 
     public void run(){
@@ -19,8 +19,7 @@ public class Runner implements Runnable{
         while(true){
             try{
                 String message = in.readUTF();
-                sendMessage(message);
-                corp.sendMessage(message);
+                output.sendMessage(message);
             } catch (Exception e){
             }
         }
@@ -29,10 +28,5 @@ public class Runner implements Runnable{
     public void sendMessage(String message) throws Exception{
 
         out.writeUTF(message);
-    }
-
-    public void setCorp(Corp corpIn){
-
-        corp = corpIn;
     }
 }

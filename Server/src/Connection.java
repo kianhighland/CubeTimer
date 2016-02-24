@@ -12,12 +12,14 @@ public class Connection{
     private DataInputStream firstIn;
     private Runner runner;
     private Corp corp;
+    private Output output;
 
     public Connection() throws Exception{
 
         System.out.println("starting server...");
         serverSocket = new ServerSocket(7665);
         System.out.println("server started");
+        output = new Output();
 
 	connectBoth();
     }
@@ -33,7 +35,8 @@ public class Connection{
                 new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("You have succesfully connected as Runner");
-            runner = new Runner(out, in, corp);
+            runner = new Runner(out, in, output);
+            output.setRunner(runner);
             Thread tRunner = new Thread(runner);
             corp.setRunner(runner);
             tRunner.start();
@@ -55,7 +58,8 @@ public class Connection{
                 new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("You have succesfully connected as Corp");
-            corp = new Corp(out, in, runner);
+            corp = new Corp(out, in, Output);
+            output.setCorp(corp);
             Thread tCorp = new Thread(corp);
             runner.setCorp(corp);
             tCorp.start();
@@ -77,7 +81,8 @@ public class Connection{
                 new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("You have succesfully connected as Runner");
-            runner = new Runner(out, in, corp);
+            runner = new Runner(out, in, output);
+            output.setRunner(runner);
             Thread tRunner = new Thread(runner);
             tRunner.start();
             connectCorp();
@@ -88,7 +93,8 @@ public class Connection{
                 new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
             out.writeUTF("you have succesfully connected as Corp");
-            corp = new Corp(out, in, runner);
+            corp = new Corp(out, in, output);
+            output.setCorp(corp);
             Thread tCorp = new Thread(corp);
             tCorp.start();
             connectRunner();

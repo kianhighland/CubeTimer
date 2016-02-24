@@ -5,13 +5,13 @@ public class Corp implements Runnable{
 
     private DataOutputStream out;
     private DataInputStream in;
-    private Runner runner;
+    private Output output;
 
-    public Corp(DataOutputStream out, DataInputStream in, Runner runnerIn){
+    public Corp(DataOutputStream out, DataInputStream in, Output outputIn){
 
         this.out = out;
         this.in = in;
-        runner = runnerIn;
+        output = outputIn;
     }
 
     public void run(){
@@ -19,8 +19,7 @@ public class Corp implements Runnable{
         while(true){
             try{
                 String message = in.readUTF();
-                sendMessage(message);
-                runner.sendMessage(message);
+                output.sendMessage(message);
             } catch (Exception e) {
             }
         }
@@ -29,10 +28,5 @@ public class Corp implements Runnable{
     public void sendMessage(String message) throws Exception{
 
         out.writeUTF(message);
-    }
-
-    public void setRunner(Runner runnerIn){
-
-        runner = runnerIn;
     }
 }
