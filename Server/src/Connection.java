@@ -32,6 +32,7 @@ public class Connection{
             DataOutputStream out = 
                 new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
+            out.writeUTF("You have succesfully connected as Runner");
             runner = new Runner(out, in, corp);
         }
         else{
@@ -50,6 +51,7 @@ public class Connection{
             DataOutputStream out =
                 new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
+            out.writeUTF("You have succesfully connected as Corp");
             corp = new Corp(out, in, runner);
         }
         else{

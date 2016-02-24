@@ -2,17 +2,17 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-public class Runner{
+public class Corp{
 
-    private final String sRunner = "Runner";
+    private final String sCorp = "Corp";
 
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
     private Scanner userInput;
     private Input input;
-	
-    public Runner() throws Exception{
+
+    public Corp() throws Exception{
 
         userInput = new Scanner(System.in);
         System.out.println("What't the ip?");
@@ -23,8 +23,7 @@ public class Runner{
         socket = new Socket(ip, 7665);
         out = new DataOutputStream(socket.getOutputStream());
         in = new DataInputStream(socket.getInputStream());
-        out.writeUTF(sRunner);
-        Thread.sleep(10);
+        out.writeUTF(sCorp);
         System.out.println(in.readUTF());
         input = new Input(in);
         Thread thread = new Thread(input);
