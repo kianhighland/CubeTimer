@@ -1,7 +1,7 @@
 public class Launch{
 
-	public static void main (String[] args) throws Exception{
+    public static void main (String[] args) throws Exception{
 
-		new Server();
-	}
+        new Connection();
+    }
 }
