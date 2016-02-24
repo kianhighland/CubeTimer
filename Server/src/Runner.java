@@ -30,4 +30,9 @@ public class Runner implements Runnable{
 
         out.writeUTF(message);
     }
+
+    public void setCorp(Corp corpIn){
+
+        corp = corpIn;
+    }
 }

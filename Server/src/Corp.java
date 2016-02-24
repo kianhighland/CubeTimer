@@ -30,4 +30,9 @@ public class Corp implements Runnable{
 
         out.writeUTF(message);
     }
+
+    public void setRunner(Runner runnerIn){
+
+        runner = runnerIn;
+    }
 }

@@ -35,6 +35,7 @@ public class Connection{
             out.writeUTF("You have succesfully connected as Runner");
             runner = new Runner(out, in, corp);
             Thread tRunner = new Thread(runner);
+            corp.setRunner(runner);
             tRunner.start();
         }
         else{
@@ -56,6 +57,7 @@ public class Connection{
             out.writeUTF("You have succesfully connected as Corp");
             corp = new Corp(out, in, runner);
             Thread tCorp = new Thread(corp);
+            runner.setCorp(corp);
             tCorp.start();
         }
         else{
