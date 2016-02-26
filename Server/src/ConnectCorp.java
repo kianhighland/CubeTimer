@@ -9,9 +9,9 @@ public class ConnectCorp{
     private Output output;
     private ServerSocket serverSocket;
     private DataInputStream firstIn;
-    private DataInputStream firstOut;
+    private DataOutputStream firstOut;
 
-    public ConnectRunner(Output outputIn, ServerSocket serverSocketIn){
+    public ConnectCorp(Output outputIn, ServerSocket serverSocketIn){
 
         output = outputIn;
         serverSocket = serverSocketIn;
@@ -42,8 +42,8 @@ public class ConnectCorp{
         DataInputStream in = new DataInputStream(socket.getInputStream());
         out.writeUTF("You have succesfully connected as Corp");
         corp = new Corp(out, in, output);
-        output.setCorp(Corp);
+        output.setCorp(corp);
         Thread tCorp = new Thread(corp);
-        tRunner.start();
+        tCorp.start();
     }
 }

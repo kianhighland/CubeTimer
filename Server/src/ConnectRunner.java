@@ -9,7 +9,7 @@ public class ConnectRunner{
     private Output output;
     private ServerSocket serverSocket;
     private DataInputStream firstIn;
-    private DataInputStream firstOut;
+    private DataOutputStream firstOut;
 
     public ConnectRunner(Output outputIn, ServerSocket serverSocketIn){
 

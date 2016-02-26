@@ -10,9 +10,10 @@ public class Connection{
     private Socket socket;
     private DataOutputStream firstOut;
     private DataInputStream firstIn;
-    private Runner runner;
-    private Corp corp;
     private Output output;
+    private ConnectRunner connectRunner;
+    private ConnectCorp connectCorp;
+    private ConnectPlayers connectPlayers;
 
     public Connection() throws Exception{
 
@@ -20,11 +21,13 @@ public class Connection{
         serverSocket = new ServerSocket(7665);
         System.out.println("server started");
         output = new Output();
-
-	connectBoth();
+        connectRunner = new ConnectRunner(output, serverSocket);
+        connectCorp = new ConnectCorp(output, serverSocket);
+        connectPlayers = new ConnectPlayers(connectRunner, connectCorp,
+            serverSocket);
     }
 
-    public void connectRunner() throws Exception{
+/*    public void connectRunner() throws Exception{
 
         socket = serverSocket.accept();
         firstIn = new DataInputStream(socket.getInputStream());
@@ -105,6 +108,6 @@ public class Connection{
             firstOut.writeUTF("Sorry, you did not connect correctly. " +
                     playertype + " did not match " + sRunner + " or " + sCorp);
             connectBoth();
-        }
-    }
+        } 
+    }*/
 }

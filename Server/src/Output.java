@@ -7,7 +7,7 @@ public class Output{
 
     }
 
-    public void send Message(String message){
+    public void sendMessage(String message) throws Exception{
 
         runner.sendMessage(message);
         corp.sendMessage(message);
