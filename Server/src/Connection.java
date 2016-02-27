@@ -1,11 +1,8 @@
 import java.io.*;
 import java.net.*;
 
-public class Connection{
+public class Connection implements Runnable{
     
-    private final String sRunner = "Runner";
-    private final String sCorp = "Corp";
-
     private ServerSocket serverSocket;
     private Socket socket;
     private DataOutputStream firstOut;
@@ -14,19 +11,36 @@ public class Connection{
     private ConnectRunner connectRunner;
     private ConnectCorp connectCorp;
     private ConnectPlayers connectPlayers;
+    private Fields fields;
 
     public Connection() throws Exception{
 
+    	fields = new Fields();
         System.out.println("starting server...");
         serverSocket = new ServerSocket(7665);
         System.out.println("server started");
         output = new Output();
-        connectRunner = new ConnectRunner(output, serverSocket);
-        connectCorp = new ConnectCorp(output, serverSocket);
+        connectRunner = new ConnectRunner(output, serverSocket, fields);
+        connectCorp = new ConnectCorp(output, serverSocket, fields);
         connectPlayers = new ConnectPlayers(connectRunner, connectCorp,
-            serverSocket);
-        Thread tConnectPlayers = new Thread(connectPlayers);
-        tConnectPlayers.start();
+            serverSocket, fields);
+        fields.threads.anoyYou = new Thread(this);
+        fields.threads.anoyYou.start();
+        fields.threads.connectPlayers = new Thread(connectPlayers);
+        fields.threads.connectPlayers.start();
+    }
+
+    public void run(){
+
+        System.out.println("anoy you");
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
+        if(fields.threads.anoyYou == Thread.currentThread()){
+
+            run();
+        }
     }
 
 /*    public void connectRunner() throws Exception{

@@ -11,6 +11,7 @@ public class Output{
 
         runner.sendMessage(message);
         corp.sendMessage(message);
+        System.out.println(message);
     }
 
     public void setRunner(Runner runnerIn){

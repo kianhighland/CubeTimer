@@ -3,18 +3,18 @@ import java.net.*;
 
 public class ConnectRunner implements Runnable{
 
-    private final String sRunner = "Runner";
-
     private Runner runner;
     private Output output;
     private ServerSocket serverSocket;
     private DataInputStream firstIn;
     private DataOutputStream firstOut;
+    private Fields fields;
 
-    public ConnectRunner(Output outputIn, ServerSocket serverSocketIn){
+    public ConnectRunner(Output outputIn, ServerSocket serverSocketIn, Fields fieldsIn){
 
         output = outputIn;
         serverSocket = serverSocketIn;
+        fields = fieldsIn;
     }
 
     public void run(){
@@ -23,7 +23,7 @@ public class ConnectRunner implements Runnable{
 			Socket socket = serverSocket.accept();
 			firstIn = new DataInputStream(socket.getInputStream());
 			String playertype = firstIn.readUTF();
-			if(playertype.matches(sRunner)){
+			if(playertype.matches(fields.constants.runner)){
 
 			    connectRunner(socket);
 			}
@@ -31,7 +31,7 @@ public class ConnectRunner implements Runnable{
 			    
 			    firstOut = new DataOutputStream(socket.getOutputStream());
 			    firstOut.writeUTF("Sorry, " + playertype + " did not match "
-			        + sRunner);
+			        + runner);
 			    firstOut = null;
 			    run();
 			}
@@ -48,7 +48,7 @@ public class ConnectRunner implements Runnable{
         out.writeUTF("You have succesfully connected as Runner");
         runner = new Runner(out, in, output);
         output.setRunner(runner);
-        Thread tRunner = new Thread(runner);
-        tRunner.start();
+        fields.threads.runner = new Thread(runner);
+        fields.threads.runner.start();
     }
 }

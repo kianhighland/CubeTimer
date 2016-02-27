@@ -35,7 +35,7 @@ public class Runner{
     public void write() throws Exception{
 
         String message = userInput.nextLine();
-        out.writeUTF(message);
+        out.writeUTF(sRunner + ": " + message);
         write();
     }
 }

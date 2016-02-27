@@ -34,7 +34,7 @@ public class Corp{
     public void write() throws Exception{
 
         String message = userInput.nextLine();
-        out.writeUTF(message);
+        out.writeUTF(sCorp + ": " + message);
         write();
     }
 }
