@@ -19,7 +19,10 @@ public class Runner implements Runnable{
         while(true){
             try{
                 String message = in.readUTF();
-                output.sendMessage(message);
+                String begining = message.substring(0, 1);
+                if(!begining.matches(Constants.slash)){
+                    output.sendMessage(message);
+                }
             } catch (Exception e){
             }
         }

@@ -11,6 +11,8 @@ public class Output{
 
     public void sendMessage(String message) throws Exception{
 
+        System.out.println(message);
+
         if(runner != null){
             runner.sendMessage(message);
         }
@@ -18,8 +20,6 @@ public class Output{
         if(corp != null){
         corp.sendMessage(message);
         }
-
-        System.out.println(message);
     }
 
     public void setRunner(Runner runnerIn){
