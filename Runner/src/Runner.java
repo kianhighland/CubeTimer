@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Runner{
 
-    private final String sRunner = "Runner";
-
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
@@ -24,7 +22,7 @@ public class Runner{
         socket = new Socket(ip, 7665);
         out = new DataOutputStream(socket.getOutputStream());
         in = new DataInputStream(socket.getInputStream());
-        out.writeUTF(sRunner);
+        out.writeUTF(Constants.runner);
         Thread.sleep(10);
         System.out.println(in.readUTF());
         Boolean success = in.readBoolean();
@@ -36,12 +34,5 @@ public class Runner{
         thread.start();
         actions = new Actions(out);
         actions.write();
-    }
-
-    public void write() throws Exception{
-
-        String message = userInput.nextLine();
-        out.writeUTF(sRunner + ": " + message);
-        write();
     }
 }
