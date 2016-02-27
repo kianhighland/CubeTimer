@@ -29,14 +29,14 @@ public class ConnectPlayers implements Runnable{
             in = new DataInputStream(socket.getInputStream());
             String playertype = in.readUTF();
                                                                   
-            if(playertype.matches(fields.constants.runner)){
+            if(playertype.matches(Constants.runner)){
                                                                                 
                 connectRunner.connectRunner(socket);
                 Thread tConnectCorp = new Thread(connectCorp);
                 tConnectCorp.start();
             }
 
-            else if(playertype.matches(fields.constants.corp)){
+            else if(playertype.matches(Constants.corp)){
 
                 connectCorp.connectCorp(socket);
                 Thread tConnectRunner = new Thread(connectRunner);
@@ -47,7 +47,7 @@ public class ConnectPlayers implements Runnable{
                                                                                
                 out = new DataOutputStream(socket.getOutputStream());
                 out.writeUTF("Sorry, " + playertype + " did not match"
-                    + fields.constants.runner + " or " + fields.constants.corp);
+                    + Constants.runner + " or " + Constants.corp);
                 out.writeBoolean(false);
                 run();
             }

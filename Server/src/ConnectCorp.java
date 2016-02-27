@@ -24,7 +24,7 @@ public class ConnectCorp implements Runnable{
             Socket socket = serverSocket.accept();
             firstIn = new DataInputStream(socket.getInputStream());
             String playertype = firstIn.readUTF();
-            if(playertype.matches(fields.constants.corp)){
+            if(playertype.matches(Constants.corp)){
 
                 connectCorp(socket);
             }
@@ -32,7 +32,7 @@ public class ConnectCorp implements Runnable{
                                                          
                 firstOut = new DataOutputStream(socket.getOutputStream());
                 firstOut.writeUTF("Sorry, " + playertype + " did not match "
-                    + fields.constants.corp);
+                    + Constants.corp);
                 firstOut.writeBoolean(false);
                 firstOut = null;
                 run();
