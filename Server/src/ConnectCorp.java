@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-public class ConnectCorp{
+public class ConnectCorp implements Runnable{
 
     private static String sCorp = "Corp";
 
@@ -19,24 +19,28 @@ public class ConnectCorp{
 
     public void run(){
 
-        Socket socket = serverSocket.accept();
-        firstIn = new DataInputStream(socket.getInputStream());
-        String playertype = firstIn.readUTF();
-        if(playertype.matches(sCorp)){
+        try {
+			Socket socket = serverSocket.accept();
+			firstIn = new DataInputStream(socket.getInputStream());
+			String playertype = firstIn.readUTF();
+			if(playertype.matches(sCorp)){
 
-            connectCorp(socket);
-        }
-        else{
-            
-            firstOut = new DataOutputStream(socket.getOutputStream());
-            firstOut.writeUTF("Sorry, " + playertype + " did not match "
-                + sCorp);
-            firstOut = null;
-            run();
-        }
+			    connectCorp(socket);
+			}
+			else{
+			    
+			    firstOut = new DataOutputStream(socket.getOutputStream());
+			    firstOut.writeUTF("Sorry, " + playertype + " did not match "
+			        + sCorp);
+			    firstOut = null;
+			    run();
+			}
+		} catch (Exception e) {
+		    System.out.println("Exception in class ConectCorp method run");
+		}
     }
 
-    public void connectCorp(Socket socket){
+    public void connectCorp(Socket socket) throws Exception{
 
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         DataInputStream in = new DataInputStream(socket.getInputStream());

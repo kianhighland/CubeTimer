@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-public class ConnectRunner{
+public class ConnectRunner implements Runnable{
 
     private final String sRunner = "Runner";
 
@@ -19,24 +19,29 @@ public class ConnectRunner{
 
     public void run(){
 
-        Socket socket = serverSocket.accept();
-        firstIn = new DataInputStream(socket.getInputStream());
-        String playertype = firstIn.readUTF();
-        if(playertype.matches(sRunner)){
+        try {
+			Socket socket = serverSocket.accept();
+			firstIn = new DataInputStream(socket.getInputStream());
+			String playertype = firstIn.readUTF();
+			if(playertype.matches(sRunner)){
 
-            connectRunner(socket);
-        }
-        else{
-            
-            firstOut = new DataOutputStream(socket.getOutputStream());
-            firstOut.writeUTF("Sorry, " + playertype + " did not match "
-                + sRunner);
-            firstOut = null;
-            run();
-        }
+			    connectRunner(socket);
+			}
+			else{
+			    
+			    firstOut = new DataOutputStream(socket.getOutputStream());
+			    firstOut.writeUTF("Sorry, " + playertype + " did not match "
+			        + sRunner);
+			    firstOut = null;
+			    run();
+			}
+		} catch (Exception e) {
+			System.out.println("Exception in class ConnectRunner method run");
+			run();
+		}
     }
 
-    public void connectRunner(Socket socket){
+    public void connectRunner(Socket socket) throws Exception{
 
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         DataInputStream in = new DataInputStream(socket.getInputStream());

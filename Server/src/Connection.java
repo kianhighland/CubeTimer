@@ -25,6 +25,8 @@ public class Connection{
         connectCorp = new ConnectCorp(output, serverSocket);
         connectPlayers = new ConnectPlayers(connectRunner, connectCorp,
             serverSocket);
+        Thread tConnectPlayers = new Thread(connectPlayers);
+        tConnectPlayers.start();
     }
 
 /*    public void connectRunner() throws Exception{

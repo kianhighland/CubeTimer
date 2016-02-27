@@ -21,25 +21,37 @@ public class ConnectPlayers implements Runnable{
     }
 
     public void run(){
+    		
+        try {
+            Socket socket = serverSocket.accept();
+            in = new DataInputStream(socket.getInputStream());
+            String playertype = in.readUTF();
+                                                                  
+            if(playertype.matches(sRunner)){
+                                                                                
+                connectRunner.connectRunner(socket);
+                Thread tConnectCorp = new Thread(connectCorp);
+                tConnectCorp.start();
+            }
 
-        Socket socket = serverSocket.accept();
-        in = new DataInputStream(socket.getInputStream());
-        String playertype = in.readUTF();
-        if(playertype.matches(sRunner)){
+            else if(playertype.matches(sCorp)){
 
-            connectRunner.connectRunner(socket);
-        }
-
-        else if(playertype.matches(sCorp)){
-
-            connectCorp.connectCorp(socket);
-        }
-        else{
-
-            out = new DataOutputStream(socket.getOutputStream());
-            out.writeUTF("Sorry, " + playertype + " did not match" + sRunner
-                + " or " + sCorp);
-        run();
+                connectCorp.connectCorp(socket);
+                Thread tConnectRunner = new Thread(connectRunner);
+                tConnectRunner.start();
+            }
+                                                                                
+            else{
+                                                                               
+                out = new DataOutputStream(socket.getOutputStream());
+                out.writeUTF("Sorry, " + playertype + " did not match" + sRunner
+                    + " or " + sCorp);
+                run();
+            }
+        } catch (Exception e) {
+            System.out.println("Exception in class connectPlayers method run");
+            System.out.println(e);
+            run();
         }
     }
 }

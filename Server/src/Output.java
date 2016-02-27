@@ -22,4 +22,5 @@ public class Output{
 
         corp = corpIn;
     }
+
 }
