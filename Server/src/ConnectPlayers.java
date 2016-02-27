@@ -48,6 +48,7 @@ public class ConnectPlayers implements Runnable{
                 out = new DataOutputStream(socket.getOutputStream());
                 out.writeUTF("Sorry, " + playertype + " did not match"
                     + fields.constants.runner + " or " + fields.constants.corp);
+                out.writeBoolean(false);
                 run();
             }
         } catch (Exception e) {

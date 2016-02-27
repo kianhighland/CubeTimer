@@ -5,12 +5,20 @@ public class Output{
 
     public Output(){
 
+        runner = null;
+        corp = null;
     }
 
     public void sendMessage(String message) throws Exception{
 
-        runner.sendMessage(message);
+        if(runner != null){
+            runner.sendMessage(message);
+        }
+
+        if(corp != null){
         corp.sendMessage(message);
+        }
+
         System.out.println(message);
     }
 

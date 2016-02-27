@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Corp{
 
-    private final String sCorp = "Corp";
-
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
@@ -24,8 +22,12 @@ public class Corp{
         socket = new Socket(ip, 7665);
         out = new DataOutputStream(socket.getOutputStream());
         in = new DataInputStream(socket.getInputStream());
-        out.writeUTF(sCorp);
+        out.writeUTF(Constants.corp);
         System.out.println(in.readUTF());
+        Boolean success = in.readBoolean();
+        if(!success){
+            System.exit(0);
+        }
         input = new Input(in);
         Thread thread = new Thread(input);
         thread.start();
@@ -33,10 +35,10 @@ public class Corp{
         actions.write();
     }
 
-    public void write() throws Exception{
+/*    public void write() throws Exception{
 
         String message = userInput.nextLine();
         out.writeUTF(sCorp + ": " + message);
         write();
-    }
+    }*/
 }

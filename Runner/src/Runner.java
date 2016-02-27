@@ -11,6 +11,7 @@ public class Runner{
     private DataOutputStream out;
     private Scanner userInput;
     private Input input;
+    private Actions actions;
 	
     public Runner() throws Exception{
 
@@ -26,10 +27,15 @@ public class Runner{
         out.writeUTF(sRunner);
         Thread.sleep(10);
         System.out.println(in.readUTF());
+        Boolean success = in.readBoolean();
+        if(!success){
+            System.exit(0);
+        }
         input = new Input(in);
         Thread thread = new Thread(input);
         thread.start();
-        write();
+        actions = new Actions(out);
+        actions.write();
     }
 
     public void write() throws Exception{
