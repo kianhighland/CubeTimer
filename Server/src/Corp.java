@@ -20,6 +20,7 @@ public class Corp implements Runnable{
             try{
                 String message = in.readUTF();
                 output.sendMessage(message);
+                Thread.sleep(200);
             } catch (Exception e) {
             }
         }

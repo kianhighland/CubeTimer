@@ -23,6 +23,7 @@ public class Runner implements Runnable{
                 if(!begining.matches(Constants.slash)){
                     output.sendMessage(message);
                 }
+                Thread.sleep(200);
             } catch (Exception e){
             }
         }

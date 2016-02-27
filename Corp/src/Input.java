@@ -14,8 +14,9 @@ public class Input implements Runnable{
 
         while(true){
             try{
-            String message = in.readUTF();
-            System.out.println(message);
+                String message = in.readUTF();
+                System.out.println(message);
+                Thread.sleep(200);
             } catch(Exception e){
             }
         }

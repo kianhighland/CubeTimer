@@ -17,6 +17,7 @@ public class Input implements Runnable{
             try{
                 String message = in.readUTF();
                 System.out.println(message);
+                Thread.sleep(200);
             } catch(Exception e){
             }
         }
