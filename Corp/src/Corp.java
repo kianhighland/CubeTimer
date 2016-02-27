@@ -11,11 +11,12 @@ public class Corp{
     private DataOutputStream out;
     private Scanner userInput;
     private Input input;
+    private Actions actions;
 
     public Corp() throws Exception{
 
         userInput = new Scanner(System.in);
-        System.out.println("What't the ip?");
+        System.out.println("What's the ip?");
         System.out.println("Possible options are:");
         System.out.println("10.0.1.24");
         System.out.println("10.0.1.22");
@@ -28,7 +29,8 @@ public class Corp{
         input = new Input(in);
         Thread thread = new Thread(input);
         thread.start();
-        write();
+        actions = new Actions(out, in);
+        actions.write();
     }
 
     public void write() throws Exception{
