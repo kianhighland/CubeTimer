@@ -18,7 +18,26 @@ public class Actions{
     public void write() throws Exception{
 
         String message = userInput.nextLine();
-        out.writeUTF(Constants.corp + ": " + message);
+        String firstChar = message.substring(0, 1);
+        if(firstChar.matches(Constants.slash)){
+            String secondChar = message.substring(1,2);
+            if(secondChar.matches(Constants.q)){
+                out.writeUTF(Constants.quit);
+                System.exit(0);
+            }
+            else{
+                out.writeUTF(Constants.corp + ": " + message);
+            }
+        }
+        else{
+            out.writeUTF(Constants.corp + ": " + message);
+        }
         write();
+    }
+
+    public void actions() throws Exception{
+
+        String message = userInput.nextLine();
+        //Do stuff. Who knows what
     }
 }
