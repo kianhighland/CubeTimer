@@ -29,10 +29,19 @@ public class Runner{
         if(!success){
             System.exit(0);
         }
-        input = new Input(in);
+        System.out.println("First normal" + (char)27 + "[30m" + "black"
+            + (char)27 + "[31m" + "red" + (char)27 + "[32m" + "green" + (char)27            + "[33m" + "yellow" + (char)27 + "[34m" + "blue" + (char)27 + "[35m"
+            + "magenta" + (char)27 + "[36m" + "cyan" + (char)27 + "[37m"
+            + "white");
+        System.out.println("Second bright" + (char)27 + "[1m" + (char)27
+            +"[30m" + "black" + (char)27 + "[31m" + "red" + (char)27 + "[32m"
+            + "green" + (char)27 + "[33m" + "yellow" + (char)27 + "[34m"
+            + "blue" + (char)27 + "[35m" + "magenta" + (char)27 + "[36m"
+            + "cyan" + (char)27 + "[37m" + "white" + (char)27 + "[0m");
+        actions = new Actions(out);
+        input = new Input(in, actions);
         Thread thread = new Thread(input);
         thread.start();
-        actions = new Actions(out);
         actions.write();
     }
 }
