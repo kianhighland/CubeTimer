@@ -32,15 +32,16 @@ public class ConnectPlayers implements Runnable{
             if(playertype.matches(Constants.runner)){
                                                                                 
                 connectRunner.connectRunner(socket);
-                Thread tConnectCorp = new Thread(connectCorp);
-                tConnectCorp.start();
+                fields.threads.connectCorp = new Thread(connectCorp);
+                fields.threads.connectCorpB = new Thread(connectCorp);
+                fields.threads.connectCorp.start();
             }
 
             else if(playertype.matches(Constants.corp)){
 
                 connectCorp.connectCorp(socket);
-                Thread tConnectRunner = new Thread(connectRunner);
-                tConnectRunner.start();
+                fields.threads.connectRunner = new Thread(connectRunner);
+                fields.threads.connectRunner.start();
             }
                                                                                 
             else{

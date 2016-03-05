@@ -22,6 +22,12 @@ public class ConnectRunner implements Runnable{
 
         try {
             Socket socket = serverSocket.accept();
+            System.out.println("accepted a person");
+            if(Thread.currentThread() != fields.threads.connectRunner){
+            	System.out.println(Thread.currentThread());
+                System.out.println(fields.threads.connectRunner);
+                return;
+            }
             firstIn = new DataInputStream(socket.getInputStream());
             String playertype = firstIn.readUTF();
             if(playertype.matches(Constants.runner)){
@@ -39,6 +45,7 @@ public class ConnectRunner implements Runnable{
             }
         } catch (Exception e) {
             System.out.println("Exception in class ConnectRunner method run");
+            System.out.println(e);
             run();
         }
     }
@@ -49,7 +56,7 @@ public class ConnectRunner implements Runnable{
         DataInputStream in = new DataInputStream(socket.getInputStream());
         out.writeUTF("You have succesfully connected as Runner");
         out.writeBoolean(true);
-        runner = new Runner(out, in, output);
+        runner = new Runner(out, in, output, fields, this);
         output.setRunner(runner);
         fields.threads.runner = new Thread(runner);
         fields.threads.runner.start();

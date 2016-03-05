@@ -6,12 +6,17 @@ public class Runner implements Runnable{
     private DataOutputStream out;
     private DataInputStream in;
     private Output output;
+    private Fields fields;
+    private ConnectRunner connectRunner;
 
-    public Runner(DataOutputStream out, DataInputStream in, Output outputIn){
+    public Runner(DataOutputStream out, DataInputStream in, Output outputIn,
+        Fields fieldsIn, ConnectRunner connectRunnerIn){
 
         this.out = out;
         this.in = in;
         output = outputIn;
+        fields = fieldsIn;
+        connectRunner = connectRunnerIn;
     }
 
     public void run(){
@@ -46,12 +51,22 @@ public class Runner implements Runnable{
             String secondChar = command.substring(1, 2);
             if(secondChar.matches(Constants.q)){
                 output.setRunner(null);
+                if(fields.threads.connectCorp.isAlive()){
+                    fields.threads.connectCorp = null;
+                    fields.threads.connectCorp.interrupt();
+                    fields.threads.connectPlayers.start();
+                }
+                else{
+                    fields.threads.connectRunner = new Thread(connectRunner);
+                    fields.threads.connectRunner .start();
+                }
                 return true;
             }
             else{
                 System.out.println("unrecognized command in class runner of" 
                     + "Server: " + command);
-                System.out.println("if the player typed an unrecognized command"                    + "it shouldn't have goten here");
+                System.out.println("if the player typed an unrecognized command"
+                    + "it shouldn't have goten here");
                 sendMessage("there was an unrecognized command in the class run"
                 + " of the Server");
                 return false;
