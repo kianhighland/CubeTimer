@@ -1,5 +1,10 @@
+package server;
+
 import java.io.*;
 import java.net.*;
+import connection.ConnectRunner;
+import fields.Fields;
+import fields.Constants;
 
 public class Runner implements Runnable{
 
@@ -51,12 +56,19 @@ public class Runner implements Runnable{
             String secondChar = command.substring(1, 2);
             if(secondChar.matches(Constants.q)){
                 output.setRunner(null);
+                System.out.println("The runner should quit");
                 if(fields.threads.connectCorp.isAlive()){
-                    fields.threads.connectCorp = null;
-                    fields.threads.connectCorp.interrupt();
-                    fields.threads.connectPlayers.start();
+                    System.out.println("connect corp is alive");
+                    fields.setConnectCorp(false);
+                    System.out.println(1);
+                    fields.setConnectPlayers(true);
+                    System.out.println(3);
+//                    fields.threads.connectPlayers.notify();
+                    System.out.println(4);
+                    fields.waitObject.stopWaiting();
                 }
                 else{
+                    System.out.println("connect corp is no alive");
                     fields.threads.connectRunner = new Thread(connectRunner);
                     fields.threads.connectRunner .start();
                 }

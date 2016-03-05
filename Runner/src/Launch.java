@@ -3,10 +3,10 @@ public class Launch{
     public static void main (String[] args){
 
     try {
-		new Runner();
+	    new Runner();
 	} catch (Exception e) {
-        System.out.println(e);
-		e.printStackTrace();
+            System.out.println(e);
+	    e.printStackTrace();
 	}
     }
 }

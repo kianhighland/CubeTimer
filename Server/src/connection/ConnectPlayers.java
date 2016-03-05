@@ -1,5 +1,10 @@
+package connection;
+
 import java.io.*;
 import java.net.*;
+import server.*;
+import fields.Fields;
+import fields.Constants;
 
 public class ConnectPlayers implements Runnable{
 
@@ -27,19 +32,21 @@ public class ConnectPlayers implements Runnable{
         try {
             Socket socket = serverSocket.accept();
             in = new DataInputStream(socket.getInputStream());
+            Thread.sleep(5);
             String playertype = in.readUTF();
                                                                   
             if(playertype.matches(Constants.runner)){
                                                                                 
                 connectRunner.connectRunner(socket);
+                fields.setConnectCorp(true);
                 fields.threads.connectCorp = new Thread(connectCorp);
-                fields.threads.connectCorpB = new Thread(connectCorp);
                 fields.threads.connectCorp.start();
             }
 
             else if(playertype.matches(Constants.corp)){
 
                 connectCorp.connectCorp(socket);
+                fields.setConnectRunner(true);
                 fields.threads.connectRunner = new Thread(connectRunner);
                 fields.threads.connectRunner.start();
             }
@@ -56,6 +63,24 @@ public class ConnectPlayers implements Runnable{
             System.out.println("Exception in class connectPlayers method run");
             System.out.println(e);
             run();
+        }
+        fields.setConnectPlayers(false);
+        waiting();
+        run();
+    }
+
+    public void waiting(){
+
+//        Thread.sleep(2147483647);
+        fields.waitObject.waiting();
+
+        if(fields.getConnectPlayers()){
+            return;
+        }
+
+        else{
+            waiting();
+            System.out.println("Hello");
         }
     }
 }

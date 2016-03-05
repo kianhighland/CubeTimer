@@ -1,3 +1,5 @@
+package fields;
+
 public class Constants {
 
     public static final String normalText = (char)27 + "[0m" + (char)27

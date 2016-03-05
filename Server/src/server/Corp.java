@@ -1,5 +1,9 @@
+package server;
+
 import java.io.*;
 import java.net.*;
+import connection.ConnectCorp;
+import fields.Constants;
 
 public class Corp implements Runnable{
 

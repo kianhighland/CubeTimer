@@ -1,6 +1,10 @@
+package server;
+
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
+import fields.Fields;
+import fields.Constants;
 
 public class UserInput implements Runnable{
 

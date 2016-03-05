@@ -1,5 +1,10 @@
+package connection;
+
 import java.io.*;
 import java.net.*;
+import server.*;
+import fields.Fields;
+import fields.Constants;
 
 public class Connection{
     

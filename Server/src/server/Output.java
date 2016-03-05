@@ -1,3 +1,7 @@
+package server;
+
+import fields.Constants;
+
 public class Output{
 
     public Runner runner;
