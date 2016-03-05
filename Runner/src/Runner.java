@@ -13,6 +13,11 @@ public class Runner{
 	
     public Runner() throws Exception{
 
+        System.out.println(Constants.normalText + "                            "
+            + "                                                                "
+            + "                                                                "
+            + "                                                                "
+            + "                                                              ");
         userInput = new Scanner(System.in);
         System.out.println("What't the ip?");
         System.out.println("Possible options are:");
@@ -37,7 +42,7 @@ public class Runner{
             +"[30m" + "black" + (char)27 + "[31m" + "red" + (char)27 + "[32m"
             + "green" + (char)27 + "[33m" + "yellow" + (char)27 + "[34m"
             + "blue" + (char)27 + "[35m" + "magenta" + (char)27 + "[36m"
-            + "cyan" + (char)27 + "[37m" + "white" + (char)27 + "[0m");
+            + "cyan" + (char)27 + "[37m" + "white" + Constants.normalText);
         actions = new Actions(out);
         input = new Input(in, actions);
         Thread thread = new Thread(input);

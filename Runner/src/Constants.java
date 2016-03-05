@@ -1,6 +1,7 @@
 public class Constants{
 
-    public static final String normalText = (char)27 + "[0m";
+    public static final String normalText = (char)27 + "[0m" + (char)27
+        + "[40m" + (char)27 + "[37m";
     public static final String runner = "Runner";
     public static final String slash = "/";
     public static final String q = "q";

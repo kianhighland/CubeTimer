@@ -11,7 +11,9 @@ public class Output{
 
     public void sendMessage(String message) throws Exception{
 
-        System.out.println(message);
+        System.out.print("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
+        System.out.println(Constants.normalText + message + "                ");
+        System.out.print(Constants.serverInput);
 
         if(runner != null){
             runner.sendMessage(message);
@@ -32,4 +34,17 @@ public class Output{
         corp = corpIn;
     }
 
+    public boolean runner(){
+        if(runner == null){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean corp(){
+        if(corp == null){
+            return false;
+        }
+        return true;
+    }
 }

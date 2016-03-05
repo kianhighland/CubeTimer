@@ -12,9 +12,15 @@ public class Connection{
     private ConnectCorp connectCorp;
     private ConnectPlayers connectPlayers;
     private Fields fields;
+    private UserInput userInput;
 
     public Connection() throws Exception{
 
+        System.out.println(Constants.normalText + "                            "
+            + "                                                                "
+            + "                                                                "
+            + "                                                                "
+            + "                                                              ");
     	fields = new Fields();
         System.out.println("starting server...");
         serverSocket = new ServerSocket(7665);
@@ -26,5 +32,9 @@ public class Connection{
             serverSocket, fields);
         fields.threads.connectPlayers = new Thread(connectPlayers);
         fields.threads.connectPlayers.start();
+        userInput = new UserInput(output, fields);
+        fields.threads.userInput = new Thread(userInput);
+        fields.threads.userInput.start();
+        
     }
 }
