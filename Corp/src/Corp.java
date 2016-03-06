@@ -18,6 +18,8 @@ public class Corp{
             + "                                                                "
             + "                                                                "
             + "                                                              ");
+        System.out.print("\b");
+        System.out.println();
         userInput = new Scanner(System.in);
         System.out.println("What's the ip?");
         System.out.println("Possible options are:");

@@ -26,6 +26,8 @@ public class Connection{
             + "                                                                "
             + "                                                                "
             + "                                                              ");
+        System.out.print("\b");
+        System.out.println();
     	fields = new Fields();
         System.out.println("starting server...");
         serverSocket = new ServerSocket(7665);

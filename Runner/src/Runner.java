@@ -20,6 +20,8 @@ public class Runner{
             + "                                                                "
             + "                                                                "
             + "                                                              ");
+        System.out.print("\b");
+        System.out.println();
         userInput = new Scanner(System.in);
         System.out.println("What't the ip?");
         System.out.println("Possible options are:");
