@@ -15,16 +15,4 @@ public class Threads{
     public Threads(){
 
     }
-
-//    public void setConnectRunner(Thread connectRunnerIn){
-//    	
-//        connectRunner = connectRunnerIn;
-//        connectRunnerB = connectRunner;
-//    }
-//    
-//    public void setConnectCorp(Thread connectCorpIn){
-//    	
-//    	connectCorp = connectCorpIn;
-//    	connectCorpB = connectCorpIn;
-//    }
 }

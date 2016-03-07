@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import connection.ConnectCorp;
 import fields.Constants;
+import print.PrintLine;
 
 public class Corp implements Runnable{
 
@@ -31,7 +32,7 @@ public class Corp implements Runnable{
                         break;
                         }
                     else{
-                        System.out.println("unrecognized command: " + message);
+                        PrintLine.println("unrecognized command: " + message);
                         sendMessage("unrecognized command: " + message);
                     }
                 }

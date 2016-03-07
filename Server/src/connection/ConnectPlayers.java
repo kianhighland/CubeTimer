@@ -5,6 +5,7 @@ import java.net.*;
 import server.*;
 import fields.Fields;
 import fields.Constants;
+import print.PrintLine;
 
 public class ConnectPlayers implements Runnable{
 
@@ -60,8 +61,8 @@ public class ConnectPlayers implements Runnable{
                 run();
             }
         } catch (Exception e) {
-            System.out.println("Exception in class connectPlayers method run");
-            System.out.println(e);
+            PrintLine.println("Exception in class connectPlayers method run");
+            PrintLine.println("" + e);
             run();
         }
         fields.setConnectPlayers(false);

@@ -1,6 +1,7 @@
 package server;
 
 import fields.Constants;
+import print.PrintLine;
 
 public class Output{
 
@@ -14,10 +15,8 @@ public class Output{
     }
 
     public void sendMessage(String message) throws Exception{
-
-        System.out.print("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
-        System.out.println(Constants.normalText + message + "                ");
-        System.out.print(Constants.serverInput);
+                                                                                
+        PrintLine.println(Constants.normalText + message);
 
         if(runner != null){
             runner.sendMessage(message);

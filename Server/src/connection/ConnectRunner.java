@@ -5,6 +5,7 @@ import java.net.*;
 import server.*;
 import fields.Fields;
 import fields.Constants;
+import print.PrintLine;
 
 public class ConnectRunner implements Runnable{
 
@@ -27,7 +28,6 @@ public class ConnectRunner implements Runnable{
 
         try {
             Socket socket = serverSocket.accept();
-            System.out.println("accepted a person");
             if(Thread.currentThread() != fields.threads.connectRunner){
             	System.out.println(Thread.currentThread());
                 System.out.println(fields.threads.connectRunner);
@@ -49,8 +49,8 @@ public class ConnectRunner implements Runnable{
                 run();
             }
         } catch (Exception e) {
-            System.out.println("Exception in class ConnectRunner method run");
-            System.out.println(e);
+            PrintLine.println("Exception in class ConnectRunner method run");
+            PrintLine.println("" + e);
             run();
         }
     }

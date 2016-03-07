@@ -5,6 +5,7 @@ import java.net.*;
 import connection.ConnectRunner;
 import fields.Fields;
 import fields.Constants;
+import print.PrintLine;
 
 public class Runner implements Runnable{
 
@@ -56,28 +57,21 @@ public class Runner implements Runnable{
             String secondChar = command.substring(1, 2);
             if(secondChar.matches(Constants.q)){
                 output.setRunner(null);
-                System.out.println("The runner should quit");
                 if(fields.threads.connectCorp.isAlive()){
-                    System.out.println("connect corp is alive");
                     fields.setConnectCorp(false);
-                    System.out.println(1);
                     fields.setConnectPlayers(true);
-                    System.out.println(3);
-//                    fields.threads.connectPlayers.notify();
-                    System.out.println(4);
                     fields.waitObject.stopWaiting();
                 }
                 else{
-                    System.out.println("connect corp is no alive");
                     fields.threads.connectRunner = new Thread(connectRunner);
                     fields.threads.connectRunner .start();
                 }
                 return true;
             }
             else{
-                System.out.println("unrecognized command in class runner of" 
+                PrintLine.println("unrecognized command in class runner of" 
                     + "Server: " + command);
-                System.out.println("if the player typed an unrecognized command"
+                PrintLine.println("if the player typed an unrecognized command"
                     + "it shouldn't have goten here");
                 sendMessage("there was an unrecognized command in the class run"
                 + " of the Server");
@@ -85,8 +79,8 @@ public class Runner implements Runnable{
             }
         }
         else{
-            System.out.println("There is a problem in the code");
-            System.out.println("Method chatCommand was called with an"
+            PrintLine.println("There is a problem in the code");
+            PrintLine.println("Method chatCommand was called with an"
                 + "argument that doesn't start with slash");
             return false;
         }

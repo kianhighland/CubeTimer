@@ -5,6 +5,7 @@ import java.net.*;
 import server.*;
 import fields.Fields;
 import fields.Constants;
+import print.PrintLine;
 
 public class ConnectCorp implements Runnable{
 
@@ -28,19 +29,18 @@ public class ConnectCorp implements Runnable{
         try {
             Socket socket = serverSocket.accept();
             if(!fields.getConnectCorp()){
-                System.out.println("hey");
                 DataOutputStream out
                     = new DataOutputStream(socket.getOutputStream());
                 out.writeUTF("");
                 return;
             }
-            System.out.println("hoy");
             firstIn = new DataInputStream(socket.getInputStream());
             String playertype = firstIn.readUTF();
             if(playertype.matches(Constants.corp)){
 
                 connectCorp(socket);
             }
+                                                                
             else{
                                                          
                 firstOut = new DataOutputStream(socket.getOutputStream());
@@ -51,7 +51,7 @@ public class ConnectCorp implements Runnable{
                 run();
             }
         } catch (Exception e) {
-            System.out.println("Exception in class ConectCorp method run");
+            PrintLine.println("Exception in class ConectCorp method run");
         }
     }
 
