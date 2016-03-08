@@ -9,8 +9,7 @@ public class Threads{
     public Thread corp;
     public Thread runner;
     public Thread userInput;
-    public Thread connectCorpB;
-    public Thread connectRunnerB;
+    public Thread acceptPlayers;
 
     public Threads(){
 

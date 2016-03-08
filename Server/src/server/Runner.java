@@ -30,17 +30,20 @@ public class Runner implements Runnable{
         while(true){
             try{
                 String message = in.readUTF();
-                String begining = message.substring(0, 1);
-                if(begining.matches(Constants.slash)){
-                    if(Command(message)){
+                String firstChar = message.substring(0, 1);
+                if(firstChar.matches(Constants.slash)){
+                    if(command(message)){
                         break;
                     }
                 }
                 else{
                     output.sendMessage(message);
                 }
-                Thread.sleep(200);
             } catch (Exception e){
+            }
+            try{
+                Thread.sleep(200);
+            }catch(Exception e){
             }
         }
     }
@@ -50,22 +53,14 @@ public class Runner implements Runnable{
         out.writeUTF(message);
     }
     
-    private boolean Command(String command) throws Exception{
+    private boolean command(String command) throws Exception{
 
         String firstChar = command.substring(0, 1);
         if(firstChar.matches(Constants.slash)){
             String secondChar = command.substring(1, 2);
             if(secondChar.matches(Constants.q)){
                 output.setRunner(null);
-                if(fields.threads.connectCorp.isAlive()){
-                    fields.setConnectCorp(false);
-                    fields.setConnectPlayers(true);
-                    fields.waitObject.stopWaiting();
-                }
-                else{
-                    fields.threads.connectRunner = new Thread(connectRunner);
-                    fields.threads.connectRunner .start();
-                }
+                fields.setConnectRunner(true);
                 return true;
             }
             else{

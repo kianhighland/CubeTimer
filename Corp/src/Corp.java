@@ -10,9 +10,11 @@ public class Corp{
     private Scanner userInput;
     private Input input;
     private Actions actions;
+    private boolean successful;
 
     public Corp() throws Exception{
 
+        successful = false;
         System.out.println(Constants.normalText + "                            "
             + "                                                                "
             + "                                                                "
@@ -26,11 +28,40 @@ public class Corp{
         System.out.println("10.0.1.24");
         System.out.println("10.0.1.22");
         String ip = userInput.nextLine();
+
+        try{
+            connect(ip);
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+        System.out.println(20);
+
+        if(!successful){
+            try{
+                connect(ip);
+            } catch(Exception e){
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void connect(String ip) throws Exception{
+
         socket = new Socket(ip, 7665);
         out = new DataOutputStream(socket.getOutputStream());
         in = new DataInputStream(socket.getInputStream());
         out.writeUTF(Constants.corp);
-        System.out.println(in.readUTF());
+        Thread.sleep(10);
+        String message = in.readUTF();
+        
+        if(message.matches("")){
+            successful = false;
+            return;
+        }
+        else{
+            System.out.println(message);
+        }
         Boolean success = in.readBoolean();
         if(!success){
             System.exit(0);
@@ -50,12 +81,6 @@ public class Corp{
         Thread thread = new Thread(input);
         thread.start();
         actions.write();
+        successful = true;
     }
-
-/*    public void write() throws Exception{
-
-        String message = userInput.nextLine();
-        out.writeUTF(sCorp + ": " + message);
-        write();
-    }*/
 }

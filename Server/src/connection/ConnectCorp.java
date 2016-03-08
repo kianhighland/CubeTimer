@@ -52,6 +52,8 @@ public class ConnectCorp implements Runnable{
             }
         } catch (Exception e) {
             PrintLine.println("Exception in class ConectCorp method run");
+            PrintLine.println("" + e);
+            run();
         }
     }
 
@@ -61,7 +63,7 @@ public class ConnectCorp implements Runnable{
         DataInputStream in = new DataInputStream(socket.getInputStream());
         out.writeUTF("You have succesfully connected as Corp");
         out.writeBoolean(true);
-        corp = new Corp(out, in, output);
+        corp = new Corp(out, in, output, fields, this);
         output.setCorp(corp);
         fields.threads.corp = new Thread(corp);
         fields.threads.corp.start();

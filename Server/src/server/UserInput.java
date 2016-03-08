@@ -63,7 +63,7 @@ public class UserInput implements Runnable{
                 }
                 else{
                     System.out.println(Constants.actionPrompts 
-                    + "Unknows command: " + message);
+                    + "Unknown command: " + message);
                 }
                 serverInput();
             }

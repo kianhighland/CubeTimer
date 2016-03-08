@@ -18,6 +18,7 @@ public class Connection{
     private ConnectPlayers connectPlayers;
     private Fields fields;
     private UserInput userInput;
+    private AcceptPlayers acceptPlayers;
 
     public Connection() throws Exception{
 
@@ -37,8 +38,10 @@ public class Connection{
         connectCorp = new ConnectCorp(output, serverSocket, fields);
         connectPlayers = new ConnectPlayers(connectRunner, connectCorp,
             serverSocket, fields);
-        fields.threads.connectPlayers = new Thread(connectPlayers);
-        fields.threads.connectPlayers.start();
+        acceptPlayers = new AcceptPlayers(serverSocket, fields,
+            connectRunner, connectCorp);
+        fields.threads.acceptPlayers = new Thread(acceptPlayers);
+        fields.threads.acceptPlayers.start();
         userInput = new UserInput(output, fields);
         fields.threads.userInput = new Thread(userInput);
         fields.threads.userInput.start();

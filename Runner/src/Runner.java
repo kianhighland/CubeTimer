@@ -28,6 +28,7 @@ public class Runner{
         System.out.println("10.0.1.24");
         System.out.println("10.0.1.22");
         String ip = userInput.nextLine();
+                                                                                
         try{
             connect(ip);
         } catch(Exception e){
@@ -46,34 +47,23 @@ public class Runner{
                 System.out.println(e);
             }
         }
-        System.out.println(successful);
     }
 
     public void connect(String ip) throws Exception{
 
         socket = new Socket(ip, 7665);
-        System.out.println(1);
         out = new DataOutputStream(socket.getOutputStream());
-        System.out.println(2);
         in = new DataInputStream(socket.getInputStream());
-        System.out.println(3);
         out.writeUTF(Constants.runner);
         Thread.sleep(10);
-        System.out.println(4);
-        Thread.sleep(10);
-        System.out.println(5);
         String message = in.readUTF();
         if(message.matches("")){
             successful = false;
-            System.out.println("if");
             return;
         }
         else{
             System.out.println(message);
-            System.out.println("else");
         }
-        System.out.println(6);
-        System.out.println(10);
         Boolean success = in.readBoolean();
         if(!success){
             System.exit(0);

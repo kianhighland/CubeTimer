@@ -14,6 +14,8 @@ public class Fields{
     
         threads = new Threads();
         waitObject = new WaitObject();
+        connectRunner = true;
+        connectCorp = true;
     }
 
     public void setConnectPlayers(boolean connectPlayersIn){

@@ -26,11 +26,14 @@ public class ConnectRunner implements Runnable{
 
     public void run(){
 
+        PrintLine.println("ConnectRunner");
+
         try {
             Socket socket = serverSocket.accept();
-            if(Thread.currentThread() != fields.threads.connectRunner){
-            	System.out.println(Thread.currentThread());
-                System.out.println(fields.threads.connectRunner);
+            if(!fields.getConnectRunner()){
+                DataOutputStream out
+                    = new DataOutputStream(socket.getOutputStream());
+                out.writeUTF("");
                 return;
             }
             firstIn = new DataInputStream(socket.getInputStream());
