@@ -13,16 +13,14 @@ public class Corp implements Runnable{
     private DataInputStream in;
     private Output output;
     private Fields fields;
-    private ConnectCorp connectCorp;
 
     public Corp(DataOutputStream out, DataInputStream in, Output outputIn,
-        Fields fieldsIn, ConnectCorp connectCorpIn){
+        Fields fieldsIn){
 
         this.out = out;
         this.in = in;
         output = outputIn;
         fields = fieldsIn;
-        connectCorp = connectCorpIn;
     }
 
     public void run(){

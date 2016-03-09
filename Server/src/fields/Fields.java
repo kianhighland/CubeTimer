@@ -6,7 +6,6 @@ public class Fields{
 
     public Threads threads;
     public WaitObject waitObject;
-    private boolean connectPlayers;
     private boolean connectCorp;
     private boolean connectRunner;
     
@@ -16,16 +15,6 @@ public class Fields{
         waitObject = new WaitObject();
         connectRunner = true;
         connectCorp = true;
-    }
-
-    public void setConnectPlayers(boolean connectPlayersIn){
-
-        connectPlayers = connectPlayersIn;
-    }
-
-    public boolean getConnectPlayers(){
-
-        return connectPlayers;
     }
 
     public void setConnectCorp(boolean connectCorpIn){

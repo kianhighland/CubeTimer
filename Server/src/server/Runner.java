@@ -13,16 +13,14 @@ public class Runner implements Runnable{
     private DataInputStream in;
     private Output output;
     private Fields fields;
-    private ConnectRunner connectRunner;
 
     public Runner(DataOutputStream out, DataInputStream in, Output outputIn,
-        Fields fieldsIn, ConnectRunner connectRunnerIn){
+        Fields fieldsIn){
 
         this.out = out;
         this.in = in;
         output = outputIn;
         fields = fieldsIn;
-        connectRunner = connectRunnerIn;
     }
 
     public void run(){

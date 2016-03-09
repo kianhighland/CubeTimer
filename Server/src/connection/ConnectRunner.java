@@ -7,7 +7,7 @@ import fields.Fields;
 import fields.Constants;
 import print.PrintLine;
 
-public class ConnectRunner implements Runnable{
+public class ConnectRunner{
 
     private Runner runner;
     private Output output;
@@ -24,47 +24,13 @@ public class ConnectRunner implements Runnable{
         fields = fieldsIn;
     }
 
-    public void run(){
-
-        PrintLine.println("ConnectRunner");
-
-        try {
-            Socket socket = serverSocket.accept();
-            if(!fields.getConnectRunner()){
-                DataOutputStream out
-                    = new DataOutputStream(socket.getOutputStream());
-                out.writeUTF("");
-                return;
-            }
-            firstIn = new DataInputStream(socket.getInputStream());
-            String playertype = firstIn.readUTF();
-            if(playertype.matches(Constants.runner)){
-
-                connectRunner(socket);
-            }
-            else{
-                                                 
-                firstOut = new DataOutputStream(socket.getOutputStream());
-                firstOut.writeUTF("Sorry, " + playertype + " did not match "
-                    + Constants.runner);
-                firstOut.writeBoolean(false);
-                firstOut = null;
-                run();
-            }
-        } catch (Exception e) {
-            PrintLine.println("Exception in class ConnectRunner method run");
-            PrintLine.println("" + e);
-            run();
-        }
-    }
-
     public void connectRunner(Socket socket) throws Exception{
 
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         DataInputStream in = new DataInputStream(socket.getInputStream());
         out.writeUTF("You have succesfully connected as Runner");
         out.writeBoolean(true);
-        runner = new Runner(out, in, output, fields, this);
+        runner = new Runner(out, in, output, fields);
         output.setRunner(runner);
         fields.threads.runner = new Thread(runner);
         fields.threads.runner.start();

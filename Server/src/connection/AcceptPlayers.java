@@ -54,6 +54,7 @@ public class AcceptPlayers implements Runnable{
                 + Constants.corp + " : " + fields.getConnectCorp() + "\n"
                 + "We accept " + Constants.runner + " : "
                 + fields.getConnectRunner() + "\nYou were a: " + playertype);
+            firstOut.writeBoolean(false);
         }
         
         connect();

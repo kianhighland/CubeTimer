@@ -66,6 +66,7 @@ public class Runner{
         }
         Boolean success = in.readBoolean();
         if(!success){
+            System.out.print((char)27 + "[0m");
             System.exit(0);
         }
         System.out.println("First normal" + (char)27 + "[30m" + "black"
