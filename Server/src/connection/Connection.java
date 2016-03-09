@@ -15,7 +15,6 @@ public class Connection{
     private Output output;
     private ConnectRunner connectRunner;
     private ConnectCorp connectCorp;
-    private ConnectPlayers connectPlayers;
     private Fields fields;
     private UserInput userInput;
     private AcceptPlayers acceptPlayers;
@@ -36,8 +35,6 @@ public class Connection{
         output = new Output();
         connectRunner = new ConnectRunner(output, serverSocket, fields);
         connectCorp = new ConnectCorp(output, serverSocket, fields);
-        connectPlayers = new ConnectPlayers(connectRunner, connectCorp,
-            serverSocket, fields);
         acceptPlayers = new AcceptPlayers(serverSocket, fields,
             connectRunner, connectCorp);
         fields.threads.acceptPlayers = new Thread(acceptPlayers);
