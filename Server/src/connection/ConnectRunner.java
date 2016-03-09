@@ -6,6 +6,7 @@ import server.*;
 import fields.Fields;
 import fields.Constants;
 import print.PrintLine;
+import java.util.ArrayList;
 
 public class ConnectRunner{
 
@@ -28,7 +29,12 @@ public class ConnectRunner{
 
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        out.writeUTF("You have succesfully connected as Runner");
+        String messages = "";
+        ArrayList<String> messageList = fields.getMessages();
+        for(int i = 0; i<messageList.size(); i++){
+            messages = messages + "\n" + messageList.get(i);
+        }
+        out.writeUTF(messages);
         out.writeBoolean(true);
         runner = new Runner(out, in, output, fields);
         output.setRunner(runner);

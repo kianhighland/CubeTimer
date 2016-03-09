@@ -1,6 +1,7 @@
 package fields;
 
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Fields{
 
@@ -8,6 +9,7 @@ public class Fields{
     public WaitObject waitObject;
     private boolean connectCorp;
     private boolean connectRunner;
+    private ArrayList <String> output;
     
     public Fields(){
     
@@ -15,6 +17,7 @@ public class Fields{
         waitObject = new WaitObject();
         connectRunner = true;
         connectCorp = true;
+        output = new ArrayList<String>();
     }
 
     public void setConnectCorp(boolean connectCorpIn){
@@ -35,5 +38,15 @@ public class Fields{
     public boolean getConnectRunner(){
 
         return connectRunner;
+    }
+
+    public void newMessage(String message){
+
+        output.add(message);
+    }
+
+    public ArrayList<String> getMessages(){
+
+        return output;
     }
 }

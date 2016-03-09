@@ -6,6 +6,7 @@ import server.*;
 import fields.Fields;
 import fields.Constants;
 import print.PrintLine;
+import java.util.ArrayList;
 
 public class ConnectCorp{
 
@@ -28,7 +29,12 @@ public class ConnectCorp{
 
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        out.writeUTF("You have succesfully connected as Corp");
+        String messages = "";
+        ArrayList<String> messageList = fields.getMessages();
+        for(int i = 0; i<messageList.size(); i++){
+            messages = messages + "\n" + messageList.get(i);
+        }
+        out.writeUTF(messages);
         out.writeBoolean(true);
         corp = new Corp(out, in, output, fields);
         output.setCorp(corp);

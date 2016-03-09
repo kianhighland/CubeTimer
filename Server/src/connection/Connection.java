@@ -32,7 +32,7 @@ public class Connection{
         System.out.println("starting server...");
         serverSocket = new ServerSocket(7665);
         System.out.println("server started");
-        output = new Output();
+        output = new Output(fields);
         connectRunner = new ConnectRunner(output, serverSocket, fields);
         connectCorp = new ConnectCorp(output, serverSocket, fields);
         acceptPlayers = new AcceptPlayers(serverSocket, fields,

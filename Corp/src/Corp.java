@@ -59,14 +59,6 @@ public class Corp{
             successful = false;
             return;
         }
-        else{
-            System.out.println(message);
-        }
-        Boolean success = in.readBoolean();
-        if(!success){
-            System.out.print((char)27 + "[0m");
-            System.exit(0);
-        }
         System.out.println("First normal" + (char)27 + "[30m" + "black"
             + (char)27 + "[31m" + "red" + (char)27 + "[32m" + "green" + (char)27            + "[33m" + "yellow" + (char)27 + "[34m" + "blue" + (char)27 + "[35m"
             + "magenta" + (char)27 + "[36m" + "cyan" + (char)27 + "[37m"
@@ -76,6 +68,14 @@ public class Corp{
             + "green" + (char)27 + "[33m" + "yellow" + (char)27 + "[34m"
             + "blue" + (char)27 + "[35m" + "magenta" + (char)27 + "[36m"
             + "cyan" + (char)27 + "[37m" + "white" + Constants.normalText);
+
+        System.out.println(message);
+        Boolean success = in.readBoolean();
+
+        if(!success){
+            System.out.print((char)27 + "[0m");
+            System.exit(0);
+        }
 
         actions = new Actions(out);
         input = new Input(in, actions);

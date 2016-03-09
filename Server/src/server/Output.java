@@ -2,21 +2,25 @@ package server;
 
 import fields.Constants;
 import print.PrintLine;
+import fields.Fields;
 
 public class Output{
 
     public Runner runner;
     public Corp corp;
+    public Fields fields;
 
-    public Output(){
+    public Output(Fields fieldsIn){
 
         runner = null;
         corp = null;
+        fields = fieldsIn;
     }
 
     public void sendMessage(String message) throws Exception{
                                                                                 
         PrintLine.println(Constants.normalText + message);
+        fields.newMessage(message);
 
         if(runner != null){
             runner.sendMessage(message);

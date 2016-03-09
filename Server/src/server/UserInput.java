@@ -88,6 +88,7 @@ public class UserInput implements Runnable{
             String firstChar = message.substring(0, 1);
             if(firstChar.matches(Constants.q)){
                 output.sendMessage(Constants.quit);
+                System.out.print((char)27 + "[0m");
                 System.exit(0);
             }
             else if(firstChar.matches(Constants.c)){
