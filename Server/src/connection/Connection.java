@@ -21,6 +21,7 @@ public class Connection{
 
     public Connection() throws Exception{
 
+        write();
         System.out.println(Constants.normalText + "                            "
             + "                                                                "
             + "                                                                "
@@ -43,5 +44,16 @@ public class Connection{
         fields.threads.userInput = new Thread(userInput);
         fields.threads.userInput.start();
         
+    }
+
+    public void write() throws Exception{
+
+        String bytes = "test";
+        byte[] buffer = bytes.getBytes();
+
+        FileOutputStream outputStream
+            = new FileOutputStream("../saves/test.txt");
+        outputStream.write(buffer);
+        outputStream.close();
     }
 }
