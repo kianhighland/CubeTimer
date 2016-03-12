@@ -44,7 +44,8 @@ public class UserInput implements Runnable{
                             + "The Corp is still playing");
                         }
                         System.out.println(Constants.actionPrompts 
-                            +"Do you want to (q)uit anyway (c)ancel and posibly"                            + "ask them to leave?" + Constants.normalText);
+                            +"Do you want to (q)uit anyway (c)ancel and posibly"
+                            + " ask them to leave?" + Constants.normalText);
                         qWithPlayers();
                     }
                     else{
@@ -52,12 +53,14 @@ public class UserInput implements Runnable{
                             System.out.println(Constants.normalText
                                 + "The Corp is still playing");
                             System.out.println(Constants.actionPrompts 
-                                + "Do you want to (q)uit anyway (c)ancel and"
+                                + "Do you want to (q)uit anyway (c)ancel and "
                                 + "posibly ask them to leave?"
                                 + Constants.normalText);
                             qWithPlayers();
                         }
-                        quit();
+                        else{
+                            quit();
+                        }
                     }
                 }
                 else{
@@ -72,11 +75,10 @@ public class UserInput implements Runnable{
                 Thread.sleep(10);
                 output.sendMessage(Constants.serverChat + Constants.server +": "
                     + message + Constants.normalText);
+                return;
             }
         }
-        else{
-            serverInput();
-        }
+        serverInput();
     }
 
     private void qWithPlayers() throws Exception{
@@ -103,7 +105,7 @@ public class UserInput implements Runnable{
         }
     }
 
-    private void quit() throws Exception{
+    private void quit(){
 
         System.out.println(Constants.actionPrompts + "Would you like to save? "
             + "(y)es or (n)o");
@@ -115,7 +117,12 @@ public class UserInput implements Runnable{
         }
         String firstchar = answer.substring(0, 1);
         if(firstchar.matches("y")){
-            fields.save();
+            try{
+                fields.save();
+            } catch(IOException e){
+                System.out.println(e + "");
+                return;
+            }
         }
         else if(!firstchar.matches("n")){
             System.out.println(Constants.actionPrompts + answer + " did not "

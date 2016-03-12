@@ -53,7 +53,7 @@ public class Fields{
         return output;
     }
 
-    public void save() throws Exception{
+    public void save() throws IOException{
 
         FileWriter fileWriter = new FileWriter("../saves/save.txt");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
