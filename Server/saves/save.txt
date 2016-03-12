@@ -1,3 +1,6 @@
-2
+5
 [1;37mServer: Hello[0;40;37m
-[1;37mServer: I hope this works[0;40;37m
+[1;37mServer: This is what I am saying[0;40;37m
+[1;37mServer: This is my last sentice[0;40;37m
+[1;37mServer: Okay good that workds[0;40;37m
+[1;37mServer: All is well[0;40;37m

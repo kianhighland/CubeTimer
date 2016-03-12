@@ -12,6 +12,7 @@ public class Fields{
     private boolean connectCorp;
     private boolean connectRunner;
     private ArrayList <String> output;
+    private String openError;
     
     public Fields(){
     
@@ -66,5 +67,44 @@ public class Fields{
             PrintLine.println(output.get(i));
         }
         bufferedWriter.close();
+    }
+
+    public boolean open(){
+
+    openError = "";
+    FileReader fileReader;
+    try{
+        fileReader = new FileReader("../saves/save.txt");
+    } catch(java.io.FileNotFoundException e){
+        openError = "File not found";
+        return false;
+    }
+    BufferedReader bufferedReader = new BufferedReader(fileReader);
+    String string;
+    try{
+        string = bufferedReader.readLine();
+    } catch(IOException e){
+        openError = "File is empty";
+        return false;
+    }
+    int length = Integer.parseInt(string);
+    for(int i = 0; i < length; i++){
+        try{
+            string = bufferedReader.readLine();
+        } catch(IOException e){
+            openError = e + "";
+            return false;
+        }
+        if(string != null){
+            System.out.println(string);
+            output.add(string);
+        }
+    }
+    return true;
+    }
+
+    public String getOpenError(){
+
+        return openError;
     }
 }

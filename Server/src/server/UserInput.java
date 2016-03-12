@@ -57,9 +57,7 @@ public class UserInput implements Runnable{
                                 + Constants.normalText);
                             qWithPlayers();
                         }
-                        fields.save();
-                        System.out.print((char)27 + "[0m");
-                        System.exit(0);
+                        quit();
                     }
                 }
                 else{
@@ -89,9 +87,7 @@ public class UserInput implements Runnable{
             String firstChar = message.substring(0, 1);
             if(firstChar.matches(Constants.q)){
                 output.sendMessage(Constants.quit);
-                fields.save();
-                System.out.print((char)27 + "[0m");
-                System.exit(0);
+                quit();
             }
             else if(firstChar.matches(Constants.c)){
                 serverInput();
@@ -105,5 +101,28 @@ public class UserInput implements Runnable{
         else{
             qWithPlayers();
         }
+    }
+
+    private void quit() throws Exception{
+
+        System.out.println(Constants.actionPrompts + "Would you like to save? "
+            + "(y)es or (n)o");
+        System.out.print(Constants.serverInput);
+        String answer = userInput.nextLine();
+        if(answer.length() <= 0){
+            quit();
+            return;
+        }
+        String firstchar = answer.substring(0, 1);
+        if(firstchar.matches("y")){
+            fields.save();
+        }
+        else if(!firstchar.matches("n")){
+            System.out.println(Constants.actionPrompts + answer + " did not "
+                + "start "
+                + "with y or n. It is case sensitive. Please try again");
+        }
+        System.out.println((char)27 + "[0m");
+        System.exit(0);
     }
 }
