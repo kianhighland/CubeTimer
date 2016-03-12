@@ -53,9 +53,9 @@ public class Fields{
         return output;
     }
 
-    public void save() throws IOException{
+    public void save(String fileName) throws IOException{
 
-        FileWriter fileWriter = new FileWriter("../saves/save.txt");
+        FileWriter fileWriter = new FileWriter("../saves/" + fileName);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
         int length = output.size();
@@ -69,12 +69,12 @@ public class Fields{
         bufferedWriter.close();
     }
 
-    public boolean open(){
+    public boolean open(String fileName){
 
     openError = "";
     FileReader fileReader;
     try{
-        fileReader = new FileReader("../saves/save.txt");
+        fileReader = new FileReader("../saves/" + fileName);
     } catch(java.io.FileNotFoundException e){
         openError = "File not found";
         return false;
@@ -84,7 +84,7 @@ public class Fields{
     try{
         string = bufferedReader.readLine();
     } catch(IOException e){
-        openError = "File is empty";
+        openError = e + "";
         return false;
     }
     int length = Integer.parseInt(string);

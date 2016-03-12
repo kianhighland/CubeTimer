@@ -117,8 +117,16 @@ public class UserInput implements Runnable{
         }
         String firstchar = answer.substring(0, 1);
         if(firstchar.matches("y")){
+            System.out.println(Constants.actionPrompts + "What would you like "
+                + "the name of the file to be?");
+            System.out.println(Constants.actionPrompts + "This file will save"
+                + " in the saves directory.");
+            System.out.println(Constants.actionPrompts + "It is recomended that"
+                + " the files end in .txt");
+            System.out.print(Constants.serverInput);
+            String fileName = userInput.nextLine();
             try{
-                fields.save();
+                fields.save(fileName);
             } catch(IOException e){
                 System.out.println(e + "");
                 return;
@@ -126,8 +134,7 @@ public class UserInput implements Runnable{
         }
         else if(!firstchar.matches("n")){
             System.out.println(Constants.actionPrompts + answer + " did not "
-                + "start "
-                + "with y or n. It is case sensitive. Please try again");
+                + "start with y or n. It is case sensitive. Please try again");
         }
         System.out.println((char)27 + "[0m");
         System.exit(0);

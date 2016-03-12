@@ -31,8 +31,6 @@ public class Connection{
             + "                                                              ");
         System.out.print("\b");
         System.out.println();
-        write();
-        read();
     	fields = new Fields();
         System.out.println("starting server...");
         serverSocket = new ServerSocket(7665);
@@ -96,8 +94,17 @@ public class Connection{
            return;
        }
        if(firstchar.matches("y")){
-           if(!fields.open()){
-               System.out.println(fields.getOpenError());
+           PrintLine.println(Constants.actionPrompts + "What is the name of the"
+               + " file? Remember its from the saves directory.");
+           String fileName =  userInput.nextLine();
+           while(!fields.open(fileName)){
+               System.out.println(Constants.actionPrompts
+               + fields.getOpenError());
+               listFiles();
+               System.out.println();
+               PrintLine.println(Constants.actionPrompts + "Go ahead and try "
+                   + "again");
+               fileName = userInput.nextLine();
            }
        }
        else if(firstchar.matches("n")){
@@ -108,5 +115,26 @@ public class Connection{
            PrintLine.println(Constants.actionPrompts + answer + " didn't start "
                + "with y or n. Please try again.");
        }
+    }
+
+    private void listFiles(){
+
+        System.out.println(Constants.actionPrompts + "All files in the saves "
+            + "directory are as follows:");
+        File folder = new File("../saves");
+        listFilesForFolder(folder, "");
+    }
+
+    private void listFilesForFolder(File folder, String prefix){
+
+        for(File fileEntry : folder.listFiles()){
+            if(fileEntry.isDirectory()){
+                listFilesForFolder(fileEntry,
+                    prefix + fileEntry.getName() + "/");
+            }
+            else{
+                System.out.println(prefix + fileEntry.getName());
+            }
+        }
     }
 }
