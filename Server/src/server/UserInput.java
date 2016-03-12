@@ -57,6 +57,7 @@ public class UserInput implements Runnable{
                                 + Constants.normalText);
                             qWithPlayers();
                         }
+                        fields.save();
                         System.out.print((char)27 + "[0m");
                         System.exit(0);
                     }
@@ -88,6 +89,7 @@ public class UserInput implements Runnable{
             String firstChar = message.substring(0, 1);
             if(firstChar.matches(Constants.q)){
                 output.sendMessage(Constants.quit);
+                fields.save();
                 System.out.print((char)27 + "[0m");
                 System.exit(0);
             }

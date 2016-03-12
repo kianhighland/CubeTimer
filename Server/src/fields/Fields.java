@@ -1,7 +1,9 @@
 package fields;
 
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import print.PrintLine;
 
 public class Fields{
 
@@ -48,5 +50,21 @@ public class Fields{
     public ArrayList<String> getMessages(){
 
         return output;
+    }
+
+    public void save() throws Exception{
+
+        FileWriter fileWriter = new FileWriter("../saves/save.txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        int length = output.size();
+        bufferedWriter.write(length + "");
+        bufferedWriter.newLine();
+        for(int i = 0; i < length; i++){
+            bufferedWriter.write(output.get(i));
+            bufferedWriter.newLine();
+            PrintLine.println(output.get(i));
+        }
+        bufferedWriter.close();
     }
 }

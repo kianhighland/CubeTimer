@@ -21,7 +21,9 @@ public class Connection{
 
     public Connection() throws Exception{
 
+        System.out.print(Constants.normalText);
         write();
+        read();
         System.out.println(Constants.normalText + "                            "
             + "                                                                "
             + "                                                                "
@@ -48,12 +50,25 @@ public class Connection{
 
     public void write() throws Exception{
 
-        String bytes = "test";
-        byte[] buffer = bytes.getBytes();
+        FileWriter fileWriter = new FileWriter("../saves/test.txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-        FileOutputStream outputStream
-            = new FileOutputStream("../saves/test.txt");
-        outputStream.write(buffer);
-        outputStream.close();
+        bufferedWriter.write("test");
+        bufferedWriter.newLine();
+        bufferedWriter.write("4");
+
+        bufferedWriter.close();
+    }
+
+    public void read() throws Exception{
+                                                                                
+        FileReader fileReader = new FileReader("../saves/test.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String string = bufferedReader.readLine();
+        System.out.println(string);
+        string = bufferedReader.readLine();
+        int integer = Integer.parseInt(string);
+        System.out.println(integer);
+        bufferedReader.close();
     }
 }
