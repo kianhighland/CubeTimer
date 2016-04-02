@@ -15,6 +15,12 @@ public class Output{
         runner = null;
         corp = null;
         fields = fieldsIn;
+        
+        try{
+            sendMessage("Hello from program");
+        } catch(Exception e){
+            PrintLine.println("" + e);
+        }
     }
 
     public void sendMessage(String message) throws Exception{

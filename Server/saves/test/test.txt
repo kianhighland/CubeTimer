@@ -1,0 +1,23 @@
+22
+Hello from program
+
+[1;37mServer: Hello[0;40;37m
+[1;37mServer: Hello[0;40;37m
+[1;37mServer: This is a test[0;40;37m
+[1;37mServer: I think it will work[0;40;37m
+[1;37mServer: That would be good[0;40;37m
+[1;37mServer: Okay[0;40;37m
+[1;37mServer: I will try something else[0;40;37m
+[1;37mServer: Okay good[0;40;37m
+[1;37mServer: Thats okay with you[0;40;37m
+[1;37mServer: Okay it worked [0;40;37m
+[1;37mServer: That's cool[0;40;37m
+[1;37mServer: Okay cool[0;40;37m
+[1;37mServer: Hello[0;40;37m
+[1;37mServer: Hi[0;40;37m
+[1;37mServer: Lets try this[0;40;37m
+[1;37mServer: Nooo[0;40;37m
+[1;37mServer: Hello[0;40;37m
+[1;37mServer: Huh[0;40;37m
+[1;37mServer: Okay[0;40;37m
+[1;37mServer: Hello[0;40;37m

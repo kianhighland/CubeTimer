@@ -60,7 +60,8 @@ public class Corp{
             return;
         }
         System.out.println("First normal" + (char)27 + "[30m" + "black"
-            + (char)27 + "[31m" + "red" + (char)27 + "[32m" + "green" + (char)27            + "[33m" + "yellow" + (char)27 + "[34m" + "blue" + (char)27 + "[35m"
+            + (char)27 + "[31m" + "red" + (char)27 + "[32m" + "green" + (char)27
+            + "[33m" + "yellow" + (char)27 + "[34m" + "blue" + (char)27 + "[35m"
             + "magenta" + (char)27 + "[36m" + "cyan" + (char)27 + "[37m"
             + "white");
         System.out.println("Second bright" + (char)27 + "[1m" + (char)27

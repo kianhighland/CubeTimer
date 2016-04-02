@@ -13,5 +13,5 @@ public class Constants {
     public static final String serverInput = (char)27 + "[1;36m"
         + "Server> " + (char)27 + "[1;32m";
     public static final String serverChat = (char)27 + "[1;37m";
-    public static final String actionPrompts = (char)27 + "[1;30m";
+    public static final String actionPrompts = "[1;30m";
 }

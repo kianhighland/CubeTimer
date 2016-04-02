@@ -56,7 +56,6 @@ public class AcceptPlayers implements Runnable{
                 + fields.getConnectRunner() + "\nYou were a: " + playertype);
             firstOut.writeBoolean(false);
         }
-        
         connect();
     }
 }
