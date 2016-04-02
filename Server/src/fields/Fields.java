@@ -66,8 +66,10 @@ public class Fields{
 
         try{
             save(fileRead);
+            System.out.println(fileRead);
         } catch(IOException e){
             System.out.println(e + "");
+            System.out.println(fileRead);
             return false;
         }
         return true;
@@ -75,13 +77,7 @@ public class Fields{
 
     public void save(String fileName) throws IOException{
 
-        FileWriter fileWriter;
-        if(fileName.matches("")){
-            fileWriter = new FileWriter("../saves/" + fileRead);
-        }
-        else{
-            fileWriter = new FileWriter("../saves/" + fileName);
-        }
+        FileWriter fileWriter = new FileWriter("../saves/" + fileName);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 //                                                                             |
         ListArray list = new ListArray(output);

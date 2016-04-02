@@ -123,18 +123,22 @@ public class UserInput implements Runnable{
                 + " in the saves directory.");
             System.out.println(Constants.actionPrompts + "It is recomended that"
                 + " the files end in .txt");
-            System.out.println(Constants.actionPrompts + "Don't type anything to automaticly save to the file you opened");
+            System.out.println(Constants.actionPrompts + "Don't type anything"
+            + "to automaticly save to the file you opened");
             System.out.print(Constants.serverInput);
             String fileName = userInput.nextLine();
-            if(fileName.matches(""));
+            if(fileName.matches("")){
                 if(!fields.save()){
                     return;
                 }
-            try{
-                fields.save(fileName);
-            } catch(IOException e){
-                System.out.println(e + "");
-                return;
+            }
+            else{
+                try{
+                    fields.save(fileName);
+                } catch(IOException e){
+                    System.out.println(e + "");
+                    return;
+                }
             }
         }
         else if(!firstchar.matches("n")){
