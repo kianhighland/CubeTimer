@@ -7,16 +7,21 @@ public class Actions{
     private DataOutputStream out;
     private Scanner userInput;
     private String mode;
+    private boolean quit;
 
     public Actions(DataOutputStream outIn){
 
         out = outIn;
         userInput = new Scanner(System.in);
         mode = Constants.chatMode;
+        quit = false;
     }
 
     public void write() throws Exception{
 
+        if(quit){
+            return;
+        }
         System.out.print(mode);
         String message = userInput.nextLine();
         String firstChar = "";
@@ -26,6 +31,8 @@ public class Actions{
         if(firstChar.matches(Constants.slash)){
             String secondChar = message.substring(1, 2);
             if(secondChar.matches(Constants.q)){
+                out.writeUTF(Constants.runnerActions + "The Runner has left"
+                    + Constants.normalText);
                 out.writeUTF(Constants.quit);
                 System.out.print((char)27 + "[0m");
                 System.exit(0);
@@ -49,7 +56,10 @@ public class Actions{
     }
 
     public void command() throws Exception{
-
+ 
+        if(quit){
+            return;
+        }
         System.out.println("(q)uit");
         System.out.println("(c)hat");
         System.out.print(mode);

@@ -77,6 +77,7 @@ public class Runner{
         actions = new Actions(out);
         input = new Input(in, actions);
         Thread thread = new Thread(input);
+        out.writeUTF(Constants.runnerActions + "The Runner has joined");
         thread.start();
         try{
             actions.write();
