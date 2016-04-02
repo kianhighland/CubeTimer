@@ -1,4 +1,4 @@
-28
+32
 [1;37mServer: Hello[0;40;37m
 [1;37mServer: This is what I am saying[0;40;37m
 [1;37mServer: This is my last sentice[0;40;37m
@@ -27,3 +27,7 @@
 [1;37mServer: yay[0;40;37m
 [1;37mServer: this is good[0;40;37m
 [1;37mServer: yay[0;40;37m
+[1;37mServer: Cool[0;40;37m
+[0;40;37m[33mRunner: It's here[0;40;37m
+[0;40;37m[33mRunner: Alright[0;40;37m
+[0;40;37m[33mRunner: Now that[0;40;37m

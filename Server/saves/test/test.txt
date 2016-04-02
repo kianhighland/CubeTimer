@@ -1,4 +1,4 @@
-22
+25
 Hello from program
 
 [1;37mServer: Hello[0;40;37m
@@ -21,3 +21,6 @@ Hello from program
 [1;37mServer: Huh[0;40;37m
 [1;37mServer: Okay[0;40;37m
 [1;37mServer: Hello[0;40;37m
+[1;37mServer: Hey[0;40;37m
+[0;40;37m[33mRunner: Hello[0;40;37m
+[0;40;37m[33mRunner: Hey it's me[0;40;37m

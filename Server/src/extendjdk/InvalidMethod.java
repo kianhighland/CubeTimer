@@ -1,4 +1,4 @@
-package extendjdk.otherpackage;
+package extendjdk;
 
 public class InvalidMethod extends Throwable{
 

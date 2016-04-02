@@ -2,8 +2,8 @@ package fields;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import print.PrintLine;
+import extendjdk.ListArray;
 
 public class Fields{
 
@@ -11,7 +11,7 @@ public class Fields{
     public WaitObject waitObject;
     private boolean connectCorp;
     private boolean connectRunner;
-    private ArrayList <String> output;
+    private ListArray output;
     private String openError;
     private String fileRead;
     
@@ -21,7 +21,7 @@ public class Fields{
         waitObject = new WaitObject();
         connectRunner = true;
         connectCorp = true;
-        output = new ArrayList<String>();
+        output = new ListArray();
         fileRead = null;
     }
 //                                                                             |
@@ -51,7 +51,7 @@ public class Fields{
         output.add(message);
     }
 
-    public ArrayList<String> getMessages(){
+    public ListArray getMessages(){
 
         return output;
     }
@@ -75,23 +75,29 @@ public class Fields{
 
     public void save(String fileName) throws IOException{
 
-        FileWriter fileWriter = new FileWriter("../saves/" + fileName);
+        FileWriter fileWriter;
+        if(fileName.matches("")){
+            fileWriter = new FileWriter("../saves/" + fileRead);
+        }
+        else{
+            fileWriter = new FileWriter("../saves/" + fileName);
+        }
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 //                                                                             |
-        ArrayList<String> list = output;
-        int length = output.size();
+        ListArray list = new ListArray(output);
+        int length = list.size();
         bufferedWriter.write(length + "");
         bufferedWriter.newLine();
         for(int i = 0; i < length; i++){
-            bufferedWriter.write(output.get(i));
+            bufferedWriter.write("" + list.get(i));
             bufferedWriter.newLine();
-            PrintLine.println(output.get(i));
+            PrintLine.println("" + list.get(i));
         }
         bufferedWriter.close();
     }
 
     public boolean open(String fileName){
-
+//                                                                             |
     openError = "";
     FileReader fileReader;
     try{
@@ -108,7 +114,7 @@ public class Fields{
         openError = e + "";
         return false;
     }
-    output = new ArrayList<String>();
+    output = new ListArray();
     int length = Integer.parseInt(string);
     for(int i = 0; i < length; i++){
         try{
