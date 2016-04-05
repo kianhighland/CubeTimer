@@ -6,18 +6,18 @@ public class Actions{
 
     private DataOutputStream out;
     private Scanner userInput;
-    private String mode;
+    private Fields fields;
     
-    public Actions(DataOutputStream outIn){
+    public Actions(DataOutputStream outIn, Fields fieldsIn){
 
         out = outIn;
         userInput = new Scanner(System.in);
-        mode = Constants.chatMode;
+        fields = fieldsIn;
     }
 
     public void write() throws Exception{
 
-        System.out.print(mode);
+        System.out.print(fields.getMode());
         String message = userInput.nextLine();
         String firstChar = "";
         if(message.length()> 0){
@@ -26,6 +26,9 @@ public class Actions{
         if(firstChar.matches(Constants.slash)){
             String secondChar = message.substring(1,2);
             if(secondChar.matches(Constants.q)){
+                fields.leave();
+                out.writeUTF(Constants.corpActions + "The Corp has left"
+                    + Constants.normalText);
                 out.writeUTF(Constants.quit);
                 System.out.print((char)27 + "[0m");
                 System.exit(0);
@@ -44,7 +47,7 @@ public class Actions{
                 + Constants.normalText);
         }
         write();
-        mode = Constants.commandMode;
+        fields.setMode(Constants.commandMode);
         command();
     }
 
@@ -52,15 +55,11 @@ public class Actions{
 
         System.out.println("(q)uit");
         System.out.println("(c)hat");
-        System.out.print(mode);
+        System.out.print(fields.getMode());
         String message = userInput.nextLine();
         
         command();
-        mode = Constants.chatMode;
+        fields.setMode(Constants.commandMode);
         write();
-    }
-
-    public String getMode(){
-        return mode;
     }
 }

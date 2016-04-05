@@ -4,12 +4,12 @@ import java.net.*;
 public class Input implements Runnable{
 
     private DataInputStream in;
-    private Actions actions;
+    private Fields fields;
 
-    public Input(DataInputStream inIn, Actions actionsIn){
+    public Input(DataInputStream inIn, Fields fieldsIn){
 
         in = inIn;
-        actions = actionsIn;
+        fields = fieldsIn;
     }
 
     public void run(){
@@ -19,7 +19,13 @@ public class Input implements Runnable{
                 String message = in.readUTF();
                 System.out.print("\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
                 System.out.println(message + "              ");
-                System.out.print(actions.getMode());
+                if(!fields.getLeave()){
+                    System.out.print(fields.getMode());
+                }
+            } catch(Exception e){
+            }
+
+            try{
                 Thread.sleep(200);
             } catch(Exception e){
             }

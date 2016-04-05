@@ -11,10 +11,12 @@ public class Corp{
     private Input input;
     private Actions actions;
     private boolean successful;
+    private Fields fields;
 
     public Corp() throws Exception{
 
         successful = false;
+        fields = new Fields();
         System.out.println(Constants.normalText + "                            "
             + "                                                                "
             + "                                                                "
@@ -78,8 +80,11 @@ public class Corp{
             System.exit(0);
         }
 
-        actions = new Actions(out);
-        input = new Input(in, actions);
+        out.writeUTF(Constants.corpActions + "The Corp has joined"
+            + Constants.normalText);
+
+        actions = new Actions(out, fields);
+        input = new Input(in, fields);
         Thread thread = new Thread(input);
         thread.start();
         actions.write();

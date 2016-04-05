@@ -1,4 +1,4 @@
-10
+15
 Hello from program
 [1;37mServer: Hello[0;40;37m
 [0;40;37m[31mThe Runner has joined
@@ -8,4 +8,9 @@ Hello from program
 [1;37mServer: It's nice to have you[0;40;37m
 [0;40;37m[33mRunner: Thanks[0;40;37m
 [0;40;37m[33mRunner: Bye[0;40;37m
+[0;40;37m[31mThe Runner has left[0;40;37m
+[0;40;37m[31mThe Runner has joined
+[0;40;37m[33mRunner: hi[0;40;37m
+[1;37mServer: Hello[0;40;37m
+[0;40;37m[36mCorp: Hello[0;40;37m
 [0;40;37m[31mThe Runner has left[0;40;37m

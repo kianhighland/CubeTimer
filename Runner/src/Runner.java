@@ -10,11 +10,13 @@ public class Runner{
     private Scanner userInput;
     private Input input;
     private Actions actions;
+    private Fields fields;
     private boolean successful;
 	
     public Runner(){
 
         successful = false;
+        fields = new Fields();
         System.out.println(Constants.normalText + "                            "
             + "                                                                "
             + "                                                                "
@@ -74,8 +76,8 @@ public class Runner{
             System.out.print((char)27 + "[0m");
             System.exit(0);
         }
-        actions = new Actions(out);
-        input = new Input(in, actions);
+        actions = new Actions(out, fields);
+        input = new Input(in, fields);
         Thread thread = new Thread(input);
         out.writeUTF(Constants.runnerActions + "The Runner has joined");
         thread.start();

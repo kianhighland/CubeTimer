@@ -4,25 +4,20 @@ import java.util.Scanner;
 
 public class Actions{
 
+    private Fields fields;
     private DataOutputStream out;
     private Scanner userInput;
-    private String mode;
-    private boolean quit;
-
-    public Actions(DataOutputStream outIn){
-
+//                                                                             |
+    public Actions(DataOutputStream outIn, Fields fieldsIn){
+//                                                                             |
         out = outIn;
         userInput = new Scanner(System.in);
-        mode = Constants.chatMode;
-        quit = false;
+        fields = fieldsIn;
     }
-
+//                                                                             |
     public void write() throws Exception{
-
-        if(quit){
-            return;
-        }
-        System.out.print(mode);
+//                                                                             |
+        System.out.print(fields.getMode());
         String message = userInput.nextLine();
         String firstChar = "";
         if(message.length()> 0){
@@ -31,6 +26,7 @@ public class Actions{
         if(firstChar.matches(Constants.slash)){
             String secondChar = message.substring(1, 2);
             if(secondChar.matches(Constants.q)){
+                fields.leave();
                 out.writeUTF(Constants.runnerActions + "The Runner has left"
                     + Constants.normalText);
                 out.writeUTF(Constants.quit);
@@ -51,25 +47,19 @@ public class Actions{
                 + message + Constants.normalText);
         }
         write();
-        mode = Constants.commandMode;
+        fields.setMode(Constants.commandMode);
         command();
     }
-
+//                                                                             |
     public void command() throws Exception{
- 
-        if(quit){
-            return;
-        }
+//                                                                             |
         System.out.println("(q)uit");
         System.out.println("(c)hat");
-        System.out.print(mode);
-       
+        System.out.print(fields.getMode());
+//                                                                             |
         command();
-        mode = Constants.chatMode;
+        fields.setMode(Constants.chatMode);
         write();
     }
-
-    public String getMode(){
-        return mode;
-    }
+//                                                                             |
 }
