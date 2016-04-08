@@ -45,7 +45,7 @@ public class Actions{
         actions();
     }
 //                                                                             |
-    public void write() throws Exception{
+    public void write(){
 //                                                                             |
         System.out.print(fields.getMode().getModeText());
         String message = userInput.nextLine();
@@ -57,9 +57,15 @@ public class Actions{
             String secondChar = message.substring(1, 2);
             if(secondChar.matches(Constants.q)){
                 fields.leave();
-                out.writeUTF(Constants.runnerActions + "The Runner has left"
-                    + Constants.normalText);
-                out.writeUTF(Constants.quit);
+                try{
+                    out.writeUTF(Constants.runnerActions + "The Runner has left"
+                        + Constants.normalText);
+                    out.writeUTF(Constants.quit);
+                } catch(IOException e){
+                    System.out.println("There was an IOException when trying to"
+                        + " send to the Server. This was in the class Actions");
+                    System.out.println(e);
+                }
                 System.out.print((char)27 + "[0m");
                 System.exit(0);
             }
@@ -73,12 +79,18 @@ public class Actions{
             }
         }
         else{
-            out.writeUTF(Constants.runnerChat + Constants.runner + ": "
-                + message + Constants.normalText);
+            try{
+                out.writeUTF(Constants.runnerChat + Constants.runner + ": "
+                    + message + Constants.normalText);
+            } catch(IOException e){
+                System.out.println("There was an IOException when trying to "
+                    + "write to the Server. This was in the class Actions");
+                System.out.println(e);
+            }
         }
     }
 //                                                                             |
-    public void command() throws Exception{
+    public void command(){
 //                                                                             |
         System.out.println("(q)uit");
         System.out.println("(c)hat");
@@ -88,9 +100,14 @@ public class Actions{
             String firstChar = message.substring(0,1);
             if(firstChar.matches(Constants.q)){
                 fields.leave();
-                out.writeUTF(Constants.runnerActions + "The Runner has left"
-                    + Constants.normalText);
-                out.writeUTF(Constants.quit);
+                try{
+                    out.writeUTF(Constants.runnerActions + "The Runner has left"
+                        + Constants.normalText);
+                    out.writeUTF(Constants.quit);
+                } catch(IOException e){
+                    System.out.println("There was an IOException when trying to"
+                        + " send to the Server. This was in the class Actions");
+                }
                 System.out.print("[0m");
                 System.exit(0);
             }
