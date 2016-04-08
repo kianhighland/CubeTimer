@@ -23,7 +23,7 @@ public class Input implements Runnable{
                 System.out.println(Constants.normalText +message
                     + "                ");
                 if(!fields.getLeave()){
-                    System.out.print(fields.getMode());
+                    System.out.print(fields.getMode().getModeText());
                 }
             } catch(Exception e){
             }

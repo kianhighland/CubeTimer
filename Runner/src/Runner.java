@@ -32,32 +32,38 @@ public class Runner{
         System.out.println("24.9.62.120");
         String ip = userInput.nextLine();
                                                                                 
-        try{
-            connect(ip);
-        } catch(UnknownHostException e){
-            System.out.println("UnknownHostExceptionException: " + e);
-        } catch(ConnectException e){
-            System.out.println("ConnectException: " + e);
-        } catch(IOException e){
-            System.out.println("IOException: " + e);
-        } catch(InterruptedException e){
-            System.out.println("InterruptedException: " + e);
-        }catch(Exception e){
-            System.out.println("InterruptedException: " + e);
-        }
-        System.out.println("bye");
+        connect(ip);
     }
 
-    public void connect(String ip)
-        throws ConnectException, UnknownHostException, IOException,
-        InterruptedException{
+    public void connect(String ip){
 
-        socket = new Socket(ip, 7665);
-        out = new DataOutputStream(socket.getOutputStream());
-        in = new DataInputStream(socket.getInputStream());
-        out.writeUTF(Constants.runner);
-        Thread.sleep(10);
-        String message = in.readUTF();
+        try{
+            socket = new Socket(ip, 7665);
+            out = new DataOutputStream(socket.getOutputStream());
+            in = new DataInputStream(socket.getInputStream());
+            out.writeUTF(Constants.runner);
+        } catch(ConnectException e){
+            System.out.println("ConnectException " + e);
+            System.out.println("1");
+            return;
+        } catch(IOException e){
+            System.out.println("IOException " + e);
+            System.out.println("1");
+        }
+        try{
+            Thread.sleep(10);
+        } catch(InterruptedException e){
+            System.out.println("Interruped Exception " + e);
+            System.out.println("2");
+        }
+            String message;
+        try{
+            message = in.readUTF();
+        } catch (IOException e){
+            System.out.println("IOException" + e);
+            System.out.println("3");
+            message = "IOException" + e;
+        }
         System.out.println("First normal" + (char)27 + "[30m" + "black"
             + (char)27 + "[31m" + "red" + (char)27 + "[32m" + "green" + (char)27
             + "[33m" + "yellow" + (char)27 + "[34m" + "blue" + (char)27 + "[35m"
@@ -70,7 +76,14 @@ public class Runner{
             + "cyan" + (char)27 + "[37m" + "white" + Constants.normalText);
         System.out.println(message);
 
-        Boolean success = in.readBoolean();
+        Boolean success;
+        try{
+            success = in.readBoolean();
+        } catch (IOException e){
+            System.out.println("IOException " + e);
+            System.out.println("4");
+            success = false;
+        }
 
         if(!success){
             System.out.print((char)27 + "[0m");
@@ -79,13 +92,14 @@ public class Runner{
         actions = new Actions(out, fields);
         input = new Input(in, fields);
         Thread thread = new Thread(input);
-        out.writeUTF(Constants.runnerActions + "The Runner has joined");
-        thread.start();
         try{
-            actions.write();
+            out.writeUTF(Constants.runnerActions + "The Runner has joined");
         } catch(Exception e){
-            System.out.println(e);
+            System.out.println("IOException " + e);
+            System.out.println("5");
         }
+        thread.start();
+        actions.actions();
         successful = true;
     }
 }

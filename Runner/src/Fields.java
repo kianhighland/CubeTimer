@@ -1,12 +1,12 @@
 public class Fields{
 
     private boolean leave;
-    private String mode;
+    private Mode mode;
 
     public Fields(){
 
         leave = false;
-        mode = Constants.chatMode;
+        mode = new Mode();
     }
     
     private void setLeave(boolean newLeave){
@@ -21,11 +21,7 @@ public class Fields{
         leave = true;
     }
 
-    public void setMode(String newMode){
-        mode = newMode;
-    }
-
-    public String getMode(){
+    public Mode getMode(){
         return mode;
     }
 }
