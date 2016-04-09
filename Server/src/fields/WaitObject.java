@@ -1,6 +1,6 @@
 package fields;
 
-import print.PrintLine;
+import staticpackage.print;
 
 public class WaitObject{
 

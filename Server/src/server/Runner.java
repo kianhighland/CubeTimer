@@ -5,7 +5,7 @@ import java.net.*;
 import connection.ConnectRunner;
 import fields.Fields;
 import fields.Constants;
-import print.PrintLine;
+import staticpackage.print;
 
 public class Runner implements Runnable{
 

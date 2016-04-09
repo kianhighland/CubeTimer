@@ -1,7 +1,7 @@
 package server;
 
 import fields.Constants;
-import print.PrintLine;
+import staticpackage.print;
 import fields.Fields;
 
 public class Output{

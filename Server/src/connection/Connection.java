@@ -5,8 +5,8 @@ import java.net.*;
 import server.*;
 import fields.Fields;
 import fields.Constants;
-import print.PrintLine;
 import java.util.Scanner;
+import staticpackage.print;
 
 public class Connection{
     

@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.Scanner;
 import fields.Fields;
 import fields.Constants;
+import staticpackage.print;
 
 public class UserInput implements Runnable{
 

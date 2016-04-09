@@ -5,7 +5,7 @@ import java.net.*;
 import connection.ConnectCorp;
 import fields.Fields;
 import fields.Constants;
-import print.PrintLine;
+import staticpackage.print;
 
 public class Corp implements Runnable{
 

@@ -2,8 +2,8 @@ package fields;
 
 import java.io.*;
 import java.net.Socket;
-import print.PrintLine;
 import staticpackage.Static;
+import staticpackage.print;
 import java.util.ArrayList;
 
 public class Fields{

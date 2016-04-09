@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 import fields.Fields;
 import fields.Constants;
-import print.PrintLine;
+import staticpackage.print;
 
 public class AcceptPlayers implements Runnable{
 

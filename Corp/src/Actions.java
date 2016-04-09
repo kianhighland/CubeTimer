@@ -15,9 +15,27 @@ public class Actions{
         fields = fieldsIn;
     }
 
-    public void write() throws Exception{
+    public void actions(){
 
-        System.out.print(fields.getMode());
+        Modes mode = fields.getMode().getMode();
+        if(mode == Modes.CHAT){
+            write();
+        }
+        else if(mode == Modes.COMMAND){
+            command();
+        }
+        else{
+            System.out.println("Problem");
+            System.out.println("There is an unrecognized mode in the class "
+                + "Actions. That Mode is " + mode);
+        }
+
+        actions();
+    }
+
+    public void write(){
+
+        System.out.print(fields.getMode().getModeText());
         String message = userInput.nextLine();
         String firstChar = "";
         if(message.length()> 0){
@@ -27,9 +45,15 @@ public class Actions{
             String secondChar = message.substring(1,2);
             if(secondChar.matches(Constants.q)){
                 fields.leave();
-                out.writeUTF(Constants.corpActions + "The Corp has left"
-                    + Constants.normalText);
-                out.writeUTF(Constants.quit);
+                try{
+                    out.writeUTF(Constants.corpActions + "The Corp has left"
+                        + Constants.normalText);
+                    out.writeUTF(Constants.quit);
+                } catch(IOException e){
+                    System.out.println("IOException in class Actions when"
+                        + " trying to write to the server");
+                    System.out.println(e);
+                }
                 System.out.print((char)27 + "[0m");
                 System.exit(0);
             }
@@ -43,23 +67,47 @@ public class Actions{
             }
         }
         else{
-            out.writeUTF(Constants.corpChat + Constants.corp + ": " + message
-                + Constants.normalText);
+            try{
+                out.writeUTF(Constants.corpChat + Constants.corp + ": "
+                    + message + Constants.normalText);
+            } catch(IOException e){
+                System.out.println("IOException in class Actions when trying to"
+                    + " write to the server");
+                System.out.println(e);
+            }
         }
-        write();
-        fields.setMode(Constants.commandMode);
-        command();
     }
 
-    public void command() throws Exception{
+    public void command(){
 
         System.out.println("(q)uit");
         System.out.println("(c)hat");
-        System.out.print(fields.getMode());
+        System.out.print(fields.getMode().getModeText());
         String message = userInput.nextLine();
-        
-        command();
-        fields.setMode(Constants.commandMode);
-        write();
+
+        if(message.length() > 0){
+            String firstChar = message.substring(0,1);
+            if(firstChar.matches(Constants.q)){
+                fields.leave();
+                try{
+                    out.writeUTF(Constants.corpActions + "The Runner has left"
+                        + Constants.normalText);
+                    out.writeUTF(Constants.quit);
+                } catch(Exception e){
+                    System.out.println("There was an IOException when trying to"
+                        + " send to the Server. This was in the class Actions");
+                }
+
+                System.out.println("[0m");
+                System.exit(0);
+            }
+            else if(firstChar.matches(Constants.c)){
+                fields.getMode().setMode(Modes.CHAT);
+            }
+            else{
+                System.out.println(message + " did not start with any of the"
+                    + "avaliable commands");
+            }
+        }
     }
 }

@@ -26,6 +26,9 @@ public class Input implements Runnable{
                     System.out.print(fields.getMode().getModeText());
                 }
             } catch(Exception e){
+                System.out.println("Hey there is an exception in the class "
+                    + "Input");
+                System.out.println(e);
             }
 //                                                                             |
             try{

@@ -20,9 +20,12 @@ public class Input implements Runnable{
                 System.out.print("\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
                 System.out.println(message + "              ");
                 if(!fields.getLeave()){
-                    System.out.print(fields.getMode());
+                    System.out.print(fields.getMode().getModeText());
                 }
             } catch(Exception e){
+                System.out.println("Hey there is an exception in the class "
+                    + "Input");
+                System.out.println(e);
             }
 
             try{

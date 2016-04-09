@@ -1,7 +1,7 @@
-package extendjdk;
+//package extendjdk;
 
-public class InvalidMethod extends Throwable{
+//public class InvalidMethod extends Throwable{
 
-    public InvalidMethod(){
-    }
-}
+//    public InvalidMethod(){
+//    }
+//}

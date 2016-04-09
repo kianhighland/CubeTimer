@@ -19,21 +19,11 @@ public class Actions{
     
         Modes mode = fields.getMode().getMode();
         if(mode == Modes.CHAT){
-            try{
-                write();
-            } catch(Exception e){
-                System.out.println(e);
-                System.out.println("That was in the class actions method chat");
-            }
+            write();
         }
 
         else if(mode == Modes.COMMAND){
-            try{
-                command();
-            } catch(Exception e){
-                System.out.println(e);
-                System.out.println("Class actions method command");
-            }
+            command();
         }
 
         else{

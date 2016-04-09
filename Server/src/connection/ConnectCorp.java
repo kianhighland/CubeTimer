@@ -5,7 +5,7 @@ import java.net.*;
 import server.*;
 import fields.Fields;
 import fields.Constants;
-import print.PrintLine;
+import staticpackage.print;
 import java.util.ArrayList;
 
 public class ConnectCorp{
