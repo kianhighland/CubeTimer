@@ -1,8 +1,8 @@
 package server;
 
 import fields.Constants;
-import staticpackage.print;
 import fields.Fields;
+import staticpackage.PrintLine;
 
 public class Output{
 
@@ -23,7 +23,7 @@ public class Output{
         }
     }
 
-    public void sendMessage(String message) throws Exception{
+    public void sendMessage(String message){
                                                                                 
         PrintLine.println(Constants.normalText + message);
         fields.newMessage(message);

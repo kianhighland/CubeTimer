@@ -5,7 +5,7 @@ import java.net.*;
 import connection.ConnectRunner;
 import fields.Fields;
 import fields.Constants;
-import staticpackage.print;
+import staticpackage.PrintLine;
 
 public class Runner implements Runnable{
 
@@ -46,12 +46,16 @@ public class Runner implements Runnable{
         }
     }
 
-    public void sendMessage(String message) throws Exception{
+    public void sendMessage(String message){
 
-        out.writeUTF(message);
+        try{
+            out.writeUTF(message);
+        } catch(IOException e){
+            System.out.println(e);
+        }
     }
     
-    private boolean command(String command) throws Exception{
+    private boolean command(String command){
 
         String firstChar = command.substring(0, 1);
         if(firstChar.matches(Constants.slash)){

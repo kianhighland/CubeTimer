@@ -1,6 +1,7 @@
 package staticpackage;
 
 import java.util.ArrayList;
+import staticpackage.PrintLine;
 
 public class Static{
 

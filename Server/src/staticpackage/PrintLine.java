@@ -1,4 +1,4 @@
-package print;
+package staticpackage;
 
 import fields.Constants;
 

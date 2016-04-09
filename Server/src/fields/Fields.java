@@ -3,8 +3,8 @@ package fields;
 import java.io.*;
 import java.net.Socket;
 import staticpackage.Static;
-import staticpackage.print;
 import java.util.ArrayList;
+import staticpackage.PrintLine;
 
 public class Fields{
 
@@ -65,32 +65,48 @@ public class Fields{
             return false;
         }
 
-        try{
-            save(fileRead);
-            System.out.println(fileRead);
-        } catch(IOException e){
-            System.out.println(e + "");
-            System.out.println(fileRead);
-            return false;
-        }
+        save(fileRead);
+        System.out.println(fileRead);
         return true;
     }
 
-    public void save(String fileName) throws IOException{
+    public boolean save(String fileName){
 
-        FileWriter fileWriter = new FileWriter("../saves/" + fileName);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        FileWriter fileWriter;
+        BufferedWriter bufferedWriter;
+        try{
+            fileWriter = new FileWriter("../saves/" + fileName);
+            bufferedWriter = new BufferedWriter(fileWriter);
+        } catch(IOException e){
+            System.out.println(e);
+            return false;
+        }
 //                                                                             |
         ArrayList<String> list = Static.copyArrayListString(output);
         int length = list.size();
-        bufferedWriter.write(length + "");
-        bufferedWriter.newLine();
-        for(int i = 0; i < length; i++){
-            bufferedWriter.write("" + list.get(i));
+        try{
+            bufferedWriter.write(length + "");
             bufferedWriter.newLine();
+        } catch(IOException e){
+            System.out.println(e);
+            return false;
+        }
+        for(int i = 0; i < length; i++){
+            try{
+                bufferedWriter.write("" + list.get(i));
+                bufferedWriter.newLine();
+            } catch(IOException e){
+                System.out.println(e);
+            }
             PrintLine.println("" + list.get(i));
         }
-        bufferedWriter.close();
+        try{
+            bufferedWriter.close();
+        } catch(IOException e){
+            System.out.println(e);
+            return false;
+        }
+        return true;
     }
 
     public boolean open(String fileName){

@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.Scanner;
 import fields.Fields;
 import fields.Constants;
-import staticpackage.print;
+import staticpackage.PrintLine;
 
 public class UserInput implements Runnable{
 
@@ -28,7 +28,7 @@ public class UserInput implements Runnable{
         }
     }
 
-    public void serverInput() throws Exception{
+    public void serverInput(){
 
         System.out.print(Constants.serverInput);
         String message = userInput.nextLine();
@@ -73,7 +73,11 @@ public class UserInput implements Runnable{
             else{
                 fields.threads.userInput = new Thread(this);
                 fields.threads.userInput.start();
-                Thread.sleep(10);
+                try{
+                    Thread.sleep(10);
+                } catch(InterruptedException e){
+                    System.out.println(e);
+                }
                 output.sendMessage(Constants.serverChat + Constants.server +": "
                     + message + Constants.normalText);
                 return;
@@ -82,7 +86,7 @@ public class UserInput implements Runnable{
         serverInput();
     }
 
-    private void qWithPlayers() throws Exception{
+    private void qWithPlayers(){
 
         System.out.print(Constants.serverInput);
         String message = userInput.nextLine();
@@ -134,12 +138,10 @@ public class UserInput implements Runnable{
                 }
             }
             else{
-                try{
-                    fields.save(fileName);
-                } catch(IOException e){
-                    System.out.println(e + "");
+                if(!fields.save(fileName)){
                     return;
                 }
+                
             }
         }
         else if(!firstchar.matches("n")){

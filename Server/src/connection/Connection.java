@@ -6,7 +6,7 @@ import server.*;
 import fields.Fields;
 import fields.Constants;
 import java.util.Scanner;
-import staticpackage.print;
+import staticpackage.PrintLine;
 
 public class Connection{
     
@@ -21,7 +21,7 @@ public class Connection{
     private UserInput userInput;
     private AcceptPlayers acceptPlayers;
 
-    public Connection() throws Exception{
+    public Connection(){
 
         System.out.print(Constants.normalText);
         System.out.println(Constants.normalText + "                            "
@@ -33,7 +33,12 @@ public class Connection{
         System.out.println();
     	fields = new Fields();
         System.out.println("starting server...");
-        serverSocket = new ServerSocket(7665);
+        try{
+            serverSocket = new ServerSocket(7665);
+        } catch(IOException e){
+             System.out.print("IOException tying to create a server socket ");
+             System.out.println("in class connection");
+        }
         System.out.println("server started");
         output = new Output(fields);
         connectRunner = new ConnectRunner(output, serverSocket, fields);
@@ -48,7 +53,7 @@ public class Connection{
         fields.threads.userInput.start();
     }
 
-    private void write() throws Exception{
+/*    private void write() throws Exception{
 
         FileWriter fileWriter = new FileWriter("../saves/testtest.txt");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -76,7 +81,7 @@ public class Connection{
         int integer = Integer.parseInt(string);
         System.out.println(integer);
         bufferedReader.close();
-    }
+    }*/
 
     private void openFile(){
 
