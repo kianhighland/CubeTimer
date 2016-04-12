@@ -18,7 +18,14 @@ public class Input implements Runnable{
             try{
                 String message = in.readUTF();
                 System.out.print("\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
-                System.out.println(message + "              ");
+                if(message.matches(Constants.quit)){
+                    fields.leave();
+                    System.out.println("[0m");
+                    System.exit(0);
+                }
+                else{
+                    System.out.println(message + "              ");
+                }
                 if(!fields.getLeave()){
                     System.out.print(fields.getMode().getModeText());
                 }

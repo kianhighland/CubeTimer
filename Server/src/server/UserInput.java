@@ -93,6 +93,7 @@ public class UserInput implements Runnable{
         if(message.length() > 0){
             String firstChar = message.substring(0, 1);
             if(firstChar.matches(Constants.q)){
+                output.sendMessage("Server Closed");
                 output.sendMessage(Constants.quit);
                 quit();
             }
