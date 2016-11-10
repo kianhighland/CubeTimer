@@ -21,7 +21,8 @@ public class SpaceReleasedAction extends AbstractAction{
 	
 	public void actionPerformed(ActionEvent e){
 	
-		fields.setGreenText(false);
+        System.out.println("released");
+        fields.setGreenText(false);
 		
 		if(fields.getIgnoreNextRelese()){
 			fields.setIgnoreNextRelese(false);
