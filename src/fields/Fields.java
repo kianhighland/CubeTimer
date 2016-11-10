@@ -23,6 +23,7 @@ public class Fields {
 	private boolean ignoreNextRelese;
 
 	private boolean paintComponentDone;
+        private boolean spaceReleased;
 
 	private AllUsers allUsers;
 
@@ -40,7 +41,16 @@ public class Fields {
 		setPaintComponentDone(false);
 
 		setDisplayState(DisplayState.timer);
+                spaceReleased = false;
 	}
+
+        public void setSpaceReleased(boolean space){
+            spaceReleased = space;
+        }
+
+        public boolean getSpaceReleased(){
+            return spaceReleased;
+        }
 
 	public void setScreenSize(int windowWidth, int windowHeight) {
 

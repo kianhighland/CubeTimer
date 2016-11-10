@@ -8,6 +8,7 @@ import cubetimer.Paint;
 import cubetimer.Scrambler;
 import cubetimer.Stackmat;
 import fields.Fields;
+import swingTimerActions.SpaceReleased;
 
 @SuppressWarnings("serial")
 public class KeyBindings extends JComponent{
@@ -49,9 +50,9 @@ public class KeyBindings extends JComponent{
         this.getInputMap().put(KeyStroke.getKeyStroke("released SPACE"),
             "SpaceReleased");
         this.getActionMap().put("SpaceReleased", spaceReleasedAction);
-		
+
         this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "LeftPressed");
-		
+
         this.getInputMap().put(KeyStroke.getKeyStroke("ESCAPE"),
             "EscapePressed");
         this.getActionMap().put("EscapePressed", escapeAction);
