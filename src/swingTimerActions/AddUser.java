@@ -9,20 +9,20 @@ import fields.Fields;
 
 
 public class AddUser implements ActionListener{
-	
-	public Fields fields;
-	public Paint paint;
-	
-	public AddUser(Fields f, Paint p){
-		
-		fields = f;
-		paint = p;
-	}
+    
+    public Fields fields;
+    public Paint paint;
+    
+    public AddUser(Fields f, Paint p){
+        
+        fields = f;
+        paint = p;
+    }
 
-	public void actionPerformed(ActionEvent e){
-	
-		Actions.addUser(fields, paint);
-		
-	}
-	
+    public void actionPerformed(ActionEvent e){
+    
+        Actions.addUser(fields, paint);
+        
+    }
+    
 }

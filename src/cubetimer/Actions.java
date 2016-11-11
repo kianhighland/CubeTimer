@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import javax.swing.Timer;
 
+import fields.Constants;
 import fields.DisplayState;
 import fields.Fields;
 import fields.TwistyPuzzleType;
@@ -17,149 +18,150 @@ import swingTimerActions.ChangeUser;
 
 public class Actions {
 
-	public static void callUponOpen(Fields fields) {
+    public static void callUponOpen(Fields fields) {
 
-		fields.getAllUsers().addUser(new User());
+        fields.getAllUsers().addUser(new User());
 
-		@SuppressWarnings("resource")
-		Scanner userInput = new Scanner(System.in);
-		System.out.println("What is your first Users Name?");
-		String userName = userInput.nextLine();
-		fields.getAllUsers().getUser(0).setUserName(userName);
-		fields.getAllUsers().setCurrentUserIndex(0);
-		fields.changeSinceLastRepaint();
-	}
+        @SuppressWarnings("resource")
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("What is your first Users Name?");
+        String userName = userInput.nextLine();
+        fields.getAllUsers().getUser(0).setUserName(userName);
+        fields.getAllUsers().setCurrentUserIndex(0);
+        fields.changeSinceLastRepaint();
+    }
 
-	public static void addUser(Fields fields, Paint paint) {
+    public static void addUser(Fields fields, Paint paint) {
 
-		@SuppressWarnings("resource")
-		Scanner userInput = new Scanner(System.in);
+        @SuppressWarnings("resource")
+        Scanner userInput = new Scanner(System.in);
 
-		System.out.println("What is your new users name?");
-		String userName = userInput.nextLine();
-		fields.getAllUsers().addUser(new User());
-		fields.getAllUsers().setCurrentUserIndex(fields.getAllUsers().getSize() - 1);
-		fields.getAllUsers().getUser().setUserName(userName);
-		fields.setDisplayState(DisplayState.timer);
-		fields.getAllUsers().getUser().getTwistyPuzzle().setLastAvarageOf5();
-		fields.changeSinceLastRepaint();
+        System.out.println(Constants.addUserPrompt);
+        String userName = userInput.nextLine();
+        fields.getAllUsers().addUser(new User());
+        fields.getAllUsers().setCurrentUserIndex(fields.getAllUsers()
+            .getSize() - 1);
+        fields.getAllUsers().getUser().setUserName(userName);
+        fields.setDisplayState(DisplayState.timer);
+        fields.getAllUsers().getUser().getTwistyPuzzle().setLastAvarageOf5();
+        fields.changeSinceLastRepaint();
 
-		paint.repaint();
-	}
+        paint.repaint();
+    }
 
-	public static void changeUser(Fields fields, Paint paint) {
+    public static void changeUser(Fields fields, Paint paint) {
 
-		@SuppressWarnings("resource")
-		Scanner userInput = new Scanner(System.in);
+        @SuppressWarnings("resource")
+        Scanner userInput = new Scanner(System.in);
 
-		System.out
-				.println("What is the name of user you would like to swich to?");
-		String userName = userInput.nextLine();
+        System.out.println(Constants.changeUserPrompt);
+        String userName = userInput.nextLine();
 
-		if (fields.getAllUsers().getIndexOfUserWithUserName(userName) < 0) {
-			System.out
-					.println("That user does not exist. You may have typed it wrong. Good luck if you try again.");
-		} else {
-			fields.getAllUsers().setCurrentUserUsingUserName(userName);
-		}
+        if (fields.getAllUsers().getIndexOfUserWithUserName(userName) < 0) {
+            System.out.println(Constants.incorrectUserMessage);
+        } else {
+            fields.getAllUsers().setCurrentUserUsingUserName(userName);
+        }
 
-		fields.getAllUsers().getUser().getTwistyPuzzle().setLastAvarageOf5();
-		fields.changeSinceLastRepaint();
+        fields.getAllUsers().getUser().getTwistyPuzzle().setLastAvarageOf5();
+        fields.changeSinceLastRepaint();
 
-		paint.repaint();
-	}
+        paint.repaint();
+    }
 
-	public static void deleteCurrentUser(Fields fields, Paint paint) {
+    public static void deleteCurrentUser(Fields fields, Paint paint) {
 
-		if (fields.getAllUsers().getSize() > 1) {
+        if (fields.getAllUsers().getSize() > 1) {
 
-			fields.getAllUsers().remove();
-			fields.changeSinceLastRepaint();
+            fields.getAllUsers().remove();
+            fields.changeSinceLastRepaint();
 
-			paint.repaint();
+            paint.repaint();
 
-			Timer changeUser = new Timer(0, new ChangeUser(fields));
-			changeUser.setRepeats(false);
+            Timer changeUser = new Timer(0, new ChangeUser(fields));
+            changeUser.setRepeats(false);
 
-			fields.setDisplayState(DisplayState.changeUser);
-		}
+            fields.setDisplayState(DisplayState.changeUser);
+        }
 
-		else {
+        else {
 
-			fields.setDisplayState(DisplayState.timer);
-			fields.changeSinceLastRepaint();
-			
-			paint.repaint();
-		}
+            fields.setDisplayState(DisplayState.timer);
+            fields.changeSinceLastRepaint();
+            
+            paint.repaint();
+        }
 
-	}
+    }
 
-	public static void renameCurrentUser(Fields fields, Paint paint) {
+    public static void renameCurrentUser(Fields fields, Paint paint) {
 
-		@SuppressWarnings("resource")
-		Scanner userInput = new Scanner(System.in);
+        @SuppressWarnings("resource")
+        Scanner userInput = new Scanner(System.in);
 
-		System.out.println("What is you users new name?");
-		String userName = userInput.nextLine();
-		fields.getAllUsers().getUser().setUserName(userName);
-		fields.setDisplayState(DisplayState.timer);
-		fields.changeSinceLastRepaint();
+        System.out.println(Constants.renameUserPrompt);
+        String userName = userInput.nextLine();
+        fields.getAllUsers().getUser().setUserName(userName);
+        fields.setDisplayState(DisplayState.timer);
+        fields.changeSinceLastRepaint();
 
-		paint.repaint();
-	}
+        paint.repaint();
+    }
 
-	public static void randomTwistyPuzzle(Fields fields) {
+    public static void randomTwistyPuzzle(Fields fields) {
 
-		Random random = new Random();
+        Random random = new Random();
 
-		int randomNumber = random.nextInt(TwistyPuzzleType.values().length);
-		fields.getAllUsers().getUser().setTwistyPuzzleType(
-				TwistyPuzzleType.values()[randomNumber]);
+        int randomNumber = random.nextInt(TwistyPuzzleType.values().length);
+        fields.getAllUsers().getUser().setTwistyPuzzleType(
+                TwistyPuzzleType.values()[randomNumber]);
 
-		if (fields.getAllUsers().getUser().getTwistyPuzzleType() == TwistyPuzzleType.megaMinx) {
-			fields.getDisplayedData().getScrambleData().setScrambleLenght(40);
-		} else {
-			fields.getDisplayedData().getScrambleData().setScrambleLenght(20);
-		}
-		
-		fields.changeSinceLastRepaint();
+        fields.changeSinceLastRepaint();
 
-	}
+    }
 
-	public static void
-			setScrambleInFields(Fields fields, String randomScramble) {
+    public static void
+        setScrambleInFields(Fields fields, String randomScramble) {
 
-		if (randomScramble.contains("/n")) {
+        if (randomScramble.contains("/n")) {
 
-			fields.getDisplayedData().getScrambleData().setRandomScrambleAfterSplit(randomScramble.split("/n"));
-			fields.getDisplayedData().getScrambleData().setScrambleSize(fields.getDisplayedData().getScrambleData().getRandomScrambleAfterSplit()[0]
-					.length() / 2.0 + 4.0);
-			fields.getDisplayedData().getScrambleData().setUseStringListForRandomScramble(true);
-		}
+            fields.getDisplayedData().getScrambleData()
+                .setRandomScrambleAfterSplit(randomScramble.split("/n"));
+            fields.getDisplayedData().getScrambleData().setScrambleSize(fields
+                .getDisplayedData().getScrambleData()
+                .getRandomScrambleAfterSplit()[0].length() / 2.0 + 4.0);
+            fields.getDisplayedData().getScrambleData()
+                .setUseStringListForRandomScramble(true);
+        }
 
-		else {
+        else {
 
-			fields.getDisplayedData().getScrambleData().setRandomScramble(randomScramble);
-			fields.getDisplayedData().getScrambleData().setScrambleSize(randomScramble.length() / 2.0 + 4.0);
-			fields.getDisplayedData().getScrambleData().setUseStringListForRandomScramble(false);
-		}
+            fields.getDisplayedData().getScrambleData()
+                .setRandomScramble(randomScramble);
+            fields.getDisplayedData().getScrambleData()
+                .setScrambleSize(randomScramble.length() / 2.0 + 4.0);
+            fields.getDisplayedData().getScrambleData()
+                .setUseStringListForRandomScramble(false);
+        }
 
-		if (fields.getDisplayedData().getScrambleData().getScrambleSize() < 4.0) {
-			fields.getDisplayedData().getScrambleData().setScrambleSize(4.0);
-		}
-		
-		fields.changeSinceLastRepaint();
-	}
+        if (fields.getDisplayedData().getScrambleData()
+            .getScrambleSize() < 4.0) {
 
-	public static ArrayList<Integer> getDefaultWindowSize() {
+            fields.getDisplayedData().getScrambleData().setScrambleSize(4.0);
+        }
+        
+        fields.changeSinceLastRepaint();
+    }
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = (int) ((screenSize.getWidth() * 2) / 3);
-		int height = (int) ((screenSize.getHeight() * 2) / 3);
+    public static ArrayList<Integer> getDefaultWindowSize() {
 
-		ArrayList<Integer> windowSize = new ArrayList<Integer>();
-		windowSize.addAll(Arrays.asList(new Integer[] { width, height }));
-		return windowSize;
-	}
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int) ((screenSize.getWidth() * 2) / 3);
+        int height = (int) ((screenSize.getHeight() * 2) / 3);
+
+        ArrayList<Integer> windowSize = new ArrayList<Integer>();
+        windowSize.addAll(Arrays.asList(new Integer[] { width, height }));
+        return windowSize;
+    }
 
 }

@@ -20,22 +20,10 @@ public class KeyPressActions {
         paint.repaint();
     }
 
-    public static void
-            changeToTwistyPuzzle(Fields fields,
-                    TwistyPuzzleType twistyPuzzleType, Scrambler scrambler,
-                    Paint paint) {
+    public static void changeToTwistyPuzzle(Fields fields,
+        TwistyPuzzleType twistyPuzzleType, Scrambler scrambler, Paint paint) {
 
         fields.getAllUsers().getUser().setTwistyPuzzleType(twistyPuzzleType);
-
-        if (twistyPuzzleType == TwistyPuzzleType.megaMinx) {
-            fields.getDisplayedData().getScrambleData().setScrambleLenght(40);
-        }
-
-        else if (twistyPuzzleType == TwistyPuzzleType.cube2x2x2) {
-            fields.getDisplayedData().getScrambleData().setScrambleLenght(10);
-        } else {
-            fields.getDisplayedData().getScrambleData().setScrambleLenght(20);
-        }
 
         scrambler.randomCorrectScrambleInFieldsUsingFields();
 

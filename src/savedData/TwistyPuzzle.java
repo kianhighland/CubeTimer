@@ -2,6 +2,7 @@ package savedData;
 
 import java.util.ArrayList;
 
+import fields.Constants;
 import fields.TwistyPuzzleType;
 
 public class TwistyPuzzle {
@@ -10,13 +11,29 @@ public class TwistyPuzzle {
 	private ArrayList<Time> times;
 	private ArrayList<Double> last5SolvesForAvarageOf5;
 	private String avarageOf5;
+        private int scrambleLength;
 
 	public TwistyPuzzle(TwistyPuzzleType twistyPuzzleTypeIn) {
 
 		twistyPuzzleType = twistyPuzzleTypeIn;
 		times = new ArrayList<Time>();
 		avarageOf5 = "No Avarage Of 5 Yet";
+
+                if(twistyPuzzleType == TwistyPuzzleType.megaMinx){
+                    scrambleLength = Constants.megaMinxDefaultScrambleLength;
+                }
+                else{
+                    scrambleLength = Constants.defaultScrambleLength;
+                }
 	}
+
+        public int getScrambleLength(){
+            return scrambleLength;
+        }
+     
+        public void setScrambleLength(int scrambleLengthIn){
+            scrambleLength = scrambleLengthIn;
+        }
 
 	public TwistyPuzzleType getTwistyPuzzleType() {
 
