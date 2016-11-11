@@ -55,8 +55,10 @@ public class KeepTime implements ActionListener {
 
         if (timeMinutes > 0) {
 
-            fields.getDisplayedData().setTime((String.format("%.2f",
-                timeSeconds) + ":" + Integer.toString(timeMinutes)));
+//            fields.getDisplayedData().setTime((String.format("%.2f",
+//                timeSeconds) + ":" + Integer.toString(timeMinutes)));
+              fields.getDisplayedData().setTime(Integer.toString(timeMinutes) +
+                  ":" + (String.format("%.2f", timeSeconds)));
         }
 
         else {
@@ -87,12 +89,13 @@ public class KeepTime implements ActionListener {
 
         if (timeMinutes > 0) {
 
-            fields.getDisplayedData().setTime(String.format("%.2f", timeSeconds)
-                    + ":" + Integer.toString(timeMinutes));
+            fields.getDisplayedData().setTime(Integer.toString(timeMinutes)
+                + ":" + String.format("%.2f", timeSeconds));
         }
 
         else {
-            fields.getDisplayedData().setTime(String.format("%.2f", timeSeconds));
+            fields.getDisplayedData().setTime
+                (String.format("%.2f", timeSeconds));
         }
         
         fields.changeSinceLastRepaint();

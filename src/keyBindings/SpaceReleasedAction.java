@@ -6,6 +6,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Timer;
 
 import cubetimer.Stackmat;
+import fields.Constants;
 import fields.Fields;
 import swingTimerActions.SpaceReleased;
 
@@ -24,37 +25,10 @@ public class SpaceReleasedAction extends AbstractAction{
         spaceReleased = new SpaceReleased(f, sm);
     }
     
-/*    public void actionPerformed(ActionEvent e){
-    
-        System.out.println("released");
-        fields.setGreenText(false);
-        
-        if(fields.getIgnoreNextRelese()){
-            fields.setIgnoreNextRelese(false);
-        }
-        
-        else{
-            if(! fields.getTimerStatus().getRunning()){
-                
-                fields.getDisplayedData().getScrambleData().setRandomScramble("");
-                
-                if(fields.getTimerStatus().getCountDownRunning()){
-                    
-                    stackmat.stopCountDown();
-                    stackmat.startTimer();
-                }
-                else{
-                    stackmat.StartCountDown();
-                }
-            }
-        }
-        fields.changeSinceLastRepaint();
-        
-    }*/
     public void actionPerformed(ActionEvent e){
         spaceTimer = new Timer(1000, spaceReleased);
         spaceTimer.setRepeats(false);
-        spaceTimer.setInitialDelay(10);
+        spaceTimer.setInitialDelay(Constants.keyRefreshRate);
         fields.setSpaceReleased(true);
         spaceTimer.start();
     }

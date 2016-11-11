@@ -18,7 +18,6 @@ public class SpaceReleased implements ActionListener{
     public void actionPerformed(ActionEvent e){
         
         if(fields.getSpaceReleased()){
-            System.out.println("released");
             fields.setGreenText(false);
             
             if(fields.getIgnoreNextRelese()){
