@@ -18,5 +18,5 @@ public class Constants{
     public final static int defaultScrambleLength = 20;
     public final static int defaultScrambleLength2x2 = 10;
     public final static double defaultScrambleSize = 28.0;
-    public final static int minimumScrambleSize = 1;
+    public final static int minimumScrambleLength = 1;
 }

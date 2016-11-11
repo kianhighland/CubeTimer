@@ -22,6 +22,9 @@ public class TwistyPuzzle {
                 if(twistyPuzzleType == TwistyPuzzleType.megaMinx){
                     scrambleLength = Constants.megaMinxDefaultScrambleLength;
                 }
+                else if(twistyPuzzleType == TwistyPuzzleType.cube2x2x2){
+                    scrambleLength = Constants.defaultScrambleLength2x2;
+                }
                 else{
                     scrambleLength = Constants.defaultScrambleLength;
                 }

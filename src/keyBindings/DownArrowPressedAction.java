@@ -42,7 +42,7 @@ public class DownArrowPressedAction extends AbstractAction{
         else if(fields.getDisplayState() == DisplayState.changeScrambleLenght){
             
             if(fields.getAllUsers().getUser().getTwistyPuzzle()
-                .getScrambleLength()  >= Constants.minimumScrambleSize){
+                .getScrambleLength()  >= Constants.minimumScrambleLength){
 
                 fields.getAllUsers().getUser().getTwistyPuzzle()
                     .setScrambleLength(fields.getAllUsers().getUser()

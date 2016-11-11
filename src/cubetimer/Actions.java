@@ -127,9 +127,32 @@ public class Actions {
 
             fields.getDisplayedData().getScrambleData()
                 .setRandomScrambleAfterSplit(randomScramble.split("/n"));
-            fields.getDisplayedData().getScrambleData().setScrambleSize(fields
-                .getDisplayedData().getScrambleData()
-                .getRandomScrambleAfterSplit()[0].length() / 2.0 + 4.0);
+            String[] scramble = randomScramble.split("/n");
+            double scrambleSize = 0;
+            for(int i = 0; i < scramble.length; i++){
+                String scrambleRow = scramble[i];
+                double length = 0;
+                for(int j = 0; j < scrambleRow.length(); j++){
+                    if(("" + scrambleRow.charAt(j)).matches("-")){
+                        length ++;
+                    }
+                    else{
+                        length += 3.4;
+                    }
+                    if(("" + scrambleRow.charAt(j)).matches("'")){
+                        System.out.println("prime");
+                    }
+                }
+                if(length > scrambleSize){
+                    scrambleSize = length;
+                }
+            }
+            scrambleSize = scrambleSize / 4.7;
+            fields.getDisplayedData().getScrambleData().setScrambleSize(
+                scrambleSize);
+//            fields.getDisplayedData().getScrambleData().setScrambleSize(fields
+//                .getDisplayedData().getScrambleData()
+//                .getRandomScrambleAfterSplit()[0].length() / 2.0 + 4.0);
             fields.getDisplayedData().getScrambleData()
                 .setUseStringListForRandomScramble(true);
         }
