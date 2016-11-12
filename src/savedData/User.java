@@ -17,6 +17,7 @@ public class User{
     private TwistyPuzzle oneHanded3x3x3;
     private TwistyPuzzle anisatropicGearCube;
     private TwistyPuzzle gearCube;
+    private TwistyPuzzle cuboid3x3x1;
     
     public User(){
     
@@ -34,6 +35,7 @@ public class User{
             .anisatropicGearCube);
         gearCube = new TwistyPuzzle(TwistyPuzzleType.gearCube);
         oneHanded3x3x3 = new TwistyPuzzle(TwistyPuzzleType.oneHanded3x3x3);
+        cuboid3x3x1 = new TwistyPuzzle(TwistyPuzzleType.cuboid3x3x1);
     }
     
     public void setUserName(String userIn){
@@ -83,6 +85,9 @@ public class User{
         }
         else if(twistyPuzzleType == oneHanded3x3x3.getTwistyPuzzleType()){
             return oneHanded3x3x3;
+        }
+        else if(twistyPuzzleType == cuboid3x3x1.getTwistyPuzzleType()){
+            return cuboid3x3x1;
         }
         else{
             System.out.println("error becouse you did not send in a correct "

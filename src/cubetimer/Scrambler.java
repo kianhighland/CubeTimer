@@ -38,7 +38,7 @@ public class Scrambler {
 
     private static String intTo3x3Turn(int face, int symbol) {
 
-        String faces = "ULFRBD";
+        String faces = "UDRLBF";
         String symbols = " '2";
 
         return "" + faces.charAt(face) + symbols.charAt(symbol);
@@ -259,6 +259,29 @@ public class Scrambler {
         return randomScramble;
     }
 
+    private String random3x3x1Scramble(int scrambleSize){
+
+        int faceTurn;
+        boolean lastFaceTurn = false;
+        int simbol;
+        String scramble = "";
+
+        for(int i = 0; i < scrambleSize; i++){
+        
+            if(lastFaceTurn){
+                lastFaceTurn = false;
+                faceTurn = random.nextInt(2) + 2;
+            }
+            else{
+                faceTurn = random.nextInt(2);
+                lastFaceTurn = true;
+            }
+            simbol = random.nextInt(3);
+            scramble = scramble + intTo3x3Turn(faceTurn, simbol);
+        }
+        return scramble;
+    }
+
     public String randomCorrectScramble(TwistyPuzzleType twistyPuzzleType,
             int scrambleSize) {
 
@@ -280,6 +303,8 @@ public class Scrambler {
             return randomAnisatropicGearCubeScramble(scrambleSize);
         } else if (twistyPuzzleType == TwistyPuzzleType.oneHanded3x3x3) {
             return random3x3Scramble(scrambleSize);
+        } else if(twistyPuzzleType == TwistyPuzzleType.cuboid3x3x1){
+            return random3x3x1Scramble(scrambleSize);
         } else {
             return "we can't scramble that twisty puzzle for you yet";
         }

@@ -124,7 +124,7 @@ public class Paint extends JPanel {
         String[] menuItems =
             new String[] { "2x2x2", "3x3x3", "4x4x4", "5x5x5", "Mega Minx",
                 "Gear Cube", "Anisatropic Gear Cube",
-                "One Handed 3x3x3", "Random Twisty Puzzle", "Exit" };
+                "One Handed 3x3x3", "3x3x1", "Random Twisty Puzzle", "Exit" };
 
         Boolean[] greenText =
             new Boolean[] { fields.getMenu().getTwistyPuzzleMenu().get2x2x2(),
@@ -135,6 +135,7 @@ public class Paint extends JPanel {
                 fields.getMenu().getTwistyPuzzleMenu().getGearCube(),
                 fields.getMenu().getTwistyPuzzleMenu().getAnisatropicGearCube(),
                 fields.getMenu().getTwistyPuzzleMenu().getOneHanded3x3x3(),
+                fields.getMenu().getTwistyPuzzleMenu().getCuboid3x3x1(),
                 fields.getMenu().getTwistyPuzzleMenu().getRandomTwistyPuzzle(),
                 fields.getMenu().getTwistyPuzzleMenu().getExit() };
 

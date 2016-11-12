@@ -38,4 +38,6 @@ public class Constants{
         // if you change it you may have to modify other code
     public final static int countDownTime = 15; // in seconds
     public final static int secondsPerMinute = 60; // for debugging
+    public final static TwistyPuzzleType startingPuzzle
+        = TwistyPuzzleType.cube3x3x3;
 }

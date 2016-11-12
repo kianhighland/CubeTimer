@@ -11,6 +11,7 @@ public class TwistyPuzzleMenu{
     private boolean gearCube;
     private boolean anisatropicGearCube;
     private boolean oneHanded3x3x3;
+    private boolean cuboid3x3x1;
     
     private boolean randomTwistyPuzzle;
     
@@ -27,6 +28,7 @@ public class TwistyPuzzleMenu{
         gearCube = false;
         anisatropicGearCube = false;
         oneHanded3x3x3 = false;
+        cuboid3x3x1 = false;
         randomTwistyPuzzle = false;
         exit = false;
         
@@ -111,12 +113,19 @@ public class TwistyPuzzleMenu{
             
             anisatropicGearCube = true;
         }
+
+        else if(cuboid3x3x1){
+            
+            allFalse();
+
+            oneHanded3x3x3 = true;
+        }
         
         else if(randomTwistyPuzzle){
             
             allFalse();
             
-            oneHanded3x3x3 = true;
+            cuboid3x3x1 = true;
         }
         
         else if(exit){
@@ -183,9 +192,16 @@ public class TwistyPuzzleMenu{
             
             allFalse();
             
+            cuboid3x3x1 = true;
+        }
+
+        else if(cuboid3x3x1){
+ 
+            allFalse();
+        
             randomTwistyPuzzle = true;
         }
-        
+
         else if(randomTwistyPuzzle){
             
             allFalse();
@@ -240,6 +256,10 @@ public class TwistyPuzzleMenu{
     public boolean getOneHanded3x3x3(){
     
         return oneHanded3x3x3;
+    }
+
+    public boolean getCuboid3x3x1(){
+        return cuboid3x3x1;
     }
     
     public boolean getRandomTwistyPuzzle(){

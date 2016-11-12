@@ -110,13 +110,19 @@ public class EnterKeyPressedAction extends AbstractAction {
                         TwistyPuzzleType.anisatropicGearCube, scrambler, paint);
             }
 
-            else if (fields.getMenu().getTwistyPuzzleMenu().getOneHanded3x3x3()) {
+            else if(fields.getMenu().getTwistyPuzzleMenu().getOneHanded3x3x3()){
 
                 KeyPressActions.changeToTwistyPuzzle(fields,
                         TwistyPuzzleType.oneHanded3x3x3, scrambler, paint);
             }
 
-            else if (fields.getMenu().getTwistyPuzzleMenu().getRandomTwistyPuzzle()) {
+            else if(fields.getMenu().getTwistyPuzzleMenu().getCuboid3x3x1()){
+                KeyPressActions.changeToTwistyPuzzle(fields,
+                    TwistyPuzzleType.cuboid3x3x1, scrambler, paint);
+            }
+
+            else if(fields.getMenu().getTwistyPuzzleMenu()
+                .getRandomTwistyPuzzle()) {
 
                 KeyPressActions.changeToRandomTwistyPuzzleType(fields,
                         scrambler, actions, paint);
