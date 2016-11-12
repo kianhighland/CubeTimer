@@ -10,5 +10,6 @@ public enum TwistyPuzzleType{
 	curvyCopter,
 	anisatropicGearCube,
 	gearCube,
-	oneHanded3x3x3
+	oneHanded3x3x3,
+        cubeoid3x3x1
 }

@@ -2,85 +2,85 @@ package savedData;
 
 public class Time {
 
-	private double time;
-	private int timePenalty;
-	private boolean DNF;
-	private double timeSeconds;
-	private int timeMinutes;
+    private double time;
+    private int timePenalty;
+    private boolean DNF;
+    private double timeSeconds;
+    private int timeMinutes;
 
-	public Time(double timeIn, int timePenlatyIn, boolean DNFIn) {
+    public Time(double timeIn, int timePenlatyIn, boolean DNFIn) {
 
-		time = timeIn;
-		timePenalty = timePenlatyIn;
-		DNF = DNFIn;
-		timeSeconds = 0;
-		timeMinutes = 0;
-	}
+        time = timeIn;
+        timePenalty = timePenlatyIn;
+        DNF = DNFIn;
+        timeSeconds = 0;
+        timeMinutes = 0;
+    }
 
-	public String getDisplayTime() {
+    public String getDisplayTime() {
 
-		if (DNF) {
+        if (DNF) {
 
-			return "DNF";
-		}
+            return "DNF";
+        }
 
-		else {
+        else {
 
-			timeSeconds = time + timePenalty;
-			timeMinutes = 0;
+            timeSeconds = time + timePenalty;
+            timeMinutes = 0;
 
-			while (timeSeconds > 60) {
+            while (timeSeconds > 60) {
 
-				timeSeconds -= 60;
-				timeMinutes++;
-			}
+                timeSeconds -= 60;
+                timeMinutes++;
+            }
 
-			if (timeMinutes > 0) {
-				return Integer.toString(timeMinutes) + ":"
-						+ String.format("%.2f", timeSeconds);
-			}
-			
-			else{
-				return String.format("%.2f", timeSeconds);
-			}
-		}
-	}
-	
-	public double getFinalValue(){
-		
-		if(DNF){
-			
-			return 0.0;
-		}
-		
-		else{
-			
-			return time + timePenalty;
-		}
-	}
-	
-	public void setTime(double timeIn){
-		
-		time = timeIn;
-	}
-	
-	public void setTimePenalty(int timePenaltyIn){
-		
-		timePenalty = timePenaltyIn;
-	}
-	
-	public void timePenaltyPlusTwo(){
-		
-		timePenalty += 2;
-	}
-	
-	public void setDNF(boolean DNFIn){
-		
-		DNF = DNFIn;
-	}
-	
-	public void DNF(){
-		
-		DNF = true;
-	}
+            if (timeMinutes > 0) {
+                return Integer.toString(timeMinutes) + ":"
+                        + String.format("%.2f", timeSeconds);
+            }
+            
+            else{
+                return String.format("%.2f", timeSeconds);
+            }
+        }
+    }
+    
+    public double getFinalValue(){
+        
+        if(DNF){
+            
+            return 0.0;
+        }
+        
+        else{
+            
+            return time + timePenalty;
+        }
+    }
+    
+    public void setTime(double timeIn){
+        
+        time = timeIn;
+    }
+    
+    public void setTimePenalty(int timePenaltyIn){
+        
+        timePenalty = timePenaltyIn;
+    }
+    
+    public void timePenaltyPlusTwo(){
+        
+        timePenalty += 2;
+    }
+    
+    public void setDNF(boolean DNFIn){
+        
+        DNF = DNFIn;
+    }
+    
+    public void DNF(){
+        
+        DNF = true;
+    }
 }

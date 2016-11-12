@@ -67,7 +67,7 @@ public class Images{
     public static void drawBackGround(Color color, int screenWidth,
         int screenHeight, Graphics g){
     
-        g.drawRect(30, 30, 100, 100);
+//        g.drawRect(30, 30, 100, 100);
         g.setColor(color);
         g.fillRect(0, 0, screenWidth, screenHeight);
     }
@@ -76,7 +76,8 @@ public class Images{
         Boolean[] greenText, int windowHeight, int windowWidth,
         int lineSpacingSize, Graphics g){
         
-        drawBackGround(Color.WHITE, windowWidth, windowHeight, g);
+        drawBackGround(Constants.menuBackgroundColor, windowWidth, windowHeight,
+            g);
         
         for(int i = 0; i < menuItems.length; i ++){
             

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import cubetimer.Paint;
+import fields.Constants;
 import fields.Fields;
 
 public class KeepTime implements ActionListener {
@@ -47,9 +48,9 @@ public class KeepTime implements ActionListener {
 
         timeSeconds = timeSeconds + keepCountDown.getPenalty();
 
-        if (timeSeconds >= 60) {
+        if (timeSeconds >= Constants.secondsPerMinute) {
 
-            timeSeconds -= 60;
+            timeSeconds -= Constants.secondsPerMinute;
             timeMinutes++;
         }
 
@@ -81,9 +82,9 @@ public class KeepTime implements ActionListener {
         timeSeconds = currentTime - startTime;
         timeMinutes = 0;
 
-        if (timeSeconds >= 60) {
+        if (timeSeconds >= Constants.secondsPerMinute) {
 
-            timeSeconds -= 60;
+            timeSeconds -= Constants.secondsPerMinute;
             timeMinutes++;
         }
 

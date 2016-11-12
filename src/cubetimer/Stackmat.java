@@ -2,10 +2,12 @@ package cubetimer;
 
 import javax.swing.Timer;
 
-import savedData.Time;
 import swingTimerActions.KeepCountDown;
 import swingTimerActions.KeepTime;
+
+import fields.Constants;
 import fields.Fields;
+import savedData.Time;
 
 public class Stackmat {
 
@@ -50,7 +52,7 @@ public class Stackmat {
 
         fields.getTimerStatus().setRunning(true);
         keepTime = new KeepTime(fields, paint, keepCountDown);
-        stackmatTimer = new Timer(1000, keepTime);
+        stackmatTimer = new Timer(Constants.timerUpdateInterval, keepTime);
         stackmatTimer.start();
 
         fields.changeSinceLastRepaint();

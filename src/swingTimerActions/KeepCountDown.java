@@ -8,74 +8,74 @@ import fields.Fields;
 
 public class KeepCountDown implements ActionListener {
 
-	private boolean plus2;
-	private int timeLeft;
-	private Fields fields;
-	private Paint paint;
-	private boolean DNF;
+    private boolean plus2;
+    private int timeLeft;
+    private Fields fields;
+    private Paint paint;
+    private boolean DNF;
 
-	public KeepCountDown(Fields fieldsIn, Paint paintIn) {
+    public KeepCountDown(Fields fieldsIn, Paint paintIn) {
 
-		timeLeft = 15;
-		plus2 = false;
-		fields = fieldsIn;
-		paint = paintIn;
-		fields.getDisplayedData().setTime(Integer.toString(timeLeft));
+        timeLeft = 15;
+        plus2 = false;
+        fields = fieldsIn;
+        paint = paintIn;
+        fields.getDisplayedData().setTime(Integer.toString(timeLeft));
 
-		paint.repaint();
-	}
+        paint.repaint();
+    }
 
-	public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
 
-		timeLeft--;
+        timeLeft--;
 
-		if (timeLeft > 0) {
+        if (timeLeft > 0) {
 
-			if (plus2) {
-				fields.getDisplayedData().setTime("+2");
-			}
-			
-			else{
-				fields.getDisplayedData().setTime(Integer.toString(timeLeft));
-			}
+            if (plus2) {
+                fields.getDisplayedData().setTime("+2");
+            }
+            
+            else{
+                fields.getDisplayedData().setTime(Integer.toString(timeLeft));
+            }
 
-		}
+        }
 
-		else {
+        else {
 
-			if (plus2) {
+            if (plus2) {
 
-				fields.getDisplayedData().setTime("DNF");
-				DNF = true;
-			}
+                fields.getDisplayedData().setTime("DNF");
+                DNF = true;
+            }
 
-			else {
+            else {
 
-				fields.getDisplayedData().setTime("+2");
-				timeLeft = 2;
-				plus2 = true;
-			}
-		}
-		
-		fields.changeSinceLastRepaint();
-		paint.repaint();
-	}
+                fields.getDisplayedData().setTime("+2");
+                timeLeft = 2;
+                plus2 = true;
+            }
+        }
+        
+        fields.changeSinceLastRepaint();
+        paint.repaint();
+    }
 
-	public int getPenalty() {
+    public int getPenalty() {
 
-		if (plus2) {
+        if (plus2) {
 
-			return 2;
-		}
+            return 2;
+        }
 
-		else {
+        else {
 
-			return 0;
-		}
-	}
+            return 0;
+        }
+    }
 
-	public boolean getDNF() {
+    public boolean getDNF() {
 
-		return DNF;
-	}
+        return DNF;
+    }
 }

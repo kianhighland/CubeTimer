@@ -40,7 +40,7 @@ public class Fields {
 
 		setPaintComponentDone(false);
 
-		setDisplayState(DisplayState.timer);
+		setDisplayState(Constants.initialDisplayState);
                 spaceReleased = false;
 	}
 

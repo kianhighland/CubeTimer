@@ -1,5 +1,7 @@
 package fields;
 
+import java.awt.Color;
+
 public class Constants{
 
     public final static int keyRefreshRate = 1;
@@ -27,4 +29,13 @@ public class Constants{
     public final static String font = "Courier";
     public final static int windowWidthOverLeftMargin = 32;
     public final static double fontSize = 1.696;
+    public final static double screenHeightPorportion = 2.0/3.0;
+    public final static double screenWidthPorportion = 2.0/3.0;
+    public final static Color menuBackgroundColor = Color.WHITE;
+    public final static int timerUpdateInterval = 1000; // in miliseconds
+    public final static String initialShownTime = "0.00";
+    public final static DisplayState initialDisplayState = DisplayState.timer;
+        // if you change it you may have to modify other code
+    public final static int countDownTime = 15; // in seconds
+    public final static int secondsPerMinute = 60; // for debugging
 }

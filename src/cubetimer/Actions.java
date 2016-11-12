@@ -192,8 +192,10 @@ public class Actions {
     public static ArrayList<Integer> getDefaultWindowSize() {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = (int) ((screenSize.getWidth() * 2) / 3);
-        int height = (int) ((screenSize.getHeight() * 2) / 3);
+        int width = (int) (screenSize.getWidth() 
+            * Constants.screenWidthPorportion);
+        int height = (int) (screenSize.getHeight()
+            * Constants.screenHeightPorportion);
 
         ArrayList<Integer> windowSize = new ArrayList<Integer>();
         windowSize.addAll(Arrays.asList(new Integer[] { width, height }));

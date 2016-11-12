@@ -16,8 +16,8 @@ public class Penalty{
 		return DNF;
 	}
 
-	public void setDNF(boolean dNFIn) {
-		DNF = dNFIn;
+	public void setDNF(boolean DNFIn) {
+		DNF = DNFIn;
 	}
 
 	public int getTimePenalty() {
