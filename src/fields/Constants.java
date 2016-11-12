@@ -13,10 +13,18 @@ public class Constants{
         + " you would like to switch to?";
     public final static String incorrectUserMessage = "That user does not exist"
         + ". You may have typed it wrong. Good luck if you try again.";
+    public final static String firstUserNamePrompt = "What is your first users "
+        + "name?";
+    public final static String cannotDeleteLastUser = "Sorry, you can't delete "
+        + "that user, It is the only one left";
     public final static String renameUserPrompt = "What is your users new name";
     public final static int megaMinxDefaultScrambleLength = 40;
     public final static int defaultScrambleLength = 20;
     public final static int defaultScrambleLength2x2 = 10;
     public final static double defaultScrambleSize = 28.0;
     public final static int minimumScrambleLength = 1;
+    public final static String lineSeperator = "/n";
+    public final static String font = "Courier";
+    public final static int windowWidthOverLeftMargin = 32;
+    public final static double fontSize = 1.696;
 }

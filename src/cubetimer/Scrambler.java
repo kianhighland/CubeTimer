@@ -2,13 +2,16 @@ package cubetimer;
 
 import java.util.Random;
 
+import fields.Constants;
 import fields.Fields;
 import fields.TwistyPuzzleType;
+import fields.WindowSize;
 
 public class Scrambler {
 
     private Fields fields;
     private Paint paint;
+    private WindowSize windowSize;
 
     private String randomScramble;
     private String randomMove;
@@ -177,8 +180,8 @@ public class Scrambler {
 
             if (j >= 10) {
                 j = 1;
-                randomMove =
-                        "U" + otherSymbols.charAt(random.nextInt(2)) + "/n";
+                randomMove = "U" + otherSymbols.charAt(random.nextInt(2))
+                    + Constants.lineSeperator;
             } else {
                 j++;
                 if (rNext) {
@@ -201,6 +204,7 @@ public class Scrambler {
                 randomScramble = randomScramble + " " + randomMove;
             }
         }
+        randomScramble = " " + randomScramble;
         return randomScramble;
     }
 

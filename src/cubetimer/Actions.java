@@ -13,6 +13,7 @@ import fields.Constants;
 import fields.DisplayState;
 import fields.Fields;
 import fields.TwistyPuzzleType;
+import fields.WindowSize;
 import savedData.User;
 import swingTimerActions.ChangeUser;
 
@@ -24,7 +25,7 @@ public class Actions {
 
         @SuppressWarnings("resource")
         Scanner userInput = new Scanner(System.in);
-        System.out.println("What is your first Users Name?");
+        System.out.println(Constants.firstUserNamePrompt);
         String userName = userInput.nextLine();
         fields.getAllUsers().getUser(0).setUserName(userName);
         fields.getAllUsers().setCurrentUserIndex(0);
@@ -88,6 +89,7 @@ public class Actions {
 
             fields.setDisplayState(DisplayState.timer);
             fields.changeSinceLastRepaint();
+            System.out.println(Constants.cannotDeleteLastUser);
             
             paint.repaint();
         }
@@ -120,14 +122,14 @@ public class Actions {
 
     }
 
-    public static void
-        setScrambleInFields(Fields fields, String randomScramble) {
+    public static void setScrambleInFields(Fields fields,String randomScramble){
 
-        if (randomScramble.contains("/n")) {
+        if (randomScramble.contains(Constants.lineSeperator)) {
 
-            fields.getDisplayedData().getScrambleData()
-                .setRandomScrambleAfterSplit(randomScramble.split("/n"));
-            String[] scramble = randomScramble.split("/n");
+/*            fields.getDisplayedData().getScrambleData()
+                .setRandomScrambleAfterSplit(randomScramble.split(
+                Constants.lineSeperator));
+            String[] scramble = randomScramble.split(Constants.lineSeperator);
             double scrambleSize = 0;
             for(int i = 0; i < scramble.length; i++){
                 String scrambleRow = scramble[i];
@@ -140,7 +142,6 @@ public class Actions {
                         length += 3.4;
                     }
                     if(("" + scrambleRow.charAt(j)).matches("'")){
-                        System.out.println("prime");
                     }
                 }
                 if(length > scrambleSize){
@@ -150,11 +151,23 @@ public class Actions {
             scrambleSize = scrambleSize / 4.7;
             fields.getDisplayedData().getScrambleData().setScrambleSize(
                 scrambleSize);
-//            fields.getDisplayedData().getScrambleData().setScrambleSize(fields
-//                .getDisplayedData().getScrambleData()
-//                .getRandomScrambleAfterSplit()[0].length() / 2.0 + 4.0);
+            fields.getDisplayedData().getScrambleData()
+                .setUseStringListForRandomScramble(true);*/
+            fields.getDisplayedData().getScrambleData()
+                .setRandomScrambleAfterSplit(randomScramble.split(
+                Constants.lineSeperator));
+            double size;
+            if (randomScramble.split(Constants.lineSeperator)[1].contains("'")){
+                size = randomScramble.split(Constants.lineSeperator)[1]
+                    .length() / Constants.fontSize;
+            }
+            else{
+                size = (randomScramble.split(Constants.lineSeperator)
+                    [1].length() + 1) / Constants.fontSize;
+            fields.getDisplayedData().getScrambleData().setScrambleSize(size);
             fields.getDisplayedData().getScrambleData()
                 .setUseStringListForRandomScramble(true);
+            }
         }
 
         else {
@@ -162,16 +175,16 @@ public class Actions {
             fields.getDisplayedData().getScrambleData()
                 .setRandomScramble(randomScramble);
             fields.getDisplayedData().getScrambleData()
-                .setScrambleSize(randomScramble.length() / 2.0 + 4.0);
+                .setScrambleSize(randomScramble.length() / Constants.fontSize);
             fields.getDisplayedData().getScrambleData()
                 .setUseStringListForRandomScramble(false);
         }
 
-        if (fields.getDisplayedData().getScrambleData()
+/*        if (fields.getDisplayedData().getScrambleData()
             .getScrambleSize() < 4.0) {
 
             fields.getDisplayedData().getScrambleData().setScrambleSize(4.0);
-        }
+        }*/
         
         fields.changeSinceLastRepaint();
     }
