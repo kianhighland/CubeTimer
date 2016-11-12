@@ -1,5 +1,7 @@
 package savedData;
 
+import fields.Constants;
+
 public class Time {
 
     private double time;
@@ -29,9 +31,9 @@ public class Time {
             timeSeconds = time + timePenalty;
             timeMinutes = 0;
 
-            while (timeSeconds > 60) {
+            while (timeSeconds > Constants.secondsPerMinute) {
 
-                timeSeconds -= 60;
+                timeSeconds -= Constants.secondsPerMinute;
                 timeMinutes++;
             }
 

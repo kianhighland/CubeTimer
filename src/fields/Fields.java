@@ -5,160 +5,170 @@ import savedData.AllUsers;
 
 public class Fields {
 
-	private DisplayedData displayedData;
-	private TimerStatus timerStatus;
-	private WindowSize windowSize;
+    private DisplayedData displayedData;
+    private TimerStatus timerStatus;
+    private WindowSize windowSize;
 
-	private boolean changeSinceLastRepaint;
-	
-	private boolean close;
+    private boolean changeSinceLastRepaint;
+    
+    private boolean close;
 
-	private Menu menu;
+    private Menu menu;
 
-	private DisplayState displayState;
-	private UserAction userAction;
+    private DisplayState displayState;
+    private UserAction userAction;
 
-	private boolean greenText;
+    private boolean greenText;
+    private int greenTextIndex;
 
-	private boolean ignoreNextRelese;
+    private boolean ignoreNextRelese;
 
-	private boolean paintComponentDone;
+    private boolean paintComponentDone;
         private boolean spaceReleased;
 
-	private AllUsers allUsers;
+    private AllUsers allUsers;
 
-	public Fields() {
+    public Fields() {
 
-		displayedData = new DisplayedData();
-		setTimerStatus(new TimerStatus());
-		setWindowSize(new WindowSize());
-		allUsers = new AllUsers();
+        displayedData = new DisplayedData();
+        setTimerStatus(new TimerStatus());
+        setWindowSize(new WindowSize());
+        allUsers = new AllUsers();
 
-		changeSinceLastRepaint = true;
-		
-		setMenu(new Menu());
+        changeSinceLastRepaint = true;
+        greenTextIndex = 0;
+        
+        setMenu(new Menu());
 
-		setPaintComponentDone(false);
+        setPaintComponentDone(false);
 
-		setDisplayState(Constants.initialDisplayState);
+        setDisplayState(Constants.initialDisplayState);
                 spaceReleased = false;
-	}
+    }
 
-        public void setSpaceReleased(boolean space){
-            spaceReleased = space;
-        }
+    public void setGreenTextIndex(int greenTextIndexIn){
+        greenTextIndex = greenTextIndexIn;
+    }
 
-        public boolean getSpaceReleased(){
-            return spaceReleased;
-        }
+    public int getGreenTextIndex(){
+        return greenTextIndex;
+    }
 
-	public void setScreenSize(int windowWidth, int windowHeight) {
+    public void setSpaceReleased(boolean space){
+        spaceReleased = space;
+    }
 
-		getWindowSize().setSize(windowWidth, windowHeight);
-	}
+    public boolean getSpaceReleased(){
+        return spaceReleased;
+    }
 
-	public AllUsers getAllUsers() {
+    public void setScreenSize(int windowWidth, int windowHeight) {
 
-		return allUsers;
-	}
-	
-	public void setAllUsers(AllUsers allUsersIn){
-		
-		allUsers = allUsersIn;
-	}
+        getWindowSize().setSize(windowWidth, windowHeight);
+    }
 
-	public boolean getClose() {
-		return close;
-	}
+    public AllUsers getAllUsers() {
 
-	public void setClose(boolean closeIn) {
-		close = closeIn;
-	}
+        return allUsers;
+    }
+    
+    public void setAllUsers(AllUsers allUsersIn){
+        
+        allUsers = allUsersIn;
+    }
 
-	public DisplayedData getDisplayedData() {
-		return displayedData;
-	}
+    public boolean getClose() {
+        return close;
+    }
 
-	public void setDisplayedDada(DisplayedData displayedDataIn) {
-		displayedData = displayedDataIn;
-	}
+    public void setClose(boolean closeIn) {
+        close = closeIn;
+    }
 
-	public DisplayState getDisplayState() {
-		return displayState;
-	}
+    public DisplayedData getDisplayedData() {
+        return displayedData;
+    }
 
-	public void setDisplayState(DisplayState displayStateIn) {
-		displayState = displayStateIn;
-	}
+    public void setDisplayedDada(DisplayedData displayedDataIn) {
+        displayedData = displayedDataIn;
+    }
 
-	public boolean getGreenText() {
-		return greenText;
-	}
+    public DisplayState getDisplayState() {
+        return displayState;
+    }
 
-	public void setGreenText(boolean greenTextIn) {
-		greenText = greenTextIn;
-	}
+    public void setDisplayState(DisplayState displayStateIn) {
+        displayState = displayStateIn;
+    }
 
-	public boolean getIgnoreNextRelese() {
-		return ignoreNextRelese;
-	}
+    public boolean getGreenText() {
+        return greenText;
+    }
 
-	public void setIgnoreNextRelese(boolean ignoreNextReleseIn) {
-		ignoreNextRelese = ignoreNextReleseIn;
-	}
+    public void setGreenText(boolean greenTextIn) {
+        greenText = greenTextIn;
+    }
 
-	public Menu getMenu() {
-		return menu;
-	}
+    public boolean getIgnoreNextRelese() {
+        return ignoreNextRelese;
+    }
 
-	public void setMenu(Menu menuIn) {
-		menu = menuIn;
-	}
+    public void setIgnoreNextRelese(boolean ignoreNextReleseIn) {
+        ignoreNextRelese = ignoreNextReleseIn;
+    }
 
-	public boolean getPaintComponentDone() {
-		return paintComponentDone;
-	}
+    public Menu getMenu() {
+        return menu;
+    }
 
-	public void setPaintComponentDone(boolean paintComponentDoneIn) {
-		paintComponentDone = paintComponentDoneIn;
-	}
+    public void setMenu(Menu menuIn) {
+        menu = menuIn;
+    }
 
-	public TimerStatus getTimerStatus() {
-		return timerStatus;
-	}
+    public boolean getPaintComponentDone() {
+        return paintComponentDone;
+    }
 
-	public void setTimerStatus(TimerStatus timerStatusIn) {
-		timerStatus = timerStatusIn;
-	}
+    public void setPaintComponentDone(boolean paintComponentDoneIn) {
+        paintComponentDone = paintComponentDoneIn;
+    }
 
-	public UserAction getUserAction() {
-		return userAction;
-	}
+    public TimerStatus getTimerStatus() {
+        return timerStatus;
+    }
 
-	public void setUserAction(UserAction userActionIn) {
-		userAction = userActionIn;
-	}
+    public void setTimerStatus(TimerStatus timerStatusIn) {
+        timerStatus = timerStatusIn;
+    }
 
-	public WindowSize getWindowSize() {
-		return windowSize;
-	}
+    public UserAction getUserAction() {
+        return userAction;
+    }
 
-	public void setWindowSize(WindowSize windowSizeIn) {
-		windowSize = windowSizeIn;
-	}
-	
-	public void changeSinceLastRepaint(){
+    public void setUserAction(UserAction userActionIn) {
+        userAction = userActionIn;
+    }
 
-		changeSinceLastRepaint = true;
-	}
-	
-	public void repainted(){
-		
-		changeSinceLastRepaint = false;
-	}
-	
-	public boolean getChangeSinceLastRepaint(){
-		
-		return changeSinceLastRepaint;
-	}
+    public WindowSize getWindowSize() {
+        return windowSize;
+    }
+
+    public void setWindowSize(WindowSize windowSizeIn) {
+        windowSize = windowSizeIn;
+    }
+    
+    public void changeSinceLastRepaint(){
+
+        changeSinceLastRepaint = true;
+    }
+    
+    public void repainted(){
+        
+        changeSinceLastRepaint = false;
+    }
+    
+    public boolean getChangeSinceLastRepaint(){
+        
+        return changeSinceLastRepaint;
+    }
 }

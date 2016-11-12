@@ -10,5 +10,6 @@ public enum DisplayState{
 	changeScrambleLenght,
 	consoleRequiresAttention,
 	changeUser,
-	options
+	options,
+        times
 }

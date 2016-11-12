@@ -162,6 +162,27 @@ public class Paint extends JPanel {
             fields.getWindowSize().getWindowWidth(), 2, g);
     }
 
+    public void timeMenu(Graphics g){
+        int amountOfTimes = fields.getAllUsers().getUser().getTwistyPuzzle()
+            .getTimeTitles().size();
+        String[] times = new String[amountOfTimes];
+        times = fields.getAllUsers().getUser()
+            .getTwistyPuzzle().getTimeTitles().toArray(times);
+        Boolean[] greenText = new Boolean[amountOfTimes];
+        for(int i = 0; i < amountOfTimes; i++){
+            if(i == fields.getGreenTextIndex()){
+                greenText[i] = true;
+            }
+            else{
+                greenText[i] = false;
+            }
+        }
+
+        Images.drawMenuList(times, fields.getWindowSize().getWindowWidth()
+            /32, greenText, fields.getWindowSize().getWindowHeight(),
+            fields.getWindowSize().getWindowWidth(), 2, g);
+    }
+
     public void changeScrambleLenght(Graphics g) {
 
         Images.drawBackGround(Color.WHITE, fields.getWindowSize()
@@ -211,6 +232,8 @@ public class Paint extends JPanel {
 
     public void paintComponent(Graphics g) {
         
+        //timeMenu(g);
+
         if(fields.getChangeSinceLastRepaint()){
     
             fields.repainted();
@@ -221,6 +244,10 @@ public class Paint extends JPanel {
                 == DisplayState.consoleRequiresAttention) {
 
                 consoleRequiresAttention(g);
+            }
+
+            else if(fields.getDisplayState() == DisplayState.times){
+                timeMenu(g);
             }
     
             else if (fields.getDisplayState() == DisplayState.menu) {

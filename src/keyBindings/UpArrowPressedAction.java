@@ -28,6 +28,17 @@ public class UpArrowPressedAction extends AbstractAction {
             fields.getMenu().upOne();
         }
 
+        else if(fields.getDisplayState() == DisplayState.times){
+            if(fields.getGreenTextIndex() <= 0){
+            
+                fields.setGreenTextIndex(fields.getAllUsers().getUser()
+                    .getTwistyPuzzle().getTimes().size() - 1);
+            }
+            else{
+                fields.setGreenTextIndex(fields.getGreenTextIndex() - 1);
+            }
+        }
+
         else if (fields.getDisplayState() == DisplayState.changeTwistyPuzzle) {
             fields.getMenu().getTwistyPuzzleMenu().upOne();
         }

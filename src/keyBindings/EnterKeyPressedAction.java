@@ -55,6 +55,10 @@ public class EnterKeyPressedAction extends AbstractAction {
                 scrambler.randomCorrectScrambleInFieldsUsingFields();
                 fields.setDisplayState(DisplayState.timer);
             }
+            
+            else if(fields.getMenu().getTimeMenu()){
+                fields.setDisplayState(DisplayState.times);
+            }
 
             else if (fields.getMenu().getQuit()) {
                 System.exit(0);
@@ -135,6 +139,10 @@ public class EnterKeyPressedAction extends AbstractAction {
             }
         }
 
+        else if (fields.getDisplayState() == DisplayState.times){
+            fields.setDisplayState(DisplayState.timer);
+        }
+
         else if (fields.getDisplayState() == DisplayState.userMenu) {
 
             if (fields.getMenu().getUserActionsMenu().getAddUser()) {
@@ -147,12 +155,14 @@ public class EnterKeyPressedAction extends AbstractAction {
                 fields.setDisplayState(DisplayState.changeUser);
             }
 
-            else if (fields.getMenu().getUserActionsMenu().getDeleteCurrentUser()) {
+            else if (fields.getMenu().getUserActionsMenu()
+                .getDeleteCurrentUser()) {
 
                 Actions.deleteCurrentUser(fields, paint);
             }
 
-            else if (fields.getMenu().getUserActionsMenu().getRenameCurrentUser()) {
+            else if (fields.getMenu().getUserActionsMenu()
+                .getRenameCurrentUser()) {
 
                 KeyPressActions.changeUserName(fields, paint);
             }

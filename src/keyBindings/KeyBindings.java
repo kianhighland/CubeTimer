@@ -59,7 +59,9 @@ public class KeyBindings extends JComponent{
         this.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "EnterPressed");
         this.getActionMap().put("EnterPressed", enterAction);
         this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "UpPressed");
+        this.getInputMap().put(KeyStroke.getKeyStroke("K"), "UpPressed");
         this.getActionMap().put("UpPressed", upAction);
+        this.getInputMap().put(KeyStroke.getKeyStroke("J"), "DownPressed");
         this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "DownPressed");
         this.getActionMap().put("DownPressed", downAction);
         

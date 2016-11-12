@@ -30,7 +30,20 @@ public class DownArrowPressedAction extends AbstractAction{
         if(fields.getDisplayState() == DisplayState.menu){
             fields.getMenu().downOne();
         }
+
+        else if(fields.getDisplayState() == DisplayState.times){
+
+            if(fields.getGreenTextIndex() >= fields.getAllUsers().getUser()
+                .getTwistyPuzzle().getTimes().size() - 1){
+       
+                fields.setGreenTextIndex(0);
+            }
+            else{
+                fields.setGreenTextIndex(fields.getGreenTextIndex() + 1);
+            }
         
+        }
+
         else if(fields.getDisplayState() == DisplayState.changeTwistyPuzzle){
             fields.getMenu().getTwistyPuzzleMenu().downOne();
         }

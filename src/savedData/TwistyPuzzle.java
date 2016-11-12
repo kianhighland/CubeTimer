@@ -49,6 +49,19 @@ public class TwistyPuzzle {
         return times;
     }
 
+    public ArrayList<String> getTimeTitles(){
+        ArrayList<String> timeTitles = new ArrayList<String>();
+        for (int i = 0; i < times.size(); i++){
+            if(times.get(i).getFinalValue() == 0){
+                timeTitles.add("DNF");
+            }
+            else{
+                timeTitles.add(times.get(i).getFinalValue() + "");
+            }
+        }
+        return timeTitles;
+    }
+
     public Time getTime(int index) {
 
         return times.get(index);
