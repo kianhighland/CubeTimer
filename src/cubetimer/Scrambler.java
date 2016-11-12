@@ -277,6 +277,9 @@ public class Scrambler {
                 lastFaceTurn = true;
             }
             simbol = random.nextInt(3);
+            if (i != 0){
+                scramble = scramble + " ";
+            }
             scramble = scramble + intTo3x3Turn(faceTurn, simbol);
         }
         return scramble;
