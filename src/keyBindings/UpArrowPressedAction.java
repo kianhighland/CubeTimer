@@ -28,6 +28,9 @@ public class UpArrowPressedAction extends AbstractAction {
             fields.getMenu().upOne();
         }
 
+        else if(fields.getDisplayState() == DisplayState.timeMenu){
+            fields.getMenu().getTimeOptionMenu().up();
+        }
         else if(fields.getDisplayState() == DisplayState.times){
             if(fields.getGreenTextIndex() <= 0){
             

@@ -6,11 +6,12 @@ import javax.swing.AbstractAction;
 
 import cubetimer.Paint;
 import cubetimer.Stackmat;
+import fields.DisplayState;
 import fields.Fields;
 
 @SuppressWarnings("serial")
 public class SpaceKeyAction extends AbstractAction{
-	
+    
     private Fields fields;
     private Paint paint;
     private Stackmat stackmat;
@@ -20,26 +21,28 @@ public class SpaceKeyAction extends AbstractAction{
         paint = p;
         stackmat = sm;
     }
-	
-    public void actionPerformed(ActionEvent e){
-        fields.setSpaceReleased(false);
     
-        if(fields.getTimerStatus().getRunning()){
-    		
-            fields.setIgnoreNextRelese(true);
-            stackmat.stopTimer();
-
-        }
-        else{
-    		
-            if(! fields.getIgnoreNextRelese()){
-            	
-                fields.setGreenText(true);
+    public void actionPerformed(ActionEvent e){
+        if(fields.getDisplayState() == DisplayState.timer){
+      
+            fields.setSpaceReleased(false);
+        
+            if(fields.getTimerStatus().getRunning()){
+                
+                fields.setIgnoreNextRelese(true);
+                stackmat.stopTimer();
+    
             }
+            else{
+            
+                if(! fields.getIgnoreNextRelese()){
+                
+                    fields.setGreenText(true);
+                }
+            }
+            
+            fields.changeSinceLastRepaint();
+            paint.repaint();
         }
-		
-		fields.changeSinceLastRepaint();
-		paint.repaint();
-	}
-	
+    }
 }

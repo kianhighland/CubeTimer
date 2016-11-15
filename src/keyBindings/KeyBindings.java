@@ -26,6 +26,8 @@ public class KeyBindings extends JComponent{
     private EnterKeyPressedAction enterAction;
     private UpArrowPressedAction upAction;
     private DownArrowPressedAction downAction;
+    private LeftArrowPressedAction leftAction;
+    private RightArrowPressedAction rightAction;
 	
     public KeyBindings(Fields fieldsIn, Paint paintIn, Scrambler scramblerIn,
         Actions actionsIn, Stackmat stackmatIn){
@@ -44,6 +46,8 @@ public class KeyBindings extends JComponent{
             actions);
         upAction = new UpArrowPressedAction(fields, paint, scrambler);
         downAction = new DownArrowPressedAction(fields, paint, scrambler);
+        rightAction = new RightArrowPressedAction(fields, paint);
+        leftAction = new LeftArrowPressedAction(fields, paint);
         
         this.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "SpacePressed");
         this.getActionMap().put("SpacePressed", spaceAction);
@@ -64,6 +68,12 @@ public class KeyBindings extends JComponent{
         this.getInputMap().put(KeyStroke.getKeyStroke("J"), "DownPressed");
         this.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "DownPressed");
         this.getActionMap().put("DownPressed", downAction);
+        this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "LeftPressed");
+        this.getInputMap().put(KeyStroke.getKeyStroke("H"), "LeftPressed");
+        this.getActionMap().put("LeftPressed", leftAction);
+        this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "RightPressed");
+        this.getInputMap().put(KeyStroke.getKeyStroke("L"), "RightPressed");
+        this.getActionMap().put("RightPressed", rightAction);
         
     }
 	

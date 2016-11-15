@@ -31,6 +31,9 @@ public class DownArrowPressedAction extends AbstractAction{
             fields.getMenu().downOne();
         }
 
+        else if(fields.getDisplayState() == DisplayState.timeMenu){
+            fields.getMenu().getTimeOptionMenu().down();
+        }
         else if(fields.getDisplayState() == DisplayState.times){
 
             if(fields.getGreenTextIndex() >= fields.getAllUsers().getUser()

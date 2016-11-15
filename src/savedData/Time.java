@@ -85,4 +85,12 @@ public class Time {
         
         DNF = true;
     }
+
+    public int getTimePenalty(){
+        return timePenalty;
+    }
+
+    public boolean getDNF(){
+        return DNF;
+    }
 }

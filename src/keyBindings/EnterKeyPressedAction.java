@@ -69,6 +69,21 @@ public class EnterKeyPressedAction extends AbstractAction {
             }
         }
 
+        else if(fields.getDisplayState() == DisplayState.timeMenu){
+            
+            if(fields.getMenu().getTimeOptionMenu().getDnf()){
+                fields.getMenu().getTimeOptionMenu().getTime().setDNF(
+                    !fields.getMenu().getTimeOptionMenu().getTime().getDNF());
+            }
+            else if(fields.getMenu().getTimeOptionMenu().getDelete()){
+                fields.getAllUsers().getUser().getTwistyPuzzle().getTimes()
+                    .remove(fields.getGreenTextIndex());
+                fields.setDisplayState(DisplayState.timer);
+            }
+            else if(fields.getMenu().getTimeOptionMenu().getExit()){
+                fields.setDisplayState(DisplayState.timer);
+            }
+        }
         else if (fields.getDisplayState() == DisplayState.changeTwistyPuzzle) {
 
             if (fields.getMenu().getTwistyPuzzleMenu().get2x2x2()) {
@@ -140,7 +155,10 @@ public class EnterKeyPressedAction extends AbstractAction {
         }
 
         else if (fields.getDisplayState() == DisplayState.times){
-            fields.setDisplayState(DisplayState.timer);
+            fields.setDisplayState(DisplayState.timeMenu);
+            fields.getMenu().getTimeOptionMenu().setTime(fields.getAllUsers()
+                .getUser().getTwistyPuzzle().getTimes().get(
+                fields.getGreenTextIndex()));
         }
 
         else if (fields.getDisplayState() == DisplayState.userMenu) {
@@ -181,7 +199,8 @@ public class EnterKeyPressedAction extends AbstractAction {
 
         else if (fields.getDisplayState() == DisplayState.changeUser) {
 
-            fields.getAllUsers().setCurrentUserIndex(fields.getMenu().getUserActionsMenu()
+            fields.getAllUsers().setCurrentUserIndex(fields.getMenu()
+                .getUserActionsMenu()
                     .getSelectedUserIndex());
             fields.setDisplayState(DisplayState.timer);
         }

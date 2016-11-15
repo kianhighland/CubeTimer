@@ -162,7 +162,7 @@ public class Paint extends JPanel {
             fields.getWindowSize().getWindowWidth(), 2, g);
     }
 
-    public void timeMenu(Graphics g){
+    public void timesMenu(Graphics g){
         int amountOfTimes = fields.getAllUsers().getUser().getTwistyPuzzle()
             .getTimeTitles().size();
         String[] times = new String[amountOfTimes];
@@ -180,6 +180,30 @@ public class Paint extends JPanel {
 
         Images.drawMenuList(times, fields.getWindowSize().getWindowWidth()
             /32, greenText, fields.getWindowSize().getWindowHeight(),
+            fields.getWindowSize().getWindowWidth(), 2, g);
+    }
+
+    public void timeMenu(Graphics g){
+    
+        String[] menuItems = new String[] { "", "Penalty: " + fields.getMenu()
+            .getTimeOptionMenu().getTime().getTimePenalty(), "Delete Solve",
+            "Exit"};
+
+        if(fields.getMenu().getTimeOptionMenu().getTime().getDNF()){
+            menuItems[0] = "X  DNF";
+        }
+        else{
+            menuItems[0] = "   DNF";
+        }
+        
+        Boolean[] greenText = new Boolean[] {
+            fields.getMenu().getTimeOptionMenu().getDnf(),
+            fields.getMenu().getTimeOptionMenu().getPenalty(),
+            fields.getMenu().getTimeOptionMenu().getDelete(),
+            fields.getMenu().getTimeOptionMenu().getExit()};
+
+        Images.drawMenuList(menuItems, fields.getWindowSize().getWindowWidth()
+            / 32, greenText, fields.getWindowSize().getWindowHeight(),
             fields.getWindowSize().getWindowWidth(), 2, g);
     }
 
@@ -247,6 +271,10 @@ public class Paint extends JPanel {
             }
 
             else if(fields.getDisplayState() == DisplayState.times){
+                timesMenu(g);
+            }
+
+            else if(fields.getDisplayState() == DisplayState.timeMenu){
                 timeMenu(g);
             }
     

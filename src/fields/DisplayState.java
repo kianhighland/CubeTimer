@@ -11,5 +11,6 @@ public enum DisplayState{
 	consoleRequiresAttention,
 	changeUser,
 	options,
-        times
+        times,
+        timeMenu
 }
