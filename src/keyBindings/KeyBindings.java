@@ -16,7 +16,6 @@ public class KeyBindings extends JComponent{
     private Fields fields;
     private Paint paint;
     private Scrambler scrambler;
-    private Actions actions;
     private Stackmat stackmat;
     
     private SpaceKeyAction spaceAction;
@@ -28,26 +27,26 @@ public class KeyBindings extends JComponent{
     private DownArrowPressedAction downAction;
     private LeftArrowPressedAction leftAction;
     private RightArrowPressedAction rightAction;
+    private ColonPressedAction colonAction;
 	
     public KeyBindings(Fields fieldsIn, Paint paintIn, Scrambler scramblerIn,
-        Actions actionsIn, Stackmat stackmatIn){
+        Stackmat stackmatIn){
 		
         fields = fieldsIn;
         paint = paintIn;
         scrambler = scramblerIn;
-        actions = actionsIn;
         stackmat = stackmatIn;
    
         spaceAction = new SpaceKeyAction(fields, paint, stackmat);
         spaceReleasedAction = new SpaceReleasedAction(fields, stackmat);
 		
         escapeAction = new EscapeKeyPressedAction(fields, paint);
-        enterAction = new EnterKeyPressedAction(fields, paint, scrambler,
-            actions);
+        enterAction = new EnterKeyPressedAction(fields, paint, scrambler);
         upAction = new UpArrowPressedAction(fields, paint, scrambler);
         downAction = new DownArrowPressedAction(fields, paint, scrambler);
         rightAction = new RightArrowPressedAction(fields, paint);
         leftAction = new LeftArrowPressedAction(fields, paint);
+        colonAction = new ColonPressedAction(fields);
         
         this.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "SpacePressed");
         this.getActionMap().put("SpacePressed", spaceAction);
@@ -74,6 +73,9 @@ public class KeyBindings extends JComponent{
         this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "RightPressed");
         this.getInputMap().put(KeyStroke.getKeyStroke("L"), "RightPressed");
         this.getActionMap().put("RightPressed", rightAction);
+        this.getInputMap().put(KeyStroke.getKeyStroke("control ;"),
+            "ColonPressed");
+        this.getActionMap().put("ColonPressed", colonAction);
         
     }
 	

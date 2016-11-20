@@ -12,7 +12,7 @@ import fields.UserAction;
 public class KeyPressActions {
 
     public static void changeToRandomTwistyPuzzleType(Fields fields,
-        Scrambler scrambler, Actions actions, Paint paint) {
+        Scrambler scrambler, Paint paint) {
 
         Actions.randomTwistyPuzzle(fields);
         scrambler.randomCorrectScrambleInFieldsUsingFields();

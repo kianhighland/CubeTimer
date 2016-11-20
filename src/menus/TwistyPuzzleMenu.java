@@ -45,6 +45,7 @@ public class TwistyPuzzleMenu{
         curvyCopter = false;
         anisatropicGearCube = false;
         oneHanded3x3x3 = false;
+        cuboid3x3x1 = false;
         randomTwistyPuzzle = false;
         exit = false;
     }

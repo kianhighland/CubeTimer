@@ -27,6 +27,9 @@ public class DownArrowPressedAction extends AbstractAction{
     
     public void actionPerformed(ActionEvent e){
     
+        if(fields.addCommand()){
+            return;
+        }
         if(fields.getDisplayState() == DisplayState.menu){
             fields.getMenu().downOne();
         }

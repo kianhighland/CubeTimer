@@ -19,21 +19,19 @@ public class Main{
     private static Paint p;
     private static Scrambler s;
     private static Stackmat t;
-    private static Actions a;
     private static CloseOperation co;
     private static Display d;
     
     public static void main(String[] args){
         
         f = new Fields();
-        Actions.callUponOpen(f);
+        Actions.callUponOpen(f, args);
         fw = new FileWriter();
         p = new Paint(f);
         s = new Scrambler(f, p);
         t = new Stackmat(f, s, p, fw);
-        a = new Actions();
         co = new CloseOperation(f);
-        d = new Display(co, p, f, t, s, a);
+        d = new Display(co, p, f, t, s);
         
     
         d.setSize(width, height);

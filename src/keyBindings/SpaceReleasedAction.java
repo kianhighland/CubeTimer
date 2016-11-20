@@ -26,6 +26,9 @@ public class SpaceReleasedAction extends AbstractAction{
     }
     
     public void actionPerformed(ActionEvent e){
+        if(fields.addCommand()){
+            return;
+        }
         spaceTimer = new Timer(1000, spaceReleased);
         spaceTimer.setRepeats(false);
         spaceTimer.setInitialDelay(Constants.keyRefreshRate);

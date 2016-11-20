@@ -20,14 +20,18 @@ public class EnterKeyPressedAction extends AbstractAction {
     private Scrambler scrambler;
     private Actions actions;
 
-    public EnterKeyPressedAction(Fields f, Paint p, Scrambler s, Actions a) {
+    public EnterKeyPressedAction(Fields f, Paint p, Scrambler s) {
         fields = f;
         paint = p;
         scrambler = s;
-        actions = a;
     }
 
     public void actionPerformed(ActionEvent e) {
+
+        if(fields.addCommand()){
+            //prosses command
+            return;
+        }
 
         if (fields.getDisplayState() == DisplayState.menu) {
 
@@ -57,7 +61,11 @@ public class EnterKeyPressedAction extends AbstractAction {
             }
             
             else if(fields.getMenu().getTimeMenu()){
-                fields.setDisplayState(DisplayState.times);
+                if(fields.getAllUsers().getUser().getTwistyPuzzle().getTimes()
+                    .size() != 0){
+             
+                    fields.setDisplayState(DisplayState.times);
+                }
             }
 
             else if (fields.getMenu().getQuit()) {
@@ -144,7 +152,7 @@ public class EnterKeyPressedAction extends AbstractAction {
                 .getRandomTwistyPuzzle()) {
 
                 KeyPressActions.changeToRandomTwistyPuzzleType(fields,
-                        scrambler, actions, paint);
+                        scrambler, paint);
             }
 
             fields.setDisplayState(DisplayState.timer);

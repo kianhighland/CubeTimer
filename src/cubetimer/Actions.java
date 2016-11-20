@@ -19,11 +19,27 @@ import swingTimerActions.ChangeUser;
 
 public class Actions {
 
-    public static void callUponOpen(Fields fields) {
+    public static void callUponOpen(Fields fields, String[] args) {
 
         fields.getAllUsers().addUser(new User());
 
-        @SuppressWarnings("resource")
+//        @SuppressWarnings("resource")
+
+        if(args.length > 0){
+            for(int i = 0; i < args.length; i++){
+                if(i == 0){
+                    fields.getAllUsers().getUser(0).setUserName(args[0]);
+                    System.out.println(args[0]);
+                }
+                else{
+                    fields.getAllUsers().addUser(new User());
+                    fields.getAllUsers().getUser(i).setUserName(args[i]);
+                    System.out.println(args[i]);
+                }
+            }
+            fields.getAllUsers().setCurrentUser(0);
+            return;
+        }
         Scanner userInput = new Scanner(System.in);
         System.out.println(Constants.firstUserNamePrompt);
         String userName = userInput.nextLine();

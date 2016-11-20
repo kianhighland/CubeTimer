@@ -28,6 +28,9 @@ public class Fields {
 
     private AllUsers allUsers;
 
+    private boolean colon;
+    private String command;
+
     public Fields() {
 
         displayedData = new DisplayedData();
@@ -48,6 +51,27 @@ public class Fields {
 
     public void setGreenTextIndex(int greenTextIndexIn){
         greenTextIndex = greenTextIndexIn;
+    }
+
+    public void noCommand(){
+        colon = false;
+        command = "";
+    }
+
+    public boolean addCommand(String character){
+        boolean colonIn = colon;
+        if(colonIn){
+            command = command + character;
+        }
+        return colonIn;
+    }
+
+    public boolean addCommand(){
+        return colon;
+    }
+
+    public void colon(){
+        colon = true;
     }
 
     public int getGreenTextIndex(){

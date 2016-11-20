@@ -67,6 +67,10 @@ public class AllUsers{
 		}
 		return false;
 	}
+
+        public void setCurrentUser(int index){
+            currentUserIndex = index;
+        }
 	
 	public int getIndexOfUserWithUserName(String userName){
 	

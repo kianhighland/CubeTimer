@@ -21,6 +21,10 @@ public class LeftArrowPressedAction extends AbstractAction{
 
     public void actionPerformed(ActionEvent e){
 
+        if(fields.addCommand()){
+            return;
+        }
+
         if(fields.getDisplayState() == DisplayState.timeMenu && 
             fields.getMenu().getTimeOptionMenu().getPenalty()){
 
