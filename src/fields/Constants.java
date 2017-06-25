@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class Constants{
 
-    public final static int keyRefreshRate = 1;
+    public final static int keyRefreshRate = 64;
         // in miliseconds
         // the lower the better, the higher the more sure that it will work
         // this only matter for linux

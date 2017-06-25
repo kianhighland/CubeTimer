@@ -23,17 +23,18 @@ public class SpaceReleasedAction extends AbstractAction{
         fields = f;
         stackmat = sm;
         spaceReleased = new SpaceReleased(f, sm);
+        spaceTimer = new javax.swing.Timer(1000, spaceReleased);
+        spaceTimer.setRepeats(false);
+        spaceTimer.setInitialDelay(Constants.keyRefreshRate);
     }
     
     public void actionPerformed(ActionEvent e){
         if(fields.addCommand()){
             return;
         }
-        spaceTimer = new Timer(1000, spaceReleased);
-        spaceTimer.setRepeats(false);
-        spaceTimer.setInitialDelay(Constants.keyRefreshRate);
-        fields.setSpaceReleased(true);
+        //stops the previous timer so that the timer only acutally fires
+        //when space released stops getting pressed
+        spaceTimer.stop();
         spaceTimer.start();
     }
-        
 }

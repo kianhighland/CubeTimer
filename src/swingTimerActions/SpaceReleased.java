@@ -14,34 +14,31 @@ public class SpaceReleased implements ActionListener{
         fields = f;
         stackmat = sm;
     }
-    
+
     public void actionPerformed(ActionEvent e){
         
-        if(fields.getSpaceReleased()){
-            fields.setGreenText(false);
-            
-            if(fields.getIgnoreNextRelese()){
-                fields.setIgnoreNextRelese(false);
-            }
-           
-            else{
-                if(! fields.getTimerStatus().getRunning()){
+        fields.setGreenText(false);
+        
+        if(fields.getIgnoreNextRelese()){
+            fields.setIgnoreNextRelese(false);
+        }
+       
+        else{
+            if(! fields.getTimerStatus().getRunning()){
+                
+                fields.getDisplayedData().getScrambleData()
+                    .setRandomScramble("");
+                
+                if(fields.getTimerStatus().getCountDownRunning()){
                     
-                    fields.getDisplayedData().getScrambleData()
-                        .setRandomScramble("");
-                    
-                    if(fields.getTimerStatus().getCountDownRunning()){
-                        
-                        stackmat.stopCountDown();
-                        stackmat.startTimer();
-                    }
-                    else{
-                        stackmat.StartCountDown();
-                    }
+                    stackmat.stopCountDown();
+                    stackmat.startTimer();
+                }
+                else{
+                    stackmat.StartCountDown();
                 }
             }
-            fields.changeSinceLastRepaint();
         }
-
+        fields.changeSinceLastRepaint();
     }
 }

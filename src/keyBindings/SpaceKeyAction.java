@@ -24,8 +24,6 @@ public class SpaceKeyAction extends AbstractAction{
     
     public void actionPerformed(ActionEvent e){
 
-        fields.setSpaceReleased(false);
-
         if(fields.addCommand()){
             return;
         }
